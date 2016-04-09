@@ -70,7 +70,9 @@ gulp.task('js:build', function() {
 
 gulp.task('style:build', function() {
   return gulp.src(path.src.style)
-    .pipe(stylus())
+    .pipe(stylus({
+      'include css': true
+    }))
     .pipe(csso())
     .pipe(postcss([ autoprefixer({ browsers: ['last 2 versions'] }) ]))
     .pipe(gulp.dest(path.build.style))

@@ -4,7 +4,9 @@
   "description": "ya-crew product",
   "author": "",
   "license": "ISC",
-  "dependencies": {},
+  "dependencies": {
+    "normalize.css": "^4.0.0"
+  },
   "devDependencies": {
     "browser-sync": "^2.11.2",
     "gulp": "^3.9.1",
