@@ -19,7 +19,6 @@ var path = {
     js: 'build/js',
     style: 'build/css',
     img: 'build/img'
-
   },
   src: {
     html: 'src/layouts/**/*.html',
@@ -28,10 +27,10 @@ var path = {
     img: 'src/assets/images/**/*'
   },
   watch: {
-    html: 'src/**/*.html',
-    js: 'src/js/**/*.*',
-    style: 'src/style/**/*.*',
-    img: 'src/img/**/*.*'
+    html: 'src/layouts/**/*.html',
+    js: 'src/js/**/*.js',
+    style: 'src/assets/main.styl',
+    img: 'src/assets/images/**/*'
   }
 };
 
