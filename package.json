@@ -1,6 +1,6 @@
 {
   "name": "foodhub",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "ya-crew product",
   "author": "",
   "license": "ISC",
@@ -12,6 +12,7 @@
     "gulp-browserify": "^0.5.1",
     "gulp-postcss": "^6.1.0",
     "gulp-rigger": "^0.5.8",
-    "gulp-stylus": "^2.3.1"
+    "gulp-stylus": "^2.3.1",
+    "gulp-watch": "^4.3.5"
   }
 }
