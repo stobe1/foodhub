@@ -120,4 +120,8 @@ gulp.task('watch', function() {
   });
 });
 
+gulp.task('components:build', function(){
+  
+})
+
 gulp.task('default', ['build', 'webserver', 'watch']);
