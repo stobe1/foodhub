@@ -9,6 +9,9 @@ var postcss = require('gulp-postcss');
 var autoprefixer = require('autoprefixer');
 var stylus = require('gulp-stylus');
 var browserify = require('gulp-browserify');
+var csso = require('gulp-csso');
+var imagemin = require('gulp-imagemin');
+var pngquant = require('imagemin-pngquant');
 
 var path = {
   build: {
@@ -69,6 +72,8 @@ gulp.task('js:build', function() {
 gulp.task('style:build', function() {
   return gulp.src(path.src.style)
     .pipe(stylus())
+    .pipe(csso())
+    .pipe(postcss([ autoprefixer({ browsers: ['last 2 versions'] }) ]))
     .pipe(gulp.dest(path.build.style))
     .pipe(reload({
       stream: true
@@ -78,6 +83,14 @@ gulp.task('style:build', function() {
 
 gulp.task('image:build', function() {
   return gulp.src(path.src.img)
+    .pipe(imagemin({
+      progressive: true,
+      svgoPlugins: [{
+        removeViewBox: false
+      }],
+      use: [pngquant()],
+      interlaced: true
+    }))
     .pipe(gulp.dest(path.build.img))
     .pipe(reload({
       stream: true
