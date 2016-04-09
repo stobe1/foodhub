@@ -22,10 +22,10 @@ var path = {
 
   },
   src: {
-    html: 'src/*.html',
+    html: 'src/layouts/**/*.html',
     js: 'src/js/main.js',
-    style: 'src/style/screen.styl',
-    img: 'src/img/**/*.*'
+    style: 'src/assets/main.styl',
+    img: 'src/assets/images/**/*'
   },
   watch: {
     html: 'src/**/*.html',
