@@ -29,7 +29,7 @@ var path = {
   watch: {
     html: 'src/layouts/**/*.html',
     js: 'src/js/**/*.js',
-    style: 'src/assets/main.styl',
+    style: 'src/assets/**/*.styl',
     img: 'src/assets/images/**/*'
   }
 };
