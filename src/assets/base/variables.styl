@@ -1,13 +1,20 @@
-$color_primary_bg = #F2F2F2
+$desktop-lg = "only screen and (min-width: 70.5625em)" /* >= 1129px  */
+$desktop = "only screen and (max-width: 70.5em) and (min-width: 59.375em)" /* 950px - 1128px  */
+$desktop-min = "only screen and (min-width: 59.375em)" /* >= 950px */
+$tablet-max = "only screen and (max-width: 59.3125em)" /* <= 949px */
+$tablet = "only screen and (max-width: 59.3125em) and (min-width: 35.5625em)" /* 569px - 949px */
+$mobile-max = "only screen and (max-width: 35.5em)" /* <= 568px */
+$mobile = "only screen and (max-width: 35.5em) and (min-width: 20.0625em)" /* 321px -  568px */
+$mobile-sm = "only screen and (max-width: 20em)" /* <= 320px */
+
+$color_primary_bg = #f2f2f2
 $color_secondary_bg = #fff
 $color_session_info_bg = #333
-$color_main = #4CAF50
+$color_main = #4caf50
 $color_session_info_text = #fff
 $color_body_text = #000
 
 default_font()
-  font-family: 'Roboto'
-  font-size: 16px
-  font-weight: 400
+  font: 400 16px 'Roboto'
   text-decoration: none
   font-style: normal
