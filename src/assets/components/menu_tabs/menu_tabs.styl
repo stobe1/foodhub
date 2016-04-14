@@ -1,0 +1,37 @@
+.menu-tabs
+  padding: 0
+
+  &__content
+    display: none
+    padding: 15px
+    background: $color_secondary_bg
+
+  &__tab-selector
+    display: none
+
+  &__tab-label
+    display: inline-block
+    margin: 0
+    padding: 15px 25px
+    font-weight: 500
+    text-transform: uppercase
+    text-align: center
+    color: #676767
+    border-bottom: 2px solid transparent
+    transition: color 0.5s ease, border-color 0.5s ease
+
+  &__tab-label:hover
+    cursor: pointer
+    border-bottom: 2px solid $color_main
+
+  &__tab-selector:checked + &__tab-label
+    color: $color_main
+    border-bottom: 2px solid $color_main
+
+  #menu-tabs__tab1:checked ~ #menu-tabs__content1,
+  #menu-tabs__tab2:checked ~ #menu-tabs__content2,
+  #menu-tabs__tab3:checked ~ #menu-tabs__content3,
+  #menu-tabs__tab4:checked ~ #menu-tabs__content4
+    display: block
+
+
