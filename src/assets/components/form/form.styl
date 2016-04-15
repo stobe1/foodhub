@@ -1,0 +1,86 @@
+.form
+  &-line
+    margin-bottom: 40px
+    padding-top: 14px
+    position: relative
+
+  &__text-input
+    font-size: 16px
+    height: 29px
+    color: $color_form_text
+    border: 0
+    border-bottom: 2px solid $color_form_grey
+    box-shadow: 0 4px 4px -4px rgba(0, 0, 0, .3)
+    outline: none
+
+    &:focus
+      border-color: $color_main
+
+      & ~ .form__headline
+        color: $color_main
+
+  &__headline
+    font-size: 12px
+    color: $color_form_grey
+    position: absolute;
+    top: 0;
+    left: 0;
+
+  &__paytype
+    &-item
+      position: relative
+      padding-left: 20px;
+      margin-top: 8px;
+
+    &-radio
+      display:none
+
+      &:checked + label:before
+        content: "\2022"
+        color: $color_main
+        font-size: 28px
+        text-align: center
+        line-height: 14px
+
+      &:checked ~ .form__paytype-label
+          font-weight: 500
+
+    &-label
+      cursor: pointer
+      user-select: none
+      margin-left: 4px
+      transition: 0.3s;
+
+      &:before
+        content: ""
+        display: inline-block
+        width: 12px
+        height: 12px
+        position: absolute
+        left: 0
+        bottom: 1px
+        background: #fff
+        border:2px solid $color_main
+        border-radius: 8px
+
+  &__submit-button
+    display: block
+    color: $color_session_info_text
+    background-color: $color_main
+    height: 52px
+    width: 280px
+    padding: 0 16px
+    text-align: center
+    font-size: 14px
+    cursor: pointer
+    line-height: 52px
+    text-transform: uppercase
+    font-weight: 500
+    box-shadow: 1px 1px 13px rgba(0, 0, 0, .7)
+
+    &:hover
+      background-color: #357738
+
+    &:active
+      background-color: #c4e4c5
+      color: $color_main
