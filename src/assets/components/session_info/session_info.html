@@ -1,18 +1,20 @@
 <div class="session-info">
-  <h1 class="session-info__header">Данные о заказе</h1> <!-- Page name here -->
+  <h1 class="session-info__header">Данные о заказе</h1>
   <div class="session-info__info-column">
     <div class="session-info__info-element">
       <label class="session-info__input-label" for="session-info__shop-select">Выбор доставки:</label>
-      <div class="session-info__shop-select">
-        //= ../custom_select/custom_select.html
-      </div>
+      <select class="session-info__shop-select" id="session-info__shop-select">
+        <option value="1" class="session-info__shop-select-option" selected>Пицца Темпо</option>
+        <option value="2" class="session-info__shop-select-option">ЕДраники</option>
+        <option value="3" class="session-info__shop-select-option">Лидо</option>
+      </select>
     </div>
     <div class="session-info__info-element">
-      <label class="session-info__info-label">Заказ от</label>
+      <span class="session-info__info-label">Заказ от</span>
       <span class="session-info__info-value">140000 руб</span>
     </div>
     <div class="session-info__info-element">
-      <label class="session-info__info-label">Время доставки:</label>
+      <span class="session-info__info-label">Время доставки:</span>
       <span class="session-info__info-value">08:30 - 22:30</span>
     </div>
     <div class="session-info__info-element">
@@ -21,17 +23,17 @@
   </div>
   <div class="session-info__info-column">
     <div class="session-info__info-element">
-      <label class="session-info__input-label" for="session-info__order-time">Время оформления заказа:</label>
+      <span class="session-info__input-label" for="session-info__order-time">Время оформления заказа:</span>
       <input class="session-info__input" id="session-info__order-time" value="13:45">
     </div>
   </div>
   <div class="session-info__info-column">
     <div class="session-info__info-element">
-      <label class="session-info__input-label" for="session-info__order-price">Общая сумма заказа:</label>
-      <input class="session-info__input" id="session-info__order-price" value="550000 руб">
+      <span class="session-info__input-label" for="session-info__order-price">Общая сумма заказа:</span>
+      <input class="session-info__input" id="session-info__order-price" value="550000 руб" readonly>
     </div>
     <div class="session-info__info-element">
-      <label class="session-info__info-label">Осталось собрать:</label>
+      <span class="session-info__info-label">Осталось собрать:</span>
       <span class="session-info__info-value">100000 руб</span>
     </div>
   </div>
