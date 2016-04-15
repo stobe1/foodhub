@@ -2,7 +2,7 @@
   background-color: $color_session_info_bg
   padding: 46px 39px
   box-sizing: border-box
-  overflow: hidden
+  font-size: 0
 
   @media $mobile-max
     padding: 33px 28px
@@ -18,7 +18,7 @@
     width: 29.3%
     margin: 0 3%
     max-width: 250px
-    float: left
+    vertical-align: top
 
     @media $tablet-max
       width: 100%
@@ -34,11 +34,12 @@
       margin-bottom: 0
 
   &__info-element
-    height: auto
+    margin: 5px 0
 
   &__info-label
     color: $color_session_info_label
     font-size: 16px
+    margin-right: 5px
 
   &__info-value
     color: $color_session_info_label
@@ -50,31 +51,31 @@
     border: none
     font-size: 18px
     color: $color_session_info_text
-    outline: none
+    outline-color: #999;
     width: 100%
-    padding-bottom: 6px
-    margin-bottom: 9px
     height: 25px
+    padding-bottom: 6px
+    margin-bottom: 9px    
 
-    & .custom-select__options
+    .custom-select__options
       border: none
       background-color: $color_session_info_bg
 
-    & .custom-select__option
+    .custom-select__option
       padding-left: 0
 
-    & .custom-select__option_selected
+    .custom-select__option_selected
       border-bottom: 1px solid #666 !important
 
-    & .custom-select__option_selected:after
+    .custom-select__option_selected:after
       color: $color_session_info_label
 
-    & .custom-select_open .custom-select__option:hover
+    .custom-select_open .custom-select__option:hover
       background-color: transparent
       color: $color_session_info_text
       text-decoration: underline
 
-    & .custom-select_open .custom-select__option_selected:after
+    .custom-select_open .custom-select__option_selected:after
       color: #bbb
 
   &__shop-option
@@ -89,11 +90,12 @@
   &__input
     background: transparent
     border: none
-    color: $color_session_info_text
     border-bottom: 1px solid #666
+    color: $color_session_info_text
     font-size: 18px
-    outline: none
+    outline-color: #999;
     width: 100%
-    padding-bottom: 6px
-    margin-bottom: 9px
     height: 25px
+    padding: 5px 0
+    padding-bottom: 6px
+    margin-bottom: 9px    
