@@ -3,7 +3,9 @@
 
   &__content
     display: none
+    overflow: auto
     padding: 15px
+    height: 100%
     background: $color_secondary_bg
 
   &__tab-selector
@@ -12,7 +14,7 @@
   &__tab-label
     display: inline-block
     margin: 0
-    padding: 15px 25px
+    padding: 15px
     font-weight: 500
     text-transform: uppercase
     text-align: center
@@ -20,20 +22,18 @@
     border-bottom: 2px solid transparent
     transition: color 0.3s ease, border-color 0.3s ease
 
-  &__tab-label:hover
-    cursor: pointer
-    border-bottom: 2px solid $color_main
+    &:hover
+      cursor: pointer
+      border-bottom: 2px solid $color_main
 
-  &__tab-label:active
-    color: rgba($color_main, 0.7)
-    border-bottom: 2px solid rgba($color_main, 0.7)
+    &:active
+      color: rgba($color_main, 0.7)
+      border-bottom: 2px solid rgba($color_main, 0.7)
 
   &__tab-selector:checked + &__tab-label
     color: $color_main
     border-bottom: 2px solid $color_main
 
-  #menu-tabs__tab1:checked ~ #menu-tabs__content1,
-  #menu-tabs__tab2:checked ~ #menu-tabs__content2,
-  #menu-tabs__tab3:checked ~ #menu-tabs__content3,
-  #menu-tabs__tab4:checked ~ #menu-tabs__content4
+for $i in (1..4)
+  #menu-tabs__tab{$i}:checked ~ #menu-tabs__content{$i}
     display: block
