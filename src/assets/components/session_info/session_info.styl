@@ -1,5 +1,5 @@
 .session-info
-  background-color: #303030
+  background-color: $color_session_info_bg
   padding: 46px 39px
   box-sizing: border-box
   overflow: hidden
@@ -9,7 +9,7 @@
 
   &__header
     font-size: 34px
-    color: #fff
+    color: $color_session_info_text
     margin-top: 0
     font-weight: 500
 
@@ -37,11 +37,11 @@
     height: auto
 
   &__info-label
-    color: #999
+    color: $color_session_info_label
     font-size: 16px
 
   &__info-value
-    color: #999
+    color: $color_session_info_label
     font-size: 16px
     font-weight: 600
 
@@ -49,7 +49,7 @@
     background-color: transparent
     border: none
     font-size: 18px
-    color: #fff
+    color: $color_session_info_text
     outline: none
     width: 100%
     padding-bottom: 6px
@@ -58,7 +58,7 @@
 
     & .custom-select__options
       border: none
-      background-color: #303030
+      background-color: $color_session_info_bg
 
     & .custom-select__option
       padding-left: 0
@@ -67,29 +67,29 @@
       border-bottom: 1px solid #666 !important
 
     & .custom-select__option_selected:after
-      color: #777
+      color: $color_session_info_label
 
     & .custom-select_open .custom-select__option:hover
       background-color: transparent
-      color: #fff
+      color: $color_session_info_text
       text-decoration: underline
 
     & .custom-select_open .custom-select__option_selected:after
-      color: #999
+      color: #bbb
 
   &__shop-option
-    background-color: #303030
+    background-color: $color_session_info_bg
     outline: none
     border: none
 
   &__input-label
-    color: #999
+    color: $color_session_info_label
     font-size: 14px
 
   &__input
     background: transparent
     border: none
-    color: #fff
+    color: $color_session_info_text
     border-bottom: 1px solid #666
     font-size: 18px
     outline: none
