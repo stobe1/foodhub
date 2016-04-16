@@ -27,7 +27,7 @@ var path = {
     img: 'src/assets/images/**/*'
   },
   watch: {
-    html: 'src/layouts/**/*.html',
+    html: 'src/**/*.html',
     js: 'src/js/**/*.js',
     style: 'src/assets/**/*.styl',
     img: 'src/assets/images/**/*'
