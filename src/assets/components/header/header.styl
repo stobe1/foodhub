@@ -1,5 +1,5 @@
 .header
-  box-shadow: 0 0 8px rgba(0,0,0,.7)
+  box-shadow: 0 0 8px rgba(0,0,0,.5)
   width: 100%
   height: $header_height
   background-color: $color_main
@@ -31,6 +31,7 @@
     background-position: center 
     background-repeat: no-repeat
     background-size: auto 50px
+
     @media $mobile-sm
       width: 100px
       background-size: 100% auto
@@ -84,6 +85,7 @@
     
   &__link-container
     list-style: none
+
     &:last-child:before
       content: ""
       display: block
@@ -109,6 +111,7 @@
     color: white
     font-size: 16px
     font-weight: 400
+
     @media $mobile-max
       color: transparent
       display: none
