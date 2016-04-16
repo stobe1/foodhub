@@ -1,29 +1,33 @@
-$header_height = 70px
-card()
-  border-radius: 2px
-  box-shadow:1px 1px 8px rgba(0,0,0,.5)
+
+
+
 
 .header
-  card()
-  width 100%
+  box-shadowl: 0 0 8px rgba(0,0,0,.7)
+  width: 100%
   height: $header_height
   background-color: $color_main
+
   & > hr
-    display none
+    display: none
 
   &__center-column
     display: flex
     flex-direction: row
     justify-content: space-between
     align-items: flex-start
-    height $header_height
-    position relative
+    height: $header_height
+    position: relative
     margin: 0 40px
+
+    @media $mobile-max
+      margin: 0 5px
+
     & > hr
-      display none
+      display: none
   
   &__logo
-    display: block;
+    display: block
     width: 125px
     height $header_height
     color:transparent
@@ -31,13 +35,9 @@ card()
     background-position: center 
     background-repeat: no-repeat
     background-size: auto 50px
-
-
-
-
-
-
-
+    @media $mobile-sm
+      width: 100px
+      background-size: 100% auto
 
 
 .my-profile
@@ -47,110 +47,91 @@ card()
   align-items: center
   height: 100%
   width: auto
-  padding: 0 20px;
+  padding: 0 20px
   position relative
   cursor: default
-  transition background-color .1s
+  transition:  background-color .1s
 
   &:hover 
-    background-color rgba(#000,.08)
+    background-color: rgba(#000,.08)
+
     .my-profile__menu
-      display block
+      display: block
+      
+  @media $mobile-max 
+    padding: 0 20px 0 10px
+
 
   &__menu
     card()
-    display none
-    width 100%
-    height auto
-    position absolute
-    top 85%
-    right 0
-    padding 5px 0px
-    background-color #fff
-    z-index 111
-    hr
-      display block
-      float left
-      width calc(100% - 30px)
-      height 1px
-      margin 4px 0 4px 15px
-      border none
-      background-color rgba(black,.2)
+    display: none
+    width: 100%
+    height: auto
+    position: absolute
+    top: 85%
+    right: 0
+    padding: 5px 0px
+    background-color: #fff
+    z-index: 111
 
-  &__menu:after
-    content ""
-    display block
-    width 100%
-    position absolute
-    top -10px
-    height 10px
+    &:after
+      content: ""
+      display: block
+      width: 100%
+      position: absolute
+      top: -10px
+      height: 10px
+
+    @media $mobile-max
+      width: 200px
+
     
   &__link-container
-    display block
-    float left
-    width 100%
     list-style: none
+    &:last-child:before
+      content: ""
+      display: block
+      width: 80%
+      height: 1px
+      margin: 4px 4px 4px 10%
+      border: none
+      background-color: rgba(black,.2)
 
   &__link
-    display block
-    width 100%
-    padding 4px 15px
-    font-size 14px
-    line-height 30px
-    color #222
+    display: block
+    padding: 4px 15px
+    font-size: 14px
+    line-height: 30px
+    color: #222
+
     &:hover
-      background-color rgba($color_main,.2)
-      text-decoration none
+      background-color: rgba($color_main,.2)
+      text-decoration: none
 
   &__name
-    display: inline
     line-height: $header_height
-    color:white
+    color: white
     font-size: 16px
-    font-weight 400
+    font-weight: 400
+    @media $mobile-max
+      color: transparent
+      display: none
 
   &__image-container
     display: block
-    float: none
     position: relative
-
     width: 40px
     height: 40px
     overflow: hidden
-
     margin-left: 10px
-    border-radius:20px
+    border-radius: 20px
     background-color: #e2e2e2
 
-
-
   &__image
-    width: 100%
+    height: 100%
     position: absolute
     top: 0
     bottom: 0
-    margin:auto
-    min-height: 100%
-
-
-
-
-
-
-@media $mobile-max 
-  .header__center-column
-    margin 0 5px
-    
-  .my-profile
-    padding:  0 20px 0 10px;
-    &__menu
-      width 200px
-    &__name
-      color transparent
-      display: none !important
-    
-
-@media $mobile-sm
-  .header__logo
-    width 100px
-    background-size 100% auto
+    left: 0
+    right: 0
+    margin: auto
