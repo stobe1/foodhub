@@ -1,0 +1,93 @@
+.sign-in
+  display: flex
+  flex-direction: column
+  justify-content: center
+  align-items: center
+  position: relative
+  width: 100%
+  height: 100vh
+  min-height: 480px
+  background: url('../img/sign-in_bg.jpg') no-repeat
+  background-size: cover
+
+  h1
+    margin: 0
+
+  &__overlay
+    position: absolute
+    width: 100%
+    height: 100%
+    top: 0
+    left: 0
+    background: $color_main
+    opacity: .6
+    z-index: 1
+
+  &__logo-container
+  &__buttons-container
+    position: relative
+    z-index: 2
+
+  &__logo-container
+    margin-bottom: 32px
+    text-align: center
+
+  &__logo
+    display: block
+    width: 100%
+    max-width: 260px
+    margin: 0 auto 10px
+
+  &__tagline
+    font-size: 14px
+    margin: 0
+    color: $color_sign-in
+
+  &__buttons-container
+    width: 100%
+    max-width: 380px
+    padding: 20px 20px 50px
+    background: $color_sign-in
+    border-radius: 2px
+    box-shadow: 0px 3px 25px 0px $color_sign-in-container-shadow
+
+  &__title
+    position: relative
+    margin: 0 0 20px
+    line-height: 36px
+    font-size: 24px
+    font-weight: 400
+    color: $color_main
+
+    &::before
+      display: block
+      content: ''
+      position: absolute
+      top: 0
+      left: -20px
+      width: 5px
+      height: 100%
+      background: $color_main
+
+  &__button
+    display: block
+    padding-left: 42px
+    background: no-repeat 10px center
+    background-size: 20px
+    border-radius: 2px
+    box-shadow: 0px 2px 3px 0px $color_sign-in-buttons-shadow
+    color: $color_sign-in
+    line-height: 46px
+    font-size: 14px
+    font-weight: 500
+
+    &_fb
+      background-color: $color_fb-button-bg
+      background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIAAAACACAQAAABpN6lAAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAAmJLR0QAAKqNIzIAAAAJcEhZcwAADdcAAA3XAUIom3gAAAAHdElNRQfgBBAPFgv/H2sfAAAC80lEQVR42u2dPWhTURxHf6kfdHCQSqsWQRGRghZcHEREtIWsLjr4gYg4ZhA3FREFcTeIiEinYosObsHBRcWhi5OIKNQuanXpUjCKz0HBRUm89717rsnvlEx9973zP23S5OW1rRXKilFNaqtGNPzrNqSafioWf7nN6YZmww9YyyTAoPaprrp2BqwttF1vgo9c8B9jxb1iuYjhavjRV8Jf+S26rONaEbmX4fClZICNuqgzWgUaoAEmNKshdnhJGoCO21Arh/GZ74DVuqnT9OBcgDVqaS899m/S3wXu5jR++gDndJgemQywX9fpgckAo5rBn3ihAZpaT49LBhjXIXpYNsAF1ehhyQBjuT36pw5wHnvSnUWATTpKD8oGqEe/4v/PA0zSY7IBajpIj8kGGNdIxUd4m3eAiYr339ZU+OIUz80PlLCPJS1o+Y+fmdMtfco7wOaItY/U1LwWtFSVXIoAoSet3+usZqqWS/HOUDvo1Pd37dCr6uWqfxBcG3jm/0GK8VMECL0DXEsxfr4BvuhFrwRYF7TqY5rxUwQIexm02DsBwuj7AF/7PUAyHIAWoHEAWoDGAWgBGgegBWgcgBagiTsldkQN7e6wzUDgCbF2V9u90201u9y29ADb9DqL9/yPaTp8ccxd4GQW40unYhbHBIi4RrtUojz6/kHQAWgBGgegBWgcgBagcQBagMYBaAEaB6AFaByAFqBxAFqAxgFoAZqYABEno0slyiMmwEN68jI8YgI81rS+0dPrie7ELI+9WHqDdnXYYo8uBez3ua50td187BXFsZfLf1CrwxaDQftd7LjfkvBPAVqAxgFoARoHoAVoHIAWoHEAWoDGAWgBGgegBWgcgBagcQBagMYBaAEaB6AFaByAFqBxAFqAxgFoARoHoAVoHIAWoHEAWoDGAWgBGgegBWgcgBagcQBagMYBaAEaB6AFaByAFqBxAFqAxgEqP0LYP0D53DsBngX9XtdU7wSQTuj+P/2x9Jdq6GmqAD8Ag0X536ihL88AAAAldEVYdGRhdGU6Y3JlYXRlADIwMTYtMDQtMTZUMTU6MjI6MTErMDI6MDApulIyAAAAJXRFWHRkYXRlOm1vZGlmeQAyMDE2LTA0LTE2VDE1OjIyOjExKzAyOjAwWOfqjgAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAAASUVORK5CYII=')
+
+    &_vk
+      background-color: $color_vk-button-bg
+      background-image: url('data:image/png;base64,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')
+
+    &:not(:last-of-type)
+      margin-bottom: 14px
