@@ -3,12 +3,10 @@
   min-height: 70px
   height: auto
   overflow: hidden
-  padding: 10px 0
-  background-color: #fff
-  border-bottom: 1px solid #545454
+  padding: 10px 0 10px 50px
+  background-color: $color_secondary_bg
+  border-bottom: 1px solid $color_food_order_seaprator
   position: relative
-  box-sizing: border-box
-  padding-left: 50px
 
   &.food-order_editable &__close
     display: block
@@ -56,13 +54,13 @@
     &:after
       content: 'x'
       position: absolute
-      right: -20px
-      color: #999
+      right: -15px
+      color: $color_food_order_seaprator
 
   &__quantity-input-container
     display: inline-block
     position: relative
-    margin-left: 30px
+    margin: 0 25px
     float: left
 
   &__total-price
@@ -74,4 +72,4 @@
       position: absolute
       left: -15px
       top: 0
-      color: #999
+      color: $color_food_order_seaprator
