@@ -6,7 +6,8 @@
     display: none
     overflow: auto
     padding: 15px
-    height: 100%
+    // Высота .menu-tabs__content = 100% - высота .menu-tabs__tab-label
+    height: calc(100% - 51px)
     background: $color_secondary_bg
 
   &__tab-selector
