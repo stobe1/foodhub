@@ -29,15 +29,15 @@
 
     &:hover
       cursor: pointer
-      border-bottom: 2px solid $color_main
+      border-bottom-color: $color_main
 
     &:active
       color: rgba($color_main, 0.7)
-      border-bottom: 2px solid rgba($color_main, 0.7)
+      border-bottom-color: rgba($color_main, 0.7)
 
   &__tab-selector:checked + &__tab-label
     color: $color_main
-    border-bottom: 2px solid $color_main
+    border-bottom-color: $color_main
 
 for $i in (1..4)
   #menu-tabs__tab{$i}:checked ~ #menu-tabs__content{$i}
