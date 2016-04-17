@@ -31,25 +31,32 @@
   &__headline
     font-size: 12px
     color: $color_form_secondary
-    position: absolute;
-    top: 0;
-    left: 0;
+    position: absolute
+    top: 0
+    left: 0
 
   &__paytype
     &-item
       position: relative
-      padding-left: 20px;
-      margin-top: 8px;
+      padding-left: 20px
+      margin-top: 8px
 
     &-radio
       display: none
 
-      &:checked + label:before
-        content: "\2022"
-        color: $color_main
-        font-size: 28px
-        text-align: center
-        line-height: 14px
+      &:not(checked) + label:after
+        content: ''
+        position: absolute
+        top: 6px
+        left: 5px
+        width: 7px
+        height: 7px
+        border-radius: 25px
+        background: $color_main
+        opacity: 0
+
+      &:checked + label:after
+        opacity: 1
 
       &:checked ~ .form__paytype-label
         font-weight: 500
@@ -58,20 +65,18 @@
       cursor: pointer
       user-select: none
       margin-left: 4px
-      transition: font-weight 0.3s;
 
       &:before
         content: ""
         display: inline-block
-        width: 12px
-        height: 12px
+        width: 13px
+        height: 13px
         position: absolute
         left: 0
         bottom: 1px
         background: #fff
         border: 2px solid $color_main
-        border-radius: 8px
-        font-weight: 400
+        border-radius: 25px
 
   &__submit-button
     display: block
@@ -95,3 +100,4 @@
     &:active
       background-color: $color_button_active
       color: $color_main
+
