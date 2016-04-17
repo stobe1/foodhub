@@ -1,4 +1,5 @@
 .form
+
   &__line
     margin-bottom: 40px
     padding-top: 14px
@@ -11,7 +12,7 @@
     border: 0
     border-bottom: 1px solid $color_form_secondary
     outline: none
-    width: 66%
+    width: 100%
 
     &_short
       width: 150px
@@ -19,8 +20,12 @@
     &_regular
       width: auto
 
+    &_stretched
+      width: 66%
+
     &:focus
-      border-bottom: 2px solid $color_main
+      box-shadow: 0px 1px 0px rgba($color_main, 1);
+      border-color: $color_main
 
       & ~ .form__headline
         color: $color_main
@@ -33,6 +38,7 @@
     left: 0
 
   &__paytype
+
     &-item
       position: relative
       padding-left: 20px
@@ -41,7 +47,7 @@
     &-radio
       display: none
 
-      &:not(checked) + label:after
+      & + ^[1]-label:after
         content: ''
         position: absolute
         top: 6px
@@ -52,10 +58,10 @@
         background: $color_main
         opacity: 0
 
-      &:checked + label:after
+      &:checked + ^[1]-label:after
         opacity: 1
 
-      &:checked ~ .form__paytype-label
+      &:checked ~ ^[1]-label
         font-weight: 500
 
     &-label
@@ -74,6 +80,4 @@
         background: #fff
         border: 2px solid $color_main
         border-radius: 25px
-
-
 
