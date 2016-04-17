@@ -1,0 +1,44 @@
+.menu-tabs
+  padding: 0
+  height: 100%
+  font-size: 0;
+
+  &__content
+    display: none
+    overflow: auto
+    padding: 15px
+    // Высота .menu-tabs__content = 100% - высота .menu-tabs__tab-label
+    height: calc(100% - 51px)
+    font-size: 14px;
+    background: $color_secondary_bg
+
+  &__tab-selector
+    display: none
+
+  &__tab-label
+    display: inline-block
+    margin: 0
+    padding: 15px
+    font-size: 14px;
+    font-weight: 500
+    text-transform: uppercase
+    text-align: center
+    color: $color_tab_label
+    border-bottom: 2px solid transparent
+    transition: color 0.3s ease, border-color 0.3s ease
+
+    &:hover
+      cursor: pointer
+      border-bottom-color: $color_main
+
+    &:active
+      color: rgba($color_main, 0.7)
+      border-bottom-color: rgba($color_main, 0.7)
+
+  &__tab-selector:checked + &__tab-label
+    color: $color_main
+    border-bottom-color: $color_main
+
+for $i in (1..4)
+  #menu-tabs__tab{$i}:checked ~ #menu-tabs__content{$i}
+    display: block
