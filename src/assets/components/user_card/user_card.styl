@@ -1,0 +1,136 @@
+.user-card
+  display: block
+  height: auto
+  width: 100%
+  max-width: 350px
+  overflow: hidden
+  margin: 15px
+  box-shadow: 1px 1px 7px rgba(black, 0.4)
+  border-radius: 3px
+  background-color: white
+  transition: box-shadow .15s
+  
+
+  &_editable &__close
+    display: block
+    
+  &_editable &__footer
+    display: flex
+    
+
+  
+  &:first-child
+    margin-left: 0
+    
+  &:last-child
+    margin-right: 0
+  
+  &:hover
+    box-shadow: 1px 1px 7px rgba(black, 0.6)
+
+  &__header,&__footer 
+    background-color: rgba(black, 0.05)
+    
+    
+  &__footer
+    border-top: 1px solid rgba(black, 0.2)
+    display: flex
+    display: none
+    flex-direction: row
+    justify-content: flex-start
+    align-items: center
+    padding-left: 20px
+    
+
+  &__header
+    position: relative
+    display: flex
+    
+    flex-direction: row
+    justify-content: space-between
+    align-items: center
+    border-bottom: 1px solid rgba(black, 0.2)
+
+  &__close
+    font-size: 20px
+    color: black
+    padding: 20px
+    cursor:pointer
+    box-shadow: -1px 0 0 rgba(black,.2)
+    display: none
+    &:hover
+      //border-radius: 30px
+      background-color: rgba(black,.05)
+      box-shadow: -1px 0 0 rgba(black,.2)
+    
+  
+  &__name
+    padding: 20px
+    margin: 0
+    font-size: 14px
+    font-weight: 500
+    color: black
+
+  &__price
+    font-size: 16px
+    font-weight: 900
+    color: $color_main
+    
+  &__body
+    height: 300px;
+    overflow: scroll
+    overflow-x: hidden
+    padding 0 10px 0 10px
+
+  &__input-label
+    font-size: 14px
+    color: #222
+    display: block
+    padding: 20px 15px
+
+  &__input
+    display: block
+    opacity:1
+    position: relative
+    height: 20px
+    outline:none
+    position: relative
+
+    &:focus:before
+      position: absolute
+      left: calc(50% - 18px)
+      top: calc(50% - 18px)
+      z-index:111
+      
+      pointer-events:none
+      content: "";
+      display block
+      width: 36px
+      height: 36px
+      border-radius: 36px
+      
+      background-color: rgba($color_main, 0.2)
+      
+
+
+    &:after
+      position: absolute
+      left: calc(50% - 8px)
+      top: calc(50% - 8px)
+      z-index:222
+      pointer-events:none
+      content: "";
+      display block
+      width: 12px
+      height: 12px
+      border-radius: 3px
+      border:2px solid #444
+      background-color: white
+
+    &:checked:after
+      background-color: $color_main
+      border:none
+      width: 16px
+      height: 16px
+      background-image: url("data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjRkZGRkZGIiBoZWlnaHQ9IjI0IiB2aWV3Qm94PSIwIDAgMjQgMjQiIHdpZHRoPSIyNCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4gICAgPHBhdGggZD0iTTAgMGgyNHYyNEgweiIgZmlsbD0ibm9uZSIvPiAgICA8cGF0aCBkPSJNOSAxNi4xN0w0LjgzIDEybC0xLjQyIDEuNDFMOSAxOSAyMSA3bC0xLjQxLTEuNDF6Ii8+PC9zdmc+");
+      background-size: 100%;
