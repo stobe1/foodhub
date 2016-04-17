@@ -19,13 +19,11 @@
   &_active
     box-shadow: 1px 1px 8px 2px $color_main
     
-  //Если объект добавлен в корзину, т.е. _active, то скрыть кнопку "Добавить в корзину"
-  &_active &__action_add
+  &_active &__action-btn_add
     display: none
     
-  //Если объект не добавлен в корзину, т.е. не _active, то скрыть кнопку "Удалить из корзины"
-  &:not(&_active) &__action_delete
-    display: none
+  &_active &__action-btn_delete
+    display: inline
     
   &:hover
     box-shadow: 1px 1px 7px rgba(black, 0.6)
@@ -100,7 +98,11 @@
   &__footer
     padding: 0px 15px 15px 10px
     
-  &__action
+
+  &__action-btn_delete
+    display: none
+    
+  &__action-btn
     text-transform: uppercase
     font-size: 14px
     font-weight: 500
