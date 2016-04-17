@@ -1,0 +1,35 @@
+.text-input
+  margin-bottom: 40px
+  padding-top: 14px
+  position: relative
+
+  &__input
+    font-size: 16px
+    height: 29px
+    color: $color_form_text
+    border: 0
+    border-bottom: 1px solid $color_form_secondary
+    outline: none
+    width: 66%
+
+    &_short
+      width: 150px
+
+    &_regular
+      width: auto
+
+    &_long
+      width: 100%
+
+    &:not([readonly]):not([disabled]):focus
+      border-bottom: 2px solid $color_main
+
+      & ~ .form__headline
+        color: $color_main
+
+  &__headline
+    font-size: 12px
+    color: $color_form_secondary
+    position: absolute
+    top: 0
+    left: 0
