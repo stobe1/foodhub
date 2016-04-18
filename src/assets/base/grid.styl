@@ -1,0 +1,22 @@
+$grid ?= {
+  columns: 12
+}
+
+for $column in 1..$grid.columns
+
+  @media $desktop-lg
+    .d-lg{$column}
+      width: unit(($column / $grid.columns) * 100, '%')
+
+  @media $desktop
+    .d{$column}
+      width: unit(($column / $grid.columns) * 100, '%')
+
+  @media $tablet
+    .t{$column}
+      width: unit(($column / $grid.columns) * 100, '%')
+
+  @media $mobile-max
+    .m{$column}
+      width: unit(($column / $grid.columns) * 100, '%')
+
