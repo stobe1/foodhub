@@ -24,10 +24,10 @@
     &_long
       width: 100%
 
-    &:not([readonly]):not([disabled]):focus
+    &:focus
       border-bottom: 2px solid $color_main
 
-      & + ^[0]__headline
+      & + .text-input__headline
         color: $color_main
 
   &__headline

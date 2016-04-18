@@ -21,7 +21,7 @@
 
     @media $tablet-max
       width: 100%
-      max-width: 10000px
+      max-width: none
       margin: 0
 
     &:first-of-type
@@ -34,6 +34,9 @@
 
   &__element
     margin: 5px 0
+
+    @media $tablet-max
+      margin: 12px 0
 
   &__label
     color: $color_session_info_label
@@ -52,7 +55,7 @@
     position: relative
 
   &__select
-    background: 0
+    background: none
     border: 0
     border-bottom: 1px solid $color_session_info_input_border
     color: $color_session_info_text
@@ -61,10 +64,10 @@
     outline: none
     width: 100%
 
-    &:not([readonly]):not([disabled]):focus
+    &:focus
       border-bottom: 2px solid $color_main
 
-      & + ^[0]__input-label
+      & + .session-info__input-label
         color: $color_main
 
   &__input-label
