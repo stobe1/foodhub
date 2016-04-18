@@ -1,0 +1,81 @@
+.session-info
+  background-color: $color_session_info_bg
+  padding: 46px 39px
+  font-size: 0
+
+  @media $mobile-max
+    padding: 33px 28px
+
+  &__header
+    font-size: 34px
+    color: $color_session_info_text
+    margin-top: 0
+    font-weight: 500
+
+  &__column
+    display: inline-block
+    width: 29.3%
+    margin: 0 3%
+    max-width: 250px
+    vertical-align: top
+
+    @media $tablet-max
+      width: 100%
+      max-width: none
+      margin: 0
+
+    &:first-of-type
+      margin-left: 0
+      margin-top: 0
+
+    &:last-of-type
+      margin-right: 0
+      margin-bottom: 0
+
+  &__element
+    margin: 5px 0
+
+    @media $tablet-max
+      margin: 12px 0
+
+  &__label
+    color: $color_session_info_label
+    font-size: 14px
+    margin-right: 5px
+
+  &__value
+    color: $color_session_info_text
+    font-size: 14px
+
+  &__link
+    font-size: 14px
+
+  &__select-container
+    padding-top: 14px
+    position: relative
+
+  &__select
+    background: none
+    border: 0
+    border-bottom: 1px solid $color_session_info_input_border
+    color: $color_session_info_text
+    font-size: 16px
+    height: 29px
+    outline: none
+    width: 100%
+
+    &:focus
+      border-bottom: 2px solid $color_main
+
+      & + .session-info__input-label
+        color: $color_main
+
+  &__input-label
+    font-size: 12px
+    color: #777
+    position: absolute
+    top: 0
+    left: 0
+
+  &__option
+    color: $color_select_text
