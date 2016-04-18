@@ -1,23 +1,23 @@
+$ok_icon_base64 = "data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjRkZGRkZGIiBoZWlnaHQ9IjI0IiB2aWV3Qm94PSIwIDAgMjQgMjQiIHdpZHRoPSIyNCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4gICAgPHBhdGggZD0iTTAgMGgyNHYyNEgweiIgZmlsbD0ibm9uZSIvPiAgICA8cGF0aCBkPSJNOSAxNi4xN0w0LjgzIDEybC0xLjQyIDEuNDFMOSAxOSAyMSA3bC0xLjQxLTEuNDF6Ii8+PC9zdmc+"
+
+
+
 .user-card
   display: block
-  height: auto
   width: 100%
   max-width: 350px
   overflow: hidden
   margin: 15px
-  box-shadow: 1px 1px 7px rgba(black, 0.4)
+  box-shadow: 1px 1px 7px rgba(#000, 0.4)
   border-radius: 3px
   background-color: white
   transition: box-shadow .15s
-  
 
   &_editable &__close
     display: block
     
   &_editable &__footer
-    display: flex
-    
-
+    display: block
   
   &:first-child
     margin-left: 0
@@ -26,50 +26,43 @@
     margin-right: 0
   
   &:hover
-    box-shadow: 1px 1px 7px rgba(black, 0.6)
+    box-shadow: 1px 1px 7px rgba(#000, 0.6)
 
-  &__header,&__footer 
-    background-color: rgba(black, 0.05)
-    
+  &__header,
+  &__footer 
+    background-color: rgba(#000, 0.05)
+    position: relative
     
   &__footer
-    border-top: 1px solid rgba(black, 0.2)
-    display: flex
     display: none
-    flex-direction: row
-    justify-content: flex-start
-    align-items: center
     padding-left: 20px
-    
+    border-top: 1px solid rgba(#000, 0.2)
 
   &__header
     position: relative
-    display: flex
-    
-    flex-direction: row
-    justify-content: space-between
-    align-items: center
-    border-bottom: 1px solid rgba(black, 0.2)
+    border-bottom: 1px solid rgba(#000, 0.2)
 
   &__close
-    font-size: 20px
-    color: black
-    padding: 20px
-    cursor:pointer
-    box-shadow: -1px 0 0 rgba(black,.2)
     display: none
+    position: absolute
+    right: 0
+    top: 0
+    padding: 20px
+    color: #000
+    cursor: pointer
+    box-shadow: -1px 0 0 rgba(#000, 0.2)
+    font-size: 20px
+
     &:hover
-      //border-radius: 30px
-      background-color: rgba(black,.05)
-      box-shadow: -1px 0 0 rgba(black,.2)
-    
+      background-color: rgba(#000, 0.05)
+      box-shadow: -1px 0 0 rgba(#000, 0.2)
   
   &__name
     padding: 20px
     margin: 0
     font-size: 14px
     font-weight: 500
-    color: black
+    color: #000
 
   &__price
     font-size: 16px
@@ -77,60 +70,53 @@
     color: $color_main
     
   &__body
-    height: 300px;
-    overflow: scroll
+    height: 300px
+    overflow: auto
     overflow-x: hidden
-    padding 0 10px 0 10px
+    padding: 0 15px
 
   &__input-label
+    display: inline-block
+    padding: 20px 15px
     font-size: 14px
     color: #222
-    display: block
-    padding: 20px 15px
+    user-select: none
 
   &__input
-    display: block
-    opacity:1
     position: relative
-    height: 20px
-    outline:none
-    position: relative
+    opacity: 1
+    outline: none
 
-    &:focus:before
+    &:focus::after
       position: absolute
-      left: calc(50% - 18px)
-      top: calc(50% - 18px)
-      z-index:111
-      
-      pointer-events:none
-      content: "";
-      display block
-      width: 36px
-      height: 36px
-      border-radius: 36px
-      
+      display: block
+      width: 50px
+      height: 50px
+      top: 50%
+      left: 50%
+      transform: translate(-50%, -50%);
+      pointer-events: none
+      content: ""
+      border-radius: 50px
       background-color: rgba($color_main, 0.2)
-      
+      z-index: 1
 
-
-    &:after
+    &::before
+      content: ""
       position: absolute
-      left: calc(50% - 8px)
-      top: calc(50% - 8px)
-      z-index:222
-      pointer-events:none
-      content: "";
-      display block
-      width: 12px
-      height: 12px
+      top: 50%
+      left: 50%
+      width: 15px
+      height: 15px
+      border: 2px solid #444
       border-radius: 3px
-      border:2px solid #444
       background-color: white
+      z-index: 1
+      transform: translate(-50%, -50%);
 
-    &:checked:after
-      background-color: $color_main
-      border:none
-      width: 16px
-      height: 16px
-      background-image: url("data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjRkZGRkZGIiBoZWlnaHQ9IjI0IiB2aWV3Qm94PSIwIDAgMjQgMjQiIHdpZHRoPSIyNCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4gICAgPHBhdGggZD0iTTAgMGgyNHYyNEgweiIgZmlsbD0ibm9uZSIvPiAgICA8cGF0aCBkPSJNOSAxNi4xN0w0LjgzIDEybC0xLjQyIDEuNDFMOSAxOSAyMSA3bC0xLjQxLTEuNDF6Ii8+PC9zdmc+");
-      background-size: 100%;
+    &:checked::before
+      width: 19px
+      height: 19px
+      border: none
+      background: $color_main url($ok_icon_base64) no-repeat center center ;
+      background-size: 100%
