@@ -11,15 +11,17 @@
     width: 80%
 
   &__row
+    cleafix()
     padding: 20px 0
-    font-size: 0
     border-bottom: 1px solid $color_session_list_row_border
 
   &__col
-    display: inline-block
     padding: 10px
     vertical-align: middle
     font-size: 14px
+
+    @media $desktop
+        padding: 10px 5px
 
     @media $tablet-max
       text-align: center
@@ -28,7 +30,7 @@
       col-12()
       text-align: center
 
-      @media $desktop-lg
+      @media $desktop-min
         col-2()
 
       @media $mobile-max
@@ -37,51 +39,33 @@
     &_desc
       col-12()
 
-      @media $desktop-lg
+      @media $desktop-min
         col-3()
 
-      @media $desktop
-        col-4()
-
-      @media $mobile-max
-        padding-bottom: 0
-
     &_author
-      col-12()
-
-      @media $desktop-lg
+      @media $desktop-min
         col-2()
-
-      @media $desktop
-        col-4()
-        text-align: center
 
       @media $tablet
         col-6()
 
       @media $mobile-max
-        padding: 0 10px
+        col-12()
 
     &_price
-      col-12()
-
-      @media $desktop-lg
+      @media $desktop-min
         col-2()
-
-      @media $desktop
-        col-4()
-        text-align: right
 
       @media $tablet
         col-6()
 
       @media $mobile-max
-        padding-top: 0
+        col-12()
 
     &_button
       col-12()
 
-      @media $desktop-lg
+      @media $desktop-min
         col-3()
 
   &__hide-on-mobile
