@@ -1,7 +1,10 @@
 .text-input
-  margin-bottom: 40px
   padding-top: 14px
   position: relative
+
+  &_invert &__input
+    color: $color_form_text_invert
+    background-color: $color_form_invert_input_bg
 
   &__input
     font-size: 16px
@@ -24,7 +27,7 @@
     &:not([readonly]):not([disabled]):focus
       border-bottom: 2px solid $color_main
 
-      & ~ .form__headline
+      & + ^[0]__headline
         color: $color_main
 
   &__headline

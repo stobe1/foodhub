@@ -36,22 +36,6 @@
   &__element
     margin: 5px 0
 
-    .text-input
-      margin: 0
-
-      &__input
-        background: 0
-        border: 0
-        border-bottom: 1px solid $color_session_info_input_border
-        color: $color_session_info_text
-        font-size: 16px
-        line-height: 16px
-        padding: 3px 0
-        margin-bottom: 5px
-
-      &__headline
-        color: $color_session_info_label
-
   &__label
     color: $color_session_info_label
     font-size: 14px
@@ -64,23 +48,32 @@
   &__link
     font-size: 14px
 
+  &__select-container
+    padding-top: 14px
+    position: relative
+
   &__select
     background: 0
     border: 0
     border-bottom: 1px solid $color_session_info_input_border
     color: $color_session_info_text
     font-size: 16px
-    width: 100%
-    margin-bottom: 5px
     height: 29px
-    outline: 0
+    outline: none
+    width: 100%
 
     &:not([readonly]):not([disabled]):focus
       border-bottom: 2px solid $color_main
 
-  &__option
-    color: $color_select_text
+      & + ^[0]__input-label
+        color: $color_main
 
   &__input-label
-    color: $color_session_info_label
     font-size: 12px
+    color: #777
+    position: absolute
+    top: 0
+    left: 0
+
+  &__option
+    color: $color_select_text
