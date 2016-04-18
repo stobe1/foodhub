@@ -21,28 +21,65 @@
     vertical-align: middle
     font-size: 14px
 
-    &_service
-      text-align: center
-
-    @media $desktop
-      &_author
-        text-align: center
-
-      &_price
-        text-align: right
-
     @media $tablet-max
       text-align: center
 
-    @media $mobile-max
-      &_desc
+    &_service
+      col-12()
+      text-align: center
+
+      @media $desktop-lg
+        col-2()
+
+    &_desc
+      col-12()
+
+      @media $desktop-lg
+        col-3()
+
+      @media $desktop
+        col-4()
+
+      @media $mobile-max
         padding-bottom: 0
 
-      &_author
+    &_author
+      col-12()
+
+      @media $desktop-lg
+        col-2()
+
+      @media $desktop
+        col-4()
+        text-align: center
+
+      @media $tablet
+        col-6()
+
+      @media $mobile-max
         padding: 0 10px
 
-      &_price
+    &_price
+      col-12()
+
+      @media $desktop-lg
+        col-2()
+
+      @media $desktop
+        col-4()
+        text-align: right
+
+      @media $tablet
+        col-6()
+
+      @media $mobile-max
         padding-top: 0
+
+    &_button
+      col-12()
+
+      @media $desktop-lg
+        col-3()
 
   &__service-img
       max-height: 100px
