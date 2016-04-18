@@ -1,0 +1,115 @@
+.product-card
+  display: block
+  height: auto
+  width: 100%
+  max-width: 280px
+  overflow: hidden
+  margin: 15px
+  box-shadow: 1px 1px 7px rgba(#000, 0.4)
+  border-radius: 3px
+  background-color: white
+  transition: box-shadow .15s
+  
+  &:first-child
+    margin-left: 0
+    
+  &:last-child
+    margin-right: 0
+  
+  &_active
+    box-shadow: 1px 1px 8px 2px $color_main
+    
+  &_active &__action-btn_add
+    display: none
+    
+  &_active &__action-btn_delete
+    display: inline
+    
+  &:hover
+    box-shadow: 1px 1px 7px rgba(#000, 0.6)
+
+  &__header
+    position: relative
+
+  &__image-container
+    position: relative
+    height: 200px
+    background-color: $color_main
+    
+  &__image
+    display: block
+    height: 100%
+    position: absolute
+    top: 50%
+    left: 50%
+    transform: translate(-50%, -50%);
+  
+  &:hover &__description
+    opacity: 1
+
+
+  &__info
+    position: absolute
+    left: 0
+    display: block
+    margin: 0
+    color: white
+    width: 100%
+
+  &__description
+    top: 0
+    padding: 15px 10px 80px 20px
+    font-size: 12px
+    font-weight: 400
+    line-height: 18px
+    background: linear-gradient(to bottom, rgba(#000, 0.8) 0%, rgba(231, 56, 39, 0) 100%)
+    transition: opacity 0.2s
+    opacity: 0
+
+  &__name
+    bottom: 0
+    padding: 45px 10px 10px 20px
+    font-size: 18px
+    font-weight: 500
+    background: linear-gradient(to top, rgba(#000, 0.8) 0%, rgba(231, 56, 39, 0) 100%)
+
+  &__body
+    padding: 15px 20px 10px 20px
+
+  &__label
+    display: block
+    width: 100%
+    font-size: 11px
+    color: #555
+    
+  &__half
+    display: inline-block
+    width: 49%
+    vertical-align: top
+
+    &-text-align-right
+      text-align: right
+
+  &__price
+    display: inline-block
+    margin: 0
+    font-size: 27px
+    color: #111
+  
+  &__footer
+    padding: 0 15px 15px 10px
+
+  &__action-btn_delete
+    display: none
+    
+  &__action-btn
+    text-transform: uppercase
+    font-size: 14px
+    font-weight: 500
+    padding: 8px 10px
+    border-radius: 2px
+    text-decoration: none
+
+    &:hover
+      background-color: rgba($color_main, 0.2)
+      text-decoration: none
