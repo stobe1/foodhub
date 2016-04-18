@@ -31,6 +31,9 @@
       @media $desktop-lg
         col-2()
 
+      @media $mobile-max
+        display: none
+
     &_desc
       col-12()
 
@@ -81,12 +84,16 @@
       @media $desktop-lg
         col-3()
 
+  &__hide-on-mobile
+    @media $mobile-max
+      display: none
+
   &__service-img
-      max-height: 100px
-      max-width: 100%
+    max-height: 100px
+    max-width: 100%
 
   &__new-line
-      display: block
+    display: block
 
   &__title
     color: $color_main
