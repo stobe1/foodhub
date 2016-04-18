@@ -1,13 +1,16 @@
-*
+* 
   box-sizing: border-box
 
-html, body
+html
   height: 100%
 
 body
   default_font()
   min-width: 320px
+  min-height: 100%
+  position: relative
   color: $color_body_text
+  padding-bottom: $footer_height
 
 h1
   font-size: 35px
@@ -18,7 +21,7 @@ h2
 h3
   font-size: 16px
 
-a
+a 
   color: $color_main
   text-decoration: none
   cursor: pointer
