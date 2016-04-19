@@ -6,24 +6,21 @@
 
   &__center-column
     display: flex
-    flex-direction: row
     justify-content: space-between
-    align-items: flex-start
-    height: $header_height
+    align-items: flex-center
     position: relative
     margin: 0 40px
-
     @media $mobile-max
       margin: 0 5px
   
   &__logo
     display: block
     width: 125px
-    height $header_height
     color: transparent
+    height: $header_height
     
     background: embedurl('../img/logo.png') no-repeat center
-    background-size: 125px auto 
+    background-size: 100% auto 
 
     @media $mobile-sm
       width: 100px
