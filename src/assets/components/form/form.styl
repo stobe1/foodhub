@@ -24,7 +24,7 @@
       width: 66%
 
     &:focus
-      box-shadow: 0px 1px 0px rgba($color_main, 1);
+      box-shadow: 0px 1px 0px rgba($color_main, 1)
       border-color: $color_main
 
       & ~ .form__headline
@@ -47,19 +47,8 @@
     &-radio
       display: none
 
-      & + ^[1]-label:after
-        content: ''
-        position: absolute
-        top: 6px
-        left: 5px
-        width: 7px
-        height: 7px
-        border-radius: 25px
-        background: $color_main
-        opacity: 0
-
-      &:checked + ^[1]-label:after
-        opacity: 1
+      &:checked + ^[1]-label:before
+        background-color: $color_main
 
       &:checked ~ ^[1]-label
         font-weight: 500
@@ -81,3 +70,13 @@
         border: 2px solid $color_main
         border-radius: 25px
 
+      label:after
+        content: ""
+        position: absolute
+        top: 6px
+        left: 5px
+        width: 7px
+        height: 7px
+        border-radius: 25px
+        background: $color_main
+        display: none
