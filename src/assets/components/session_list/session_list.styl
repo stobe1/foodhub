@@ -1,0 +1,117 @@
+.session-list
+  margin: 0 auto
+  max-width: 1280px
+  width: 90%
+  font-size: 14px
+  color: $color_main_font
+
+  @media $desktop-min
+    width: 85%
+
+  @media $desktop-lg
+    width: 80%
+
+  &__row
+    cleafix()
+    position: relative
+    padding: 20px 0
+    border-bottom: 1px solid $color_session_list_row_border
+
+  &__col
+    padding: 10px
+
+    @media $desktop
+      padding: 10px 5px
+
+    @media $tablet-max
+      text-align: center
+
+    @media $mobile-max
+      padding: 5px 5px
+
+    &_service
+      col-12()
+      text-align: center
+
+      @media $desktop-min
+        col-2()
+
+    &_desc
+      col-12()
+
+      @media $desktop-min
+        col-3()
+
+      @media $mobile-max
+        display: none
+
+    &_author
+      @media $desktop-min
+        col-2()
+
+      @media $tablet
+        col-6()
+
+      @media $mobile-max
+        col-12()
+
+    &_price
+      @media $desktop-min
+        col-2()
+
+      @media $tablet
+        col-6()
+
+      @media $mobile-max
+        col-12()
+
+    &_button
+      col-12()
+      padding-top: 20px
+
+      @media $desktop-min
+        col-3()
+        position: absolute
+        top: 25%
+
+  &__hide-on-mobile
+    @media $mobile-max
+      display: none
+
+  &__service-img
+    vertical-align: middle
+    max-height: 100px
+    max-width: 100%
+
+    @media $tablet
+      max-height: 70px
+      max-width: 140px
+
+    @media $mobile-max
+      max-height: 50px
+      max-width: 100px
+
+  &__new-line
+    display: block
+
+  &__label
+    @media $mobile-max
+      font-size: 12px
+
+  &__title
+    color: $color_main
+    font-weight: 500
+
+    @media $mobile-max
+      font-size: 13px
+
+    &_dark
+      color: $color_session_list_title_big
+
+    &_big
+      display: block
+      font-size: 20px
+      color: $color_session_list_title_big
+
+      @media $mobile-max
+        font-size: 16px
