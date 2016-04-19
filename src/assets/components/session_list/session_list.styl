@@ -67,12 +67,12 @@
 
     &_button
       col-12()
+      padding-top: 20px
 
       @media $desktop-min
         col-3()
         position: absolute
-        top: 0
-        bottom: 0
+        top: 25%
 
   &__hide-on-mobile
     @media $mobile-max
@@ -115,33 +115,3 @@
 
       @media $mobile-max
         font-size: 16px
-
-  &__button-preview
-    margin: 0 auto
-    color: $color_session_info_text
-    background-color: $color_main
-    height: 35px
-    width: 150px
-    padding: 0 16px
-    text-align: center
-    font-size: 12px
-    cursor: pointer
-    line-height: 35px
-    text-transform: uppercase
-    font-weight: 500
-    box-shadow: 1px 1px 13px rgba(#000, 0.7)
-    user-select: none
-
-    @media $desktop-min
-      position: absolute
-      top: 0
-      bottom: 0
-      left: 0
-      right: 0
-      margin: auto
-
-    &:hover
-      background-color: $color_button_primary_hover
-
-    &:active
-      background-color: $color_button_primary_active
