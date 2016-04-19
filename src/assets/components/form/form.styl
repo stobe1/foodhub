@@ -1,0 +1,82 @@
+.form
+
+  &__line
+    margin-bottom: 40px
+    padding-top: 14px
+    position: relative
+
+  &__input
+    font-size: 16px
+    height: 29px
+    color: $color_form_text
+    border: 0
+    border-bottom: 1px solid $color_form_secondary
+    outline: none
+    width: 100%
+
+    &_short
+      width: 150px
+
+    &_regular
+      width: auto
+
+    &_stretched
+      width: 66%
+
+    &:focus
+      box-shadow: 0px 1px 0px rgba($color_main, 1)
+      border-color: $color_main
+
+      & ~ .form__headline
+        color: $color_main
+
+  &__headline
+    font-size: 12px
+    color: $color_form_secondary
+    position: absolute
+    top: 0
+    left: 0
+
+  &__paytype
+
+    &-item
+      position: relative
+      padding-left: 20px
+      margin-top: 8px
+
+    &-radio
+      display: none
+
+      &:checked + ^[1]-label:before
+        background-color: $color_main
+
+      &:checked ~ ^[1]-label
+        font-weight: 500
+
+    &-label
+      cursor: pointer
+      user-select: none
+      margin-left: 4px
+
+      &:before
+        content: ""
+        display: inline-block
+        width: 13px
+        height: 13px
+        position: absolute
+        left: 0
+        bottom: 1px
+        background: #fff
+        border: 2px solid $color_main
+        border-radius: 25px
+
+      label:after
+        content: ""
+        position: absolute
+        top: 6px
+        left: 5px
+        width: 7px
+        height: 7px
+        border-radius: 25px
+        background: $color_main
+        display: none
