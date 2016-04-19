@@ -1,9 +1,7 @@
 .user-card
-  display: block
   width: 100%
-  max-width: 350px
+  max-width: 450px
   overflow: hidden
-  margin: 15px
   box-shadow: 1px 1px 7px rgba(#000, 0.4)
   border-radius: 3px
   background-color: white
@@ -14,12 +12,6 @@
     
   &_editable &__footer
     display: block
-  
-  &:first-child
-    margin-left: 0
-    
-  &:last-child
-    margin-right: 0
   
   &:hover
     box-shadow: 1px 1px 7px rgba(#000, 0.6)
@@ -41,20 +33,17 @@
   &__close
     display: none
     position: absolute
-    right: 0
-    top: 0
-    padding: 20px
-    color: #000
+    right: 10px
+    top: 10px
+    color: #555
     cursor: pointer
-    box-shadow: -1px 0 0 rgba(#000, 0.2)
     font-size: 20px
 
     &:hover
-      background-color: rgba(#000, 0.05)
-      box-shadow: -1px 0 0 rgba(#000, 0.2)
+      color: #000
   
   &__name
-    padding: 20px
+    padding: 20px 60px 20px 20px
     margin: 0
     font-size: 14px
     font-weight: 500
@@ -73,46 +62,32 @@
 
   &__input-label
     display: inline-block
-    padding: 20px 15px
+    padding: 20px 15px 18px 15px
     font-size: 14px
     color: #222
     user-select: none
+    cursor: pointer
 
   &__input
     position: relative
-    opacity: 1
-    outline: none
-
-    &:focus::after
-      position: absolute
-      display: block
-      width: 50px
-      height: 50px
-      top: 50%
-      left: 50%
-      transform: translate(-50%, -50%);
-      pointer-events: none
-      content: ""
-      border-radius: 50px
-      background-color: rgba($color_main, 0.2)
-      z-index: 1
-
-    &::before
-      content: ""
+    opacity:0
+    
+    &-custom
       position: absolute
       top: 50%
-      left: 50%
-      width: 15px
-      height: 15px
+      left: 30px
+      width: 16px
+      height: 16px
       border: 2px solid #444
       border-radius: 3px
       background-color: white
       z-index: 1
       transform: translate(-50%, -50%);
 
-    &:checked::before
-      width: 19px
-      height: 19px
-      border: none
+    &:focus + &-custom
+      border-color: $color_main
+
+    &:checked + &-custom
+      border-color: $color_main
       background: $color_main embedurl('../img/ic_check_white_24dp_2x.png') no-repeat center
       background-size: 100%
