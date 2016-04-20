@@ -1,10 +1,7 @@
 .user-page
-  margin: 0 40px
   padding-bottom: 100px
   border: $border_separator
-
-  @media $mobile-max
-    margin: 0 5px
+  background-color: #fff
 
   &__title
     padding: 30px 20px
@@ -20,16 +17,17 @@
     vertical-align: top
     width: 40%
     margin-bottom: 30px
-    
-
+      
     @media $tablet-max
       width: 60%
-      
+
+    @media $mobile-max
+      width: 100%
+
     &_smal
       @media $tablet-max
-        width: 30%
-
-    &
+        width: 39%
+        
       @media $mobile-max
         width: 100%
     
@@ -39,5 +37,5 @@
     max-width: 300px
     margin-bottom: 20px
 
-    @media $mobile-max
+    @media $tablet-max
       width: 100%
