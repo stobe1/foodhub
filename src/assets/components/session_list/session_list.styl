@@ -4,7 +4,6 @@
 
   &__row
     clearfix()
-    position: relative
     padding: 20px 0
     border-bottom: 1px solid $color_session_list_row_border
 
@@ -62,8 +61,12 @@
 
       @media $desktop-min
         col-3()
-        position: absolute
-        top: 25%
+
+      & .button
+        display: block
+        text-align: center
+        margin: 0 auto
+        width: 150px
 
   &__hide-on-mobile
     @media $mobile-max
