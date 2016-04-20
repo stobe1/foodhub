@@ -1,48 +1,42 @@
-.session-list-header
-  margin: 0 auto
-  max-width: 1280px
-  width: 90%
-  font-size: 14px
-  color: $color_main_font
+.session-list-page
+  padding: 0 20px
 
-  @media $desktop-min
-    position: relative
-    width: 85%
+  &__header
+    font-size: 14px
+    color: $color_main_font
 
-  @media $desktop-lg
-    width: 80%
-
-  &__title
-    display: inline-block
-    width: 100%
-    text-align: center
-
-    @media $desktop-min
-      width: auto
-      text-align: left
-
-    @media $mobile-max
-      font-size: 26px
-
-  &__button
-    display: inline-block
-    width: 100%
-
-    @media $desktop-min
-      position: absolute
-      width: auto
-      right: 0
-      margin: 35px 0
-
-  & .button
-    @media $tablet-max
-      display: block
+    &_title
+      display: inline-block
+      width: 100%
       text-align: center
-      margin: 0 auto
-      width: 320px
 
-    @media $mobile-sm
+      @media $desktop-min
+        padding: 0 30px
+        width: auto
+        text-align: left
+
+      @media $mobile-max
+        font-size: 26px
+
+    &_button
+      display: inline-block
       width: 100%
 
-.session-list-content
-  margin: 30px 0
+      @media $desktop-min
+        position: absolute
+        width: auto
+        right: 0
+        margin: 35px 30px 0 0
+
+    & .button
+      @media $tablet-max
+        display: block
+        text-align: center
+        margin: 0 auto
+        width: 320px
+
+      @media $mobile-sm
+        width: 100%
+
+  &__content
+    margin: 30px 0
