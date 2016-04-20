@@ -1,0 +1,40 @@
+.session-list-page
+
+  &__header
+    font-size: 14px
+    color: $color_main_font
+
+  &__header-title
+    display: inline-block
+    width: 100%
+    text-align: center
+
+    @media $desktop-min
+      width: auto
+      text-align: left
+
+    @media $mobile-max
+      font-size: 26px
+
+  &__header-button
+    display: inline-block
+    width: 100%
+
+    @media $desktop-min
+      position: absolute
+      width: auto
+      right: 0
+      margin: 35px 40px 0 0
+
+    & .button
+      @media $tablet-max
+        display: block
+        text-align: center
+        margin: 0 auto
+        width: 320px
+
+      @media $mobile-sm
+        width: 100%
+
+  &__content
+    margin: 30px 0
