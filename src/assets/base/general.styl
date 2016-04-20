@@ -10,6 +10,7 @@ body
   min-height: 100%
   position: relative
   color: $color_body_text
+  background-color: $color_primary_bg
   padding-bottom: $footer_height
 
 h1
@@ -29,3 +30,12 @@ a
 
   &:hover, &:focus
     text-decoration: underline
+
+
+.main-content
+
+  &__column
+    margin: 0 40px
+
+    @media $mobile-max
+      margin: 0 5px
