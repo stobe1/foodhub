@@ -1,0 +1,41 @@
+.user-page
+  padding-bottom: 100px
+  border: $border_separator
+  background-color: #fff
+
+  &__title
+    padding: 30px 20px
+    border-bottom: $border_separator 
+  
+  &__footer
+    padding: 40px 20px
+    border-top: $border_separator 
+
+  &__part
+    display: inline-block
+    padding: 0 20px
+    vertical-align: top
+    width: 40%
+    margin-bottom: 30px
+      
+    @media $tablet-max
+      width: 60%
+
+    @media $mobile-max
+      width: 100%
+
+    &_smal
+      @media $tablet-max
+        width: 39%
+        
+      @media $mobile-max
+        width: 100%
+    
+  &__image
+    display: block
+    width: 80%
+    max-width: 300px
+    margin-bottom: 20px
+
+    @media $tablet-max
+      width: 100%
