@@ -1,0 +1,40 @@
+.session-page
+  position: relative
+
+  &__header-title
+    color: $color_main_font
+    display: inline-block
+    width: 100%
+    text-align: center
+
+    @media $desktop-min
+      width: auto
+      text-align: left
+
+    @media $mobile-max
+      font-size: 26px
+
+  &__owners-order-price
+    color: $color_main
+    font-weight: 500
+
+  &__content
+    clearfix()
+
+  &__participants-order    
+
+    @media $desktop-lg
+      col-4()
+      margin-bottom: 30px
+
+    @media only screen and (min-width: 1480px)
+      col-3()
+      margin-bottom: 30px
+
+    @media $desktop
+      col-6()
+      margin-bottom: 30px
+
+    @media $tablet-max
+      col-12()
+      margin-bottom: 30px

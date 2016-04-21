@@ -1,0 +1,89 @@
+.cart
+  width: 350px
+  position: fixed
+  background: $color_primary_bg
+  padding: 0 15px 15px
+  right: 0
+  top: 15px
+  z-index: 20
+  transform: translateX(100%)
+  card()
+  border-top-left-radius: 0;
+  transition: transform 0.5s ease;  
+
+  @media $mobile-max
+    width: 100%
+
+  &__open-button
+    position: absolute
+    left: 0
+    top: 0
+    cursor: pointer
+    background-color: $color_main;
+    height: 45px;
+    width: 60px;
+    border-top-left-radius: 2px;
+    border-bottom-left-radius: 2px;
+    transform: translateX(-100%);
+    background-image: embedurl('angled-stripes-bg.png')
+    transition: transform 0.5s ease;
+    box-shadow: -1px 1px 4px rgba(0,0,0,.5);
+
+    &:hover
+      background-color: $color_button_primary_hover
+
+    &:before
+      content: ''
+      background-image: embedurl('cart.svg')
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      background-size: 50%;
+      background-repeat: no-repeat;
+      background-position: center;
+
+  &__header
+    color: $color_main_font
+    display: inline-block
+    width: 100%
+    text-align: center
+    margin-top: 10px
+
+    @media $desktop-min
+      width: auto
+      text-align: left
+
+    @media $mobile-max
+      font-size: 26px
+
+  &__total-price
+    color: $color_main
+    font-weight: 500
+
+  &__food-list
+    max-height: calc(100vh - 210px)
+    overflow-y: auto
+
+    @media $mobile-max
+      max-height: calc(100vh - 245px)
+
+  &__action-buttons
+    margin-top: 20px
+
+  &__order-button
+  &__join-button
+  &__cancel-button
+    text-align: center
+    margin: 8px 0
+
+.cart_open
+  transform: translateX(0)
+
+  .cart__header
+    @media $mobile-max
+      padding: 0 50px;
+
+  .cart__open-button
+    @media $mobile-max
+      transform: translateX(0);
+      border-radius: 2px
