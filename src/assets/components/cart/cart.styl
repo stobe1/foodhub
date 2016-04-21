@@ -8,8 +8,8 @@
   z-index: 20
   transform: translateX(100%)
   card()
-  border-top-left-radius: 0;
-  transition: transform 0.5s ease;  
+  border-top-left-radius: 0
+  transition: transform 0.5s ease  
 
   @media $mobile-max
     width: 100%
@@ -19,15 +19,15 @@
     left: 0
     top: 0
     cursor: pointer
-    background-color: $color_main;
-    height: 45px;
-    width: 60px;
-    border-top-left-radius: 2px;
-    border-bottom-left-radius: 2px;
-    transform: translateX(-100%);
+    background-color: $color_main
+    height: 45px
+    width: 60px
+    border-top-left-radius: 2px
+    border-bottom-left-radius: 2px
+    transform: translateX(-100%)
     background-image: embedurl('angled-stripes-bg.png')
-    transition: transform 0.5s ease;
-    box-shadow: -1px 1px 4px rgba(0,0,0,.5);
+    transition: transform 0.5s ease
+    box-shadow: -1px 1px 4px rgba(0,0,0,.5)
 
     &:hover
       background-color: $color_button_primary_hover
@@ -35,12 +35,12 @@
     &:before
       content: ''
       background-image: embedurl('cart.svg')
-      position: absolute;
-      height: 100%;
-      width: 100%;
-      background-size: 50%;
-      background-repeat: no-repeat;
-      background-position: center;
+      position: absolute
+      height: 100%
+      width: 100%
+      background-size: 50%
+      background-repeat: no-repeat
+      background-position: center
 
   &__header
     color: $color_main_font
@@ -81,9 +81,9 @@
 
   .cart__header
     @media $mobile-max
-      padding: 0 50px;
+      padding: 0 50px
 
   .cart__open-button
     @media $mobile-max
-      transform: translateX(0);
+      transform: translateX(0)
       border-radius: 2px
