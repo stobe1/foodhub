@@ -1,15 +1,17 @@
 .cart
   width: 350px
-  position: fixed
   background: $color_primary_bg
   padding: 0 15px 15px
-  right: 0
-  top: 15px
-  z-index: 20
   transform: translateX(100%)
   card()
   border-top-left-radius: 0
-  transition: transform 0.5s ease  
+  transition: transform 0.5s ease
+
+  &_fixed
+    position: fixed
+    right: 0
+    top: 15px
+    z-index: 20
 
   @media $mobile-max
     width: 100%
@@ -19,38 +21,34 @@
     left: 0
     top: 0
     cursor: pointer
-    background-color: $color_main
     height: 45px
     width: 60px
+    border: 0
     border-top-left-radius: 2px
     border-bottom-left-radius: 2px
     transform: translateX(-100%)
-    background-image: embedurl('angled-stripes-bg.png')
+    background: embedurl('angled-stripes-bg.png') center center, embedurl('cart.svg') no-repeat center center
+    background-size: cover, 50%
+    background-color: $color_main
     transition: transform 0.5s ease
     box-shadow: -1px 1px 4px rgba(0,0,0,.5)
+
+    &_hidden
+      display: none
+
+    &:focus
+      outline: 0
 
     &:hover
       background-color: $color_button_primary_hover
 
-    &:before
-      content: ''
-      background-image: embedurl('cart.svg')
-      position: absolute
-      height: 100%
-      width: 100%
-      background-size: 50%
-      background-repeat: no-repeat
-      background-position: center
-
   &__header
     color: $color_main_font
-    display: inline-block
     width: 100%
     text-align: center
     margin-top: 10px
 
     @media $desktop-min
-      width: auto
       text-align: left
 
     @media $mobile-max
