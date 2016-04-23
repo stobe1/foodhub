@@ -1,20 +1,36 @@
 .cart
-  width: 350px
-  background: $color_primary_bg
-  padding: 0 15px 15px
-  transform: translateX(100%)
-  card()
-  border-top-left-radius: 0
-  transition: transform 0.5s ease
-
   &_fixed
-    position: fixed
+    position: absolute
+    top: 0
+    bottom: 0;
+    margin: auto
+    height: 100%;
+    width: 350px
     right: 0
-    top: 15px
     z-index: 20
+    overflow: hidden
+    background: #e5e5e5
+    border-left: $border_separator
 
-  @media $mobile-max
-    width: 100%
+    @media $mobile-max
+      width: 100%
+      height: 45px
+      bottom: auto
+      border: $border_separator
+      
+    & .cart__header
+      height: 100%
+      @media $mobile-max
+        padding-top: 10px
+        font-size: 18px
+
+    &:hover
+      background: #fff
+      box-shadow: 0 0 40px rgba(#000, 0.8)
+      height: auto
+      bottom: auto
+      & .cart__header
+        height: auto
 
   &__open-button
     position: absolute
@@ -44,13 +60,14 @@
       background-color: $color_button_primary_hover
 
   &__header
-    color: $color_main_font
-    width: 100%
-    text-align: center
-    margin-top: 10px
+    page_header_title()
+    //color: $color_main_font
+    //width: 100%
+    //text-align: center
+    //margin-top: 10px
 
-    @media $desktop-min
-      text-align: left
+    /*@media $desktop-min
+      text-align: left*/
 
     @media $mobile-max
       font-size: 26px
@@ -62,19 +79,21 @@
   &__food-list
     max-height: calc(100vh - 210px)
     overflow-y: auto
+    padding: 0 20px
 
     @media $mobile-max
       max-height: calc(100vh - 245px)
 
   &__action-buttons
     margin-top: 20px
+    padding: 0 20px
 
   &__order-button
   &__join-button
   &__cancel-button
     text-align: center
     margin: 8px 0
-
+/*
 .cart_open
   transform: translateX(0)
 
@@ -86,3 +105,4 @@
     @media $mobile-max
       transform: translateX(0)
       border-radius: 2px
+*/

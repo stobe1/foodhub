@@ -2,6 +2,10 @@
   background-color: $color_session_info_bg
   padding: 46px 39px
   font-size: 0
+  card()
+  border-radius: 0
+  position: relative
+  z-index: 1
 
   @media $mobile-max
     padding: 33px 28px
@@ -10,7 +14,6 @@
     font-size: 34px
     color: $color_session_info_text
     margin-top: 0
-    font-weight: 500
 
   &__column
     display: inline-block
