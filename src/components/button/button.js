@@ -1,10 +1,24 @@
 'use strict';
 var angular = require('angular');
- 
-angular.module('Foodhub',[])
-.directive('button', function() {
-    return {
-        restrict: 'E',
-        template: '<a class="button" href="">Сохранить</a>',
-    };
-});
+
+var templateHTML = require('./button.html');
+
+
+// вместо фабрики мы используем обычные объекты
+const myComponentDefinition = {
+    bindings: {
+       'title': '@',
+       'href': '@',
+       'target': '@'
+    },
+
+    template: templateHTML,
+
+    controller: function() {
+        this.title = 'world';
+        this.href = "";
+        this.target = "_self";
+    }
+}
+
+angular.module('Foodhub').component('myButton', myComponentDefinition);

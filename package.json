@@ -8,6 +8,8 @@
     "normalize.css": "^4.0.0"
   },
   "devDependencies": {
+    "angular": "^1.5",
+    "angular-route": "*",
     "autoprefixer": "^6.0.0",
     "browser-sync": "^2.11.2",
     "eslint": "^2.8.0",
@@ -35,6 +37,8 @@
     "lodash.assign": "^4.0.8",
     "vinyl-source-stream": "^1.1.0",
     "vinyl-buffer": "^1.0.0",
+    "stringify" : "*",
+    "connect-modrewrite" : "*",
     "watchify": "^3.7.0"
   }
 }

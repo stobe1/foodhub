@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ru" ng-app="Foodhub">
+<html lang="ru">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -9,16 +9,14 @@
     <link rel="shortcut icon" href="/img/favicon.png"/>
     <link rel="stylesheet" href="css/main.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700&subset=latin,cyrillic" rel="stylesheet" type="text/css">
-
   </head>
   <body>
     //= ../assets/components/header/header.html
-
-    <ng-view></ng-view>
+    
+    <main class="main-content">
+      //= ../assets/components/session_page/session_page.html
+    </main>
 
     //= ../assets/components/footer/footer.html
-
-    <script src="js/bundle.js"></script>
-
   </body>
 </html>

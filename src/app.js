@@ -1,20 +1,23 @@
 'use strict';
 
 var angular = require('angular');
+require('angular-route');
 
 var app = angular.module('Foodhub', [ 'ngRoute'])
+.config(function ($locationProvider, $routeProvider) {
 
- .config(function ($routeProvider) {
     $routeProvider
+      .when('/profile', {
+        templateUrl: '/views/profile.html',
+      })
+
       .when('/', {
-        templateUrl: 'index.html',
+        templateUrl: '/views/profile.html',
       })
 
       .otherwise({
-        redirectTo: '/'
+        redirectTo: '/profile'
       });
 });
-
-
 
 require('./components/button/button');
