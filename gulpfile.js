@@ -8,7 +8,13 @@ var reload = browserSync.reload;
 var postcss = require('gulp-postcss');
 var autoprefixer = require('autoprefixer');
 var stylus = require('gulp-stylus');
-var browserify = require('gulp-browserify');
+var browserify = require('browserify');
+var watchify = require('watchify');
+var source = require('vinyl-source-stream');
+var sourcemaps = require('gulp-sourcemaps');
+var buffer = require('vinyl-buffer');
+var gutil = require('gulp-util');
+var assign = require('lodash.assign');
 var csso = require('gulp-csso');
 var concat = require('gulp-concat');
 var imagemin = require('gulp-imagemin');
@@ -25,7 +31,7 @@ var path = {
   },
   src: {
     html: 'src/layouts/**/*.html',
-    js: 'src/js/app.js',
+    js: 'src/app.js',
     style: 'src/assets/main.styl',
     img: 'src/assets/images/**/*'
   },
@@ -45,6 +51,15 @@ var config = {
   port: 9000,
   logPrefix: 'foodHub'
 };
+
+var customOpts = {
+  entries: path.src.js,
+  debug: true
+};
+var opts = assign({}, watchify.args, customOpts);
+var b = watchify(browserify(opts));
+
+
 
 gulp.task('webserver', function() {
   browserSync(config);
@@ -72,15 +87,20 @@ gulp.task('html:build', function() {
     }));
 });
 
-gulp.task('js:build', function() {
-  gulp.src(['src/app.js'])
-  .pipe(browserify({
-    insertGlobals: true,
-    debug: true
-  }))
-  .pipe(concat('bundle.js'))
-  .pipe(gulp.dest('build'));
-});
+gulp.task('js:build', bundle);
+
+b.on('update', bundle);
+b.on('log', gutil.log);
+
+function bundle() {
+  return b.bundle()
+    .on('error', gutil.log.bind(gutil, 'Browserify Error'))
+    .pipe(source('bundle.js'))
+    .pipe(buffer())
+    .pipe(sourcemaps.init({loadMaps: true}))
+    .pipe(sourcemaps.write('./'))
+    .pipe(gulp.dest(path.build.js));
+}
 
 
 gulp.task('style:build', function() {
@@ -121,16 +141,12 @@ gulp.task('build', [
   'lint'
 ]);
 
-
 gulp.task('watch', function() {
   watch([path.watch.html], function(event, cb) {
     gulp.start('html:build');
   });
   watch([path.watch.style], function(event, cb) {
     gulp.start('style:build');
-  });
-  watch([path.watch.js], function(event, cb) {
-    gulp.start('js:build');
   });
   watch([path.watch.img], function(event, cb) {
     gulp.start('image:build');
