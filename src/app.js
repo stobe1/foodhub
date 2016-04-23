@@ -1,8 +1,8 @@
 'use strict';
- 
+
 var angular = require('angular');
 
-var app = angular.module('Foodhub', [ 'ngRoute']);*/
+var app = angular.module('Foodhub', [ 'ngRoute'])
 
  .config(function ($routeProvider) {
     $routeProvider
