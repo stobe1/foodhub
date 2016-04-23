@@ -12,6 +12,8 @@ var browserify = require('gulp-browserify');
 var csso = require('gulp-csso');
 var imagemin = require('gulp-imagemin');
 var pngquant = require('imagemin-pngquant');
+var eslint = require('gulp-eslint');
+var stylint = require('gulp-stylint');
 
 var path = {
   build: {
@@ -47,6 +49,18 @@ gulp.task('webserver', function() {
   browserSync(config);
 });
 
+gulp.task('lint', function () {
+    return gulp.src(['**/*.js','!node_modules/**', '!gulpfile.js'])
+        .pipe(eslint())
+        .pipe(eslint.format())
+        .pipe(eslint.failAfterError());
+});
+
+gulp.task('slint', function () {
+    return gulp.src('src/**/*.styl')
+        .pipe(stylint())
+        .pipe(stylint.reporter());
+});
 
 gulp.task('html:build', function() {
   gulp.src(path.src.html)
@@ -120,3 +134,5 @@ gulp.task('watch', function() {
 });
 
 gulp.task('default', ['build', 'webserver', 'watch']);
+gulp.task('final', ['slint', 'lint', 'build', 'webserver', 'watch']);
+gulp.task('onlylint', ['slint', 'lint']);
