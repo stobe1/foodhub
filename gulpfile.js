@@ -50,16 +50,16 @@ gulp.task('webserver', function() {
 });
 
 gulp.task('eslint', function () {
-    return gulp.src(['**/*.js','!node_modules/**', '!gulpfile.js'])
-        .pipe(eslint())
-        .pipe(eslint.format())
-        .pipe(eslint.failAfterError());
+  return gulp.src(['**/*.js','!node_modules/**', '!gulpfile.js'])
+    .pipe(eslint())
+    .pipe(eslint.format())
+    .pipe(eslint.failAfterError());
 });
 
 gulp.task('styluslint', function () {
-    return gulp.src('src/**/*.styl')
-        .pipe(stylint())
-        .pipe(stylint.reporter());
+  return gulp.src('src/**/*.styl')
+    .pipe(stylint())
+    .pipe(stylint.reporter());
 });
 
 gulp.task('html:build', function() {
