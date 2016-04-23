@@ -2,22 +2,27 @@
 
 var angular = require('angular');
 require('angular-route');
+var HTMLtemplate_profile = require('./views/profile.html');
+
+
 
 var app = angular.module('Foodhub', [ 'ngRoute'])
 .config(function ($locationProvider, $routeProvider) {
 
     $routeProvider
       .when('/profile', {
-        templateUrl: '/views/profile.html',
+        template : HTMLtemplate_profile,
       })
 
       .when('/', {
-        templateUrl: '/views/profile.html',
+        template : HTMLtemplate_profile,
       })
 
       .otherwise({
         redirectTo: '/profile'
       });
 });
+
+
 
 require('./components/button/button');
