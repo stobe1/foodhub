@@ -10,6 +10,7 @@ var autoprefixer = require('autoprefixer');
 var stylus = require('gulp-stylus');
 var browserify = require('gulp-browserify');
 var csso = require('gulp-csso');
+var concat = require('gulp-concat');
 var imagemin = require('gulp-imagemin');
 var pngquant = require('imagemin-pngquant');
 var eslint = require('gulp-eslint');
@@ -24,7 +25,7 @@ var path = {
   },
   src: {
     html: 'src/layouts/**/*.html',
-    js: 'src/js/main.js',
+    js: 'src/js/app.js',
     style: 'src/assets/main.styl',
     img: 'src/assets/images/**/*'
   },
@@ -72,12 +73,13 @@ gulp.task('html:build', function() {
 });
 
 gulp.task('js:build', function() {
-  gulp.src(path.src.js)
-    .pipe(rigger())
-    .pipe(gulp.dest(path.build.js))
-    .pipe(reload({
-      stream: true
-    }));
+  gulp.src(['src/app.js'])
+  .pipe(browserify({
+    insertGlobals: true,
+    debug: true
+  }))
+  .pipe(concat('bundle.js'))
+  .pipe(gulp.dest('build'));
 });
 
 
@@ -118,6 +120,7 @@ gulp.task('build', [
   'image:build',
   'lint'
 ]);
+
 
 gulp.task('watch', function() {
   watch([path.watch.html], function(event, cb) {
