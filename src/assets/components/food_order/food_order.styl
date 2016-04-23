@@ -47,6 +47,8 @@
   &__basic-price
     float: left
     position: relative
+    font-size: 12px
+    padding-top: 4px
 
     &:after
       content: 'x'
@@ -59,16 +61,20 @@
     position: relative
     margin: 0 25px
     float: left
+    
+    &:after
+      content: ''
+      position: absolute
+      right: -20px
+      top: 3px
+      font-size: 12px
+      color: $color_food_order_seaprator
 
   &__total-price
     float: right
     position: relative
     color: $color_main
     font-weight: 500
+    font-size: 16px
+    padding-top: 4px
 
-    &:before
-      content: '='
-      position: absolute
-      left: -15px
-      top: 0
-      color: $color_food_order_seaprator

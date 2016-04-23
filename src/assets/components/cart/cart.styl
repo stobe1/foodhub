@@ -1,73 +1,6 @@
-.cart
-  &_fixed
-    position: absolute
-    top: 0
-    bottom: 0;
-    margin: auto
-    height: 100%;
-    width: 350px
-    right: 0
-    z-index: 20
-    overflow: hidden
-    background: #e5e5e5
-    border-left: $border_separator
-
-    @media $mobile-max
-      width: 100%
-      height: 45px
-      bottom: auto
-      border: $border_separator
-      
-    & .cart__header
-      height: 100%
-      @media $mobile-max
-        padding-top: 10px
-        font-size: 18px
-
-    &:hover
-      background: #fff
-      box-shadow: 0 0 40px rgba(#000, 0.8)
-      height: auto
-      bottom: auto
-      & .cart__header
-        height: auto
-
-  &__open-button
-    position: absolute
-    left: 0
-    top: 0
-    cursor: pointer
-    height: 45px
-    width: 60px
-    border: 0
-    border-top-left-radius: 2px
-    border-bottom-left-radius: 2px
-    transform: translateX(-100%)
-    background: embedurl('angled-stripes-bg.png') center center,
-                embedurl('cart.svg') no-repeat center center, 
-                $color_main
-    background-size: cover, 50%
-    transition: transform 0.5s ease
-    box-shadow: -1px 1px 4px rgba(0,0,0,.5)
-
-    &_hidden
-      display: none
-
-    &:focus
-      outline: 0
-
-    &:hover
-      background-color: $color_button_primary_hover
-
+.cart  
   &__header
     page_header_title()
-    //color: $color_main_font
-    //width: 100%
-    //text-align: center
-    //margin-top: 10px
-
-    /*@media $desktop-min
-      text-align: left*/
 
     @media $mobile-max
       font-size: 26px
@@ -93,16 +26,40 @@
   &__cancel-button
     text-align: center
     margin: 8px 0
-/*
-.cart_open
-  transform: translateX(0)
 
-  .cart__header
-    @media $mobile-max
-      padding: 0 50px
 
-  .cart__open-button
+  &_fixed
+    position: absolute
+    top: 0
+    bottom: 0;
+    margin: auto
+    height: 100%;
+    width: 350px
+    right: 0
+    z-index: 20
+    overflow: hidden
+    background: #e5e5e5
+    border-left: $border_separator
+
     @media $mobile-max
-      transform: translateX(0)
-      border-radius: 2px
-*/
+      width: 100%
+      height: 45px
+      bottom: auto
+      border: $border_separator
+      
+    & .cart__header
+      height: 100%
+      text-decoration: underline
+
+      @media $mobile-max
+        padding-top: 10px
+        font-size: 18px
+
+    &:hover
+      background: #fff
+      box-shadow: 0 0 40px rgba(#000, 0.8)
+      height: auto
+      bottom: auto
+
+      & .cart__header
+        height: auto
