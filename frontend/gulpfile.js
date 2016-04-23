@@ -22,6 +22,8 @@ var pngquant = require('imagemin-pngquant');
 var eslint = require('gulp-eslint');
 var stylint = require('gulp-stylint');
 var stringify = require('stringify');
+var babel = require('babelify');
+var es2015 = require('babel-preset-es2015');
 
 var path = {
   build: {
@@ -57,8 +59,9 @@ var customOpts = {
   entries: path.src.js,
   debug: true
 };
+
 var opts = assign({transform : ['stringify']}, watchify.args, customOpts);
-var b = watchify(browserify(opts));
+var b = watchify(browserify(opts).transform(babel, {presets: [es2015]}));
 
 gulp.task('webserver', function() {
   browserSync(config);
@@ -114,7 +117,6 @@ gulp.task('style:build', function() {
     }));
 });
 
-
 gulp.task('image:build', function() {
   return gulp.src(path.src.img)
     .pipe(imagemin({
@@ -135,8 +137,8 @@ gulp.task('build', [
   'html:build',
   'js:build',
   'style:build',
-  'image:build',
-  'lint'
+  'image:build'
+  // 'lint'
 ]);
 
 gulp.task('watch', function() {
@@ -148,7 +150,7 @@ gulp.task('watch', function() {
   });
   watch([path.watch.img], function(event, cb) {
     gulp.start('image:build');
-  }); 
+  });
 });
 
 gulp.task('default', ['build', 'webserver', 'watch']);
