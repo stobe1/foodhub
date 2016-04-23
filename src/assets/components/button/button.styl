@@ -1,16 +1,18 @@
 .button
   display: inline-block
-  padding: 10px 20px
-  border-radius: 2px
+  padding: 8px 23px 6px 23px
   color: $color_session_info_text
   background-color: $color_main
   font-size: 14px
   text-align: center
   cursor: pointer
+  border-radius: 2px
   line-height: 17px
   text-transform: uppercase
   font-weight: 500
   user-select: none
+  transition: background-color 0.2s
+  card()
 
   &:hover
     background-color: $color_button_primary_hover
@@ -32,12 +34,6 @@
     &:hover
       background-color: rgba($color_main, 0.2)
       text-decoration: none
-
-  &_big
-    padding: 12px 20px
-
-  &_biger
-    padding: 12px 75px
 
   &_stretch
     width: 100%

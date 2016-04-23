@@ -3,22 +3,22 @@
   width: 100%
   height: $header_height
   background-color: $color_main
+  card()
+  border-radius: 0
+  position: relative
+  z-index: 2
 
   &__center-column
     display: flex
     justify-content: space-between
     align-items: flex-center
     position: relative
-    margin: 0 40px
-    @media $mobile-max
-      margin: 0 5px
   
   &__logo
     display: block
     width: 125px
     color: transparent
     height: $header_height
-    
     background: embedurl('../img/logo.png') no-repeat center
     background-size: 100% auto 
 

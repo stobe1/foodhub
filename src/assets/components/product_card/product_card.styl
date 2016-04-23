@@ -2,31 +2,23 @@
   display: block
   height: auto
   width: 100%
-  max-width: 280px
+  max-width: 450px
   overflow: hidden
-  margin: 15px
-  box-shadow: 1px 1px 7px rgba(#000, 0.4)
-  border-radius: 3px
+  card()
   background-color: white
   transition: box-shadow .15s
   
-  &:first-child
-    margin-left: 0
-    
-  &:last-child
-    margin-right: 0
-  
   &_active
-    box-shadow: 1px 1px 8px 2px $color_main
+    box-shadow: 1px 1px 4px  $color_main
     
-  &_active &__action-btn_add
+  &_active &__btn-add
     display: none
     
-  &_active &__action-btn_delete
+  &_active &__btn-delete
     display: inline
     
   &:hover
-    box-shadow: 1px 1px 7px rgba(#000, 0.6)
+    card_hover()
 
   &__header
     position: relative
@@ -35,6 +27,8 @@
     position: relative
     height: 200px
     background-color: $color_main
+    @media $mobile-max
+      overflow: hidden
     
   &__image
     display: block
@@ -43,6 +37,12 @@
     top: 50%
     left: 50%
     transform: translate(-50%, -50%)
+
+    @media $mobile 
+      height: auto
+      width: 100%
+
+
   
   &:hover &__description
     opacity: 1
@@ -82,34 +82,24 @@
     font-size: 11px
     color: #555
     
+
   &__half
     display: inline-block
-    width: 49%
     vertical-align: top
+    width: 37%
 
     &-text-align-right
       text-align: right
+      width: 60%
 
   &__price
     display: inline-block
     margin: 0
-    font-size: 27px
+    font-size: 21px
     color: #111
   
   &__footer
     padding: 0 15px 15px 10px
 
-  &__action-btn_delete
+  &__btn-delete
     display: none
-    
-  &__action-btn
-    text-transform: uppercase
-    font-size: 14px
-    font-weight: 500
-    padding: 8px 10px
-    border-radius: 2px
-    text-decoration: none
-
-    &:hover
-      background-color: rgba($color_main, 0.2)
-      text-decoration: none
