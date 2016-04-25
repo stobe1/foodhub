@@ -13,6 +13,14 @@ var User = db.define('users', {
   email: {
     type: Sequelize.STRING,
     field: 'email'
+  },
+  createdAt: {
+    type: Sequelize.STRING,
+    field: 'created_at'
+  },
+  updatedAt: {
+    type: Sequelize.STRING,
+    field: 'updated_at'
   }
 }, {
   freezeTableName: true

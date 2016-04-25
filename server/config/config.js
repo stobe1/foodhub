@@ -1,5 +1,5 @@
 var config = {
-  host: 'localhost:3306',
+  host: 'localhost',
   dialect: 'mysql',
   port: 3000,
   database: 'foodhubdb',

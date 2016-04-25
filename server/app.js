@@ -16,15 +16,14 @@ app.use(bodyParser.json());
 
 var router = express.Router();
 
-router.get('/api/v1', function(req, res) {
+app.get('/api/v1', function(req, res) {
   User.findById(1).then(function(user){
     res.json({
       data: user
     });
   });
-
 });
 
-app.use('/api/v1', router);
-
-app.listen(config.port);
+app.listen(config.port, function(){
+  console.log('Server is on ' + config.port + " port.");
+});
