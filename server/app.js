@@ -17,12 +17,27 @@ app.use(bodyParser.json());
 var router = express.Router();
 
 app.get('/api/v1', function(req, res) {
-  User.findById(1).then(function(user){
+  User.findAll().then(function(user){
     res.json({
       data: user
     });
   });
 });
+
+app.get('/api/v1/new', function(req, res){
+  User
+  .create({ firstName: 'fnord', lastName: 'omnomnom' })
+  .then(function() {
+    User
+      .findOrCreate({where: {firstName: 'fnord'}})
+      .spread(function(user, created) {
+        console.log(user.get({
+          plain: true
+        }))
+        console.log(created)
+      })
+  })
+})
 
 app.listen(config.port, function(){
   console.log('Server is on ' + config.port + " port.");
