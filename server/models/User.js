@@ -11,22 +11,22 @@ var User = db.define('users', {
   },
   firstName: {
     field: 'first_name',
-    type: Sequelize.STRING,
+    type: Sequelize.STRING(100),
     defaultValue: null
   },
   lastName: {
     field: 'last_name',
-    type: Sequelize.STRING,
+    type: Sequelize.STRING(100),
     defaultValue: null
   },
   email: {
     field: 'email',
-    type: Sequelize.STRING,
+    type: Sequelize.STRING(250),
     defaultValue: null
   },
   phone: {
     field: 'phone',
-    type: Sequelize.STRING,
+    type: Sequelize.STRING(50),
     defaultValue: null
   },
   paymentOption: {
@@ -51,12 +51,12 @@ var User = db.define('users', {
   },
   externalUserId: {
     field: 'external_user_id',
-    type: Sequelize.INTEGER,
+    type: Sequelize.BIGINT,
     defaultValue: null
   },
   token: {
     field: 'token',
-    type: Sequelize.STRING,
+    type: Sequelize.STRING(50),
     defaultValue: null
   },
   tokenExpiresAt: {
