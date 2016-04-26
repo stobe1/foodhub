@@ -65,7 +65,7 @@ gulp.task('webserver', function() {
 });
 
 gulp.task('eslint', function () {
-  return gulp.src(['src/**/*.js','!node_modules/**', '!gulpfile.js'])
+  return gulp.src(['src/**/*.js'])
     .pipe(eslint())
     .pipe(eslint.format())
     .pipe(eslint.failAfterError());
