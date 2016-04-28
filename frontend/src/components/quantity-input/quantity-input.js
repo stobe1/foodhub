@@ -1,12 +1,12 @@
 angular.module('Foodhub')
-  .controller('quantityController', ['$scope', function($scope) {
+  .controller('quantityController', ['$scope', function ($scope) {
     $scope.counter = 1;
-    $scope.decreaseCount = function(){
-      if ($scope.counter > 0){
+    $scope.decreaseCount = function () {
+      if ($scope.counter > 0) {
         $scope.counter -= 1;
       }
     };
-    $scope.increaseCount = function(){
+    $scope.increaseCount = function () {
       $scope.counter += 1;
     };
   }])
@@ -14,6 +14,6 @@ angular.module('Foodhub')
     return {
       template: require('./quantity-input.html'),
       replace: true,
-      restrict: 'E'
+      restrict: 'E',
     };
   });
