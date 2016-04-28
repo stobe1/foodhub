@@ -2,7 +2,6 @@
 
 var gulp = require('gulp');
 var watch = require('gulp-watch');
-var rigger = require('gulp-rigger');
 var browserSync = require('browser-sync');
 var reload = browserSync.reload;
 var postcss = require('gulp-postcss');
@@ -82,7 +81,6 @@ gulp.task('styluslint', function () {
 
 gulp.task('html:build', function() {
   gulp.src(path.src.html)
-    .pipe(rigger())
     .pipe(gulp.dest(path.build.html))
     .pipe(reload({
       stream: true

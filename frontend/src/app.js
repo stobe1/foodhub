@@ -2,37 +2,31 @@
 
 var angular = require('angular');
 require('angular-route');
-var profilePageTemplate = require('./views/user_page/user_page.html');
-var orderPageTemplate = require('./views/last_page/last_page.html');
-var sessionPageFoodTemplate = require('./views/session_page/session_page_food/session_page_food.html');
-var sessionPageUsersTemplate = require('./views/session_page/session_page_users/session_page_users.html');
-var sessionListsPageTemplate = require('./views/session_list_page/session_list_page.html');
-var componentsPageTemplate = require('./views/components/components.html');
 
 function appConfig($routeProvider, $httpProvider) {
   $routeProvider
     .when('/', {
-      template : sessionListsPageTemplate,
+      template : require('./views/session_list_page/session_list_page.html'),
     })
 
     .when('/profile', {
-      template : profilePageTemplate,
+      template : require('./views/user_page/user_page.html'),
     })
 
     .when('/order', {
-      template : orderPageTemplate,
+      template : require('./views/last_page/last_page.html'),
     })
 
     .when('/food', {
-      template : sessionPageFoodTemplate,
+      template : require('./views/session_page/session_page_food/session_page_food.html'),
     })
 
     .when('/session', {
-      template : sessionPageUsersTemplate,
+      template : require('./views/session_page/session_page_users/session_page_users.html'),
     })
 
     .when('/components', {
-      template : componentsPageTemplate,
+      template : require('./views/components/components.html'),
     })
 
     .otherwise({
@@ -50,5 +44,8 @@ var app = angular
   .module('Foodhub', [ 
     'ngRoute'
   ])
-.config(appConfig)
-.run(appRun);
+  .config(appConfig)
+  .run(appRun);
+
+require('./components/footer/footer.js');
+require('./components/header/header.js');
