@@ -1,18 +1,18 @@
-<div class="session-list" ng-controller="SessionController as session_list">
-  <div class="session-list__row" ng-repeat="session in session_list.sessions">
+<div class="session-list">
+  <div class="session-list__row" ng-repeat="session in sessionList">
     <div class="session-list__col session-list__col_service">
-      <a ng-href="{{session.delivery_url}}"><img class="session-list__service-img" alt="Логотип службы доставки" ng-src="{{session.image}}"></a>
+      <a ng-href="{{session.deliveryUrl}}"><img class="session-list__service-img" alt="Логотип службы доставки" ng-src="{{session.image}}"></a>
     </div>
     <div class="session-list__col session-list__col_desc">
-      <span class="session-list__new-line session-list__title"><a ng-href="{{session.delivery_url}}">{{session.delivery_url}}</a></span>
+      <span class="session-list__new-line session-list__title"><a ng-href="{{session.deliveryUrl}}">{{session.deliveryUrl}}</a></span>
       <div class="session-list__hide-on-mobile">
         <div class="session-list__new-line">
           <span class="session-list__label">Время работы: </span>
-          <span class="session-list__title session-list__title_dark">{{session.delivery_timetable}}</span>
+          <span class="session-list__title session-list__title_dark">{{session.deliveryTimetable}}</span>
         </div>
         <div class="session-list__new-line">
           <span class="session-list__label">Минимальная сумма заказа: </span>
-          <span class="session-list__title session-list__title_dark">{{session.minimal_delivery_price}}</span>
+          <span class="session-list__title session-list__title_dark">{{session.minimalDeliveryPrice}}</span>
         </div>
         <div class="session-list__new-line">
           <span class="session-list__label">Бесплатная доставка</span>
@@ -21,23 +21,23 @@
     </div>
     <div class="session-list__col session-list__col_author">
       <div class="session-list__new-line">
-        <span class="session-list__title">{{session.author_name}}</span>
+        <span class="session-list__title">{{session.authorName}}</span>
         <span class="session-list__label"> заказал на:</span>
       </div>
-      <span class="session-list__title session-list__title_big">{{session.order_time}}</span>
+      <span class="session-list__title session-list__title_big">{{session.orderTime}}</span>
       <div class="session-list__new-line">
         <span class="session-list__label">Осталось </span>
-        <span class="session-list__title">{{session.order_time_left}}</span>
+        <span class="session-list__title">{{session.orderTimeLeft}}</span>
       </div>
     </div>
     <div class="session-list__col session-list__col_price">
       <div class="session-list__new-line">
         <span class="session-list__label">Общая сумма заказа:</span>
       </div>
-      <span class="session-list__title session-list__title_big">{{session.total_price}}</span>
+      <span class="session-list__title session-list__title_big">{{session.totalPrice}}</span>
       <div class="session-list__new-line">
         <span class="session-list__label">Осталось </span>
-        <span class="session-list__title">{{session.price_left}}</span>
+        <span class="session-list__title">{{session.priceLeft}}</span>
       </div>
     </div>
     <div class="session-list__col session-list__col_button">

@@ -50,3 +50,4 @@ var app = angular
 require('./components/footer/footer.js');
 require('./components/header/header.js');
 require('./components/session_list/session_list.js');
+require('./views/session_list_page/session_list_page.js');
