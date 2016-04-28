@@ -35,8 +35,8 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: true
     },
     minFreeDeliveryTime: {
-      field: 'min_free_delivery_time',
-      type: DataTypes.DATE,
+      field: 'min_free_delivery_price',
+      type: DataTypes.INTEGER(11),
       allowNull: true
     },
     deliveryTime: {

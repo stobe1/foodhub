@@ -17,6 +17,6 @@ app.use(bodyParser.json());
 
 app.use('/api/v1', routes.router);
 
-app.listen(config.port, function(){
-  console.log('Server is on ' + config.port + " port.");
+app.listen(config.serverPort, function(){
+  console.log('Server is on ' + config.serverPort + " port.");
 });

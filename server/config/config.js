@@ -1,9 +1,10 @@
 var config = {
   host: 'localhost',
   dialect: 'mysql',
-  port: 3000,
+  serverPort: 3000,
+  port: 3306,
   database: 'foodhubdb',
-  user: 'root',
+  username: 'root',
   password: 'root'
 };
 
