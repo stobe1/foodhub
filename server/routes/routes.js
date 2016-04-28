@@ -8,8 +8,12 @@ var ordersController = require('../controllers/ordersController');
 
 //Authentication//
 router.get('/login/facebook', authController.loginFacebook);
-router.get('/login/facebook/return', authController.loginFacebookResult);
-router.post('/logout', authController.logout);
+router.get('/login/facebook/return',
+  passport.authenticate('facebook', {
+    failureRedirect: '/api/v1/login'
+  }),
+  authController.loginFacebookResult);
+router.get('/logout', authController.logout);
 
 //Users//
 router.get('/users', usersController.index);
