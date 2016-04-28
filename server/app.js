@@ -39,6 +39,6 @@ app.get('/api/v1/new', function(req, res){
   })
 })
 
-app.listen(config.port, function(){
-  console.log('Server is on ' + config.port + " port.");
+app.listen(config.serverPort, function(){
+  console.log('Server is on ' + config.serverPort + " port.");
 });
