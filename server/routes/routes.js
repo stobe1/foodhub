@@ -1,5 +1,4 @@
 var express = require('express');
-var app = express();
 var router = express.Router();
 var authController = require('../controllers/authController');
 var usersController = require('../controllers/usersController');
@@ -8,27 +7,27 @@ var sessionsController = require('../controllers/sessionsController');
 var odersController = require('../controllers/odersController');
 
 //Authentication//
-router.post('/api/v1/login', function(request, response) { authController.login(request, response) });
-router.post('/api/v1/logout', function(request, response) { authController.logout(request, response) });
+router.post('/login', authController.login);
+router.post('/logout', authController.logout);
 
 //Users//
-router.get('/api/v1/users', function(request, response) { usersController.index(request, response) });
-router.get('/api/v1/users/:id', function(request, response) { usersController.show(request, response) });
-router.put('/api/v1/users', function(request, response) { usersController.update(request, response) });
+router.get('/users', usersController.index);
+router.get('/users/:id', usersController.show);
+router.put('/users', usersController.update);
 
 //Shops//
-router.get('/api/v1/shops', function(request, response) { shopsController.index(request, response) });
-router.get('/api/v1/shops/:id', function(request, response) { shopsController.show(request, response) });
+router.get('/shops', shopsController.index);
+router.get('/shops/:id', shopsController.show);
 
 //Sessions//
-router.get('/api/v1/sessions', function(request, response) { sessionsController.index(request, response) });
-router.get('/api/v1/sessions/:id', function(request, response) { sessionsController.show(request, response) });
-router.post('/api/v1/sessions', function(request, response) { sessionsController.create(request, response) });
-router.put('/api/v1/sessions', function(request, response) { sessionsController.update(request, response) });
+router.get('/sessions', sessionsController.index);
+router.get('/sessions/:id', sessionsController.show);
+router.post('/sessions', sessionsController.create);
+router.put('/sessions', sessionsController.update);
 
 //Orders//
-router.post('/api/v1/orders', function(request, response) { odersController.index(request, response) });
-router.put('/api/v1/orders', function(request, response) { odersController.update(request, response) });
-router.delete('/api/v1/orders', function(request, response) { odersController.delete(request, response) });
+router.post('/orders', odersController.index);
+router.put('/orders', odersController.update);
+router.delete('/orders', odersController.delete);
 
 exports.router = router;

@@ -9,13 +9,13 @@ var routes = require('./routes/routes');
 
 var app = express();
 
-app.use('/', routes.router);
-
 app.use(bodyParser.urlencoded({
   extended: true
 }));
 
 app.use(bodyParser.json());
+
+app.use('/api/v1', routes.router);
 
 app.listen(config.port, function(){
   console.log('Server is on ' + config.port + " port.");
