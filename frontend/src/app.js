@@ -41,7 +41,7 @@ function appRun () {
 }
 
 var app = angular
-  .module('Foodhub', [ 
+  .module('Foodhub', [
     'ngRoute'
   ])
   .config(appConfig)
@@ -49,3 +49,4 @@ var app = angular
 
 require('./components/footer/footer.js');
 require('./components/header/header.js');
+require('./components/session_list/session_list.js');
