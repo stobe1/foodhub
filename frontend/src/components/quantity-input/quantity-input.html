@@ -1,5 +1,5 @@
-<div class="quantity-input">
-  <div class="quantity-input__button">-</div>
-  <span class="quantity-input__counter">2</span>
-  <div class="quantity-input__button">+</div>
+<div class="quantity-input" ng-controller="quantityController">
+  <div class="quantity-input__button" ng-click="decreaseCount()">-</div>
+  <span class="quantity-input__counter">{{counter}}</span>
+  <div class="quantity-input__button" ng-click="increaseCount()">+</div>
 </div>
