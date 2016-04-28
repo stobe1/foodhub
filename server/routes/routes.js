@@ -7,7 +7,8 @@ var sessionsController = require('../controllers/sessionsController');
 var ordersController = require('../controllers/ordersController');
 
 //Authentication//
-router.post('/login', authController.login);
+router.get('/login/facebook', authController.loginFacebook);
+router.get('/login/facebook/return', authController.loginFacebookResult);
 router.post('/logout', authController.logout);
 
 //Users//

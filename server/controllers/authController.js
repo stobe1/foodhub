@@ -1,7 +1,21 @@
-exports.login = function(request, response) {
-    response.send('Auth#login');
+var passport = require('passport');
+var facebook = require('../lib/authFacebook');
+
+exports.loginFacebook = function(req, res) {
+  passport.authenticate('facebook');
 }
 
-exports.logout = function(request, response) {
-    response.send('Auth#logout');
+exports.loginFacebookResult = function(req, res) {
+  passport.authenticate('facebook', {
+      failureRedirect: '/api/v1/login'
+    }),
+    function(req, res) {
+      res.redirect('/api/v1');
+    }
+}
+
+exports.logout = function(req, res) {
+  request.session.destroy(function(err) {
+    response.redirect('/api/v1/login');
+  });
 }
