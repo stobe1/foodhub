@@ -4,8 +4,8 @@ angular.module('Foodhub')
       template: require('./quantity-input.html'),
       replace: true,
       restrict: 'E',
-      require: 'ngModel',
-      scope: true,
+      require: '?ngModel',
+      scope: {},
       link: function($scope, $element, $attrs, ngModel) {
 
         $scope.increaseCount = function () {
@@ -21,7 +21,7 @@ angular.module('Foodhub')
         };
 
         ngModel.$render = function() {
-          $scope.foodCounter = ngModel.$modelValue || 0;
+          $scope.foodCounter = typeof(ngModel.$modelValue) == 'number' && ngModel.$modelValue || 0;
         };
       }
     };
