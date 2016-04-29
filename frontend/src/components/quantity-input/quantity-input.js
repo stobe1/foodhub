@@ -5,6 +5,7 @@ angular.module('Foodhub')
       replace: true,
       restrict: 'E',
       require: 'ngModel',
+      scope: true,
       link: function($scope, $element, $attrs, ngModel) {
 
         $scope.increaseCount = function () {
