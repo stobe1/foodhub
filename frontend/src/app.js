@@ -65,6 +65,7 @@ require('./components/button/button');
 require('./components/text_input/text_input');
 require('./components/quantity-input/quantity-input');
 require('./components/product_card/product_card');
+require('./components/menu_tabs/menu_tabs');
 require('./views/session_list_page/session_list_page');
 require('./views/components/components');
 require('./views/last_page/last_page');

@@ -47,6 +47,13 @@
   <quantity-input ng-model="outerFoodNumber"></quantity-input>
 </div>
 
+<div class="component-box">
+  <menu-tabs list="panes">
+    <menu-pane active="pane.active" heading="{{pane.title}}" ng-repeat="pane in tabList">
+        <div ng-bind="pane.content"></div>
+    </menu-pane>
+  </menu-tabs>
+</div>
 
 <div class="component-box">
   <session-list list="sessions"></session-list>

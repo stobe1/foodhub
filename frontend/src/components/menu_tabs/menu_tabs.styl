@@ -1,10 +1,10 @@
 .menu-tabs
   padding: 0
   height: 100%
-  font-size: 0
+  // font-size: 0
 
   &__content
-    display: none
+    // display: none
     overflow: auto
     border-top: $border_separator
     font-size: 14px
@@ -32,10 +32,10 @@
       color: rgba($color_main, 0.7)
       border-bottom-color: rgba($color_main, 0.7)
 
-  &__tab-selector:checked + &__tab-label
-    color: $color_main
-    border-bottom-color: $color_main
+    &:checked
+      color: $color_main
+      border-bottom-color: $color_main
 
-for $i in (1..4)
-  #menu-tabs__tab{$i}:checked ~ #menu-tabs__content{$i}
-    display: block
+// for $i in (1..4)
+//   #menu-tabs__tab{$i}:checked ~ #menu-tabs__content{$i}
+//     display: block

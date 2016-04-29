@@ -1,0 +1,75 @@
+angular.module('Foodhub')
+  .directive('menuTabs', function() {
+    return {
+      restrict: 'E',
+      transclude: true,
+      scope: {
+        tabList: '=list'
+      },
+      controller: ['$scope', '$element', function($scope, $element) {
+        var panes = $scope.panes = [];
+
+        this.select = $scope.select = function selectPane(pane) {
+          angular.forEach(panes, function(pane) {
+            pane.selected = false;
+          });
+          pane.selected = true;
+        };
+
+        this.addPane = function addPane(pane) {
+          if (!panes.length) {
+            $scope.select(pane);
+          }
+          panes.push(pane);
+        };
+
+        this.removePane = function removePane(pane) {
+          var index = panes.indexOf(pane);
+          panes.splice(index, 1);
+          if (pane.selected && panes.length > 0) {
+            $scope.select(panes[index < panes.length ? index : index-1]);
+          }
+        };
+      }],
+      template: require('./menu_tabs.html'),
+      replace: true
+    };
+  })
+  .directive('menuPane', ['$parse', function($parse) {
+    return {
+      require: '^tabs',
+      restrict: 'E',
+      transclude: true,
+      scope:{
+        heading:'@'
+      },
+      link: function(scope, element, attrs, tabsCtrl) {
+        var getSelected, setSelected;
+        scope.selected = false;
+        if (attrs.active) {
+          getSelected = $parse(attrs.active);
+          setSelected = getSelected.assign;
+          scope.$watch(
+            function watchSelected() {return getSelected(scope.$parent);},
+            function updateSelected(value) {scope.selected = value;}
+          );
+          scope.selected = getSelected ? getSelected(scope.$parent) : false;
+        }
+        scope.$watch('selected', function(selected) {
+          if(selected) {
+            tabsCtrl.select(scope);
+          }
+          if(setSelected) {
+            setSelected(scope.$parent, selected);
+          }
+        });
+
+        tabsCtrl.addPane(scope);
+        scope.$on('$destroy', function() {
+          tabsCtrl.removePane(scope);
+        });
+      },
+      template: require('./menu_pane.html'),
+      replace: true
+    };
+  }]);
