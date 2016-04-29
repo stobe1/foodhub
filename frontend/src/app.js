@@ -54,4 +54,3 @@ require('./components/header/header');
 require('./components/session_list/session_list');
 require('./views/session_list_page/session_list_page');
 require('./views/components/components');
-require('./fixtures/sessionList');
