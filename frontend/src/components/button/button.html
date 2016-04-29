@@ -1,1 +1,10 @@
-<a target="{{ $ctrl.target }}" ng-href="{{ $ctrl.href }}" ng-bind="$ctrl.title" class="button"></a>
+<a 
+  target="{{ $ctrl.target }}" 
+  ng-href="{{ $ctrl.href }}" 
+  ng-bind="$ctrl.title" 
+  ng-class="{
+    button: 1, 
+    button_stretch: $ctrl.isStretch, 
+    button_transparent: $ctrl.isTransparent
+  }">
+</a>
