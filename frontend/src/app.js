@@ -53,6 +53,7 @@ require('./components/footer/footer');
 require('./components/header/header');
 require('./components/button/button');
 require('./components/session_list/session_list');
+require('./components/food_order/food_order');
 require('./views/session_list_page/session_list_page');
 require('./views/components/components');
 require('./components/quantity-input/quantity-input')
