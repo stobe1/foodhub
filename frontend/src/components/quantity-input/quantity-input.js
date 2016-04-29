@@ -9,9 +9,7 @@ angular.module('Foodhub')
       },
       controller: function ($scope) {
         //делаем foodCounter равным нулю, если внешняя переменная не задана
-        if(typeof $scope.foodCounter == "undefined") {
-          $scope.foodCounter = 0;
-        }
+        $scope.foodCounter = $scope.foodCounter || 0;
         $scope.increaseCount = function () {
           $scope.foodCounter += 1;
         };
