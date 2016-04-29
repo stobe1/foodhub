@@ -1,9 +1,10 @@
 <div class="component-box">
   //= ../components/food_order/food_order.html
 </div>
-
 <div class="component-box">
-  //= ../components/quantity-input/quantity-input.html
+  <span ng-bind="outerFoodNumber"></span>
+  <br>
+  <quantity-input ng-model="outerFoodNumber"></quantity-input>
 </div>
 
 <div class="component-box">
