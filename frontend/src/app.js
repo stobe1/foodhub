@@ -7,6 +7,7 @@ function appConfig($routeProvider, $httpProvider) {
   $routeProvider
     .when('/', {
       template : require('./views/session_list_page/session_list_page.html'),
+      controller: 'SessionListPageController'
     })
 
     .when('/profile', {
@@ -27,6 +28,7 @@ function appConfig($routeProvider, $httpProvider) {
 
     .when('/components', {
       template : require('./views/components/components.html'),
+      controller: 'ComponentsController'
     })
 
     .otherwise({
@@ -47,7 +49,9 @@ var app = angular
   .config(appConfig)
   .run(appRun);
 
-require('./components/footer/footer.js');
-require('./components/header/header.js');
-require('./components/session_list/session_list.js');
-require('./views/session_list_page/session_list_page.js');
+require('./components/footer/footer');
+require('./components/header/header');
+require('./components/session_list/session_list');
+require('./views/session_list_page/session_list_page');
+require('./views/components/components');
+require('./fixtures/sessionList');
