@@ -1,9 +1,9 @@
 angular.module('Foodhub').component('foodOrder', {
     bindings: {
-       'price': '@',
-       'foodCounter': '@',
-       'title': '@',
-       'img': '@'
+       'price': '=',
+       'foodCounter': '=',
+       'title': '=',
+       'image': '='
     },
 
     template: require('./food_order.html'),

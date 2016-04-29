@@ -1,9 +1,31 @@
 <div class="component-box">
+  <user-card
+    list-food-orders="listFoodOrders"
+    name="name"
+    price="total_price"
+    is-pay="isPay"
+    is-footer="isPay"
+  ></user-card>
+</div>
+
+<div class="component-box">
+  <cart 
+    total-price="total_price"
+    confirm-text="confirm_text"
+    confirm-url="confirm_url"
+    cancel-text="cancel_text"
+    cancel-url="cancel_url"
+    list-food-orders="listFoodOrders">
+  </cart>
+</div>
+
+<div class="component-box">
+
   <food-order 
-    img="http://s9.favim.com/orig/131221/chicken-cruelty-drawing-fast-food-Favim.com-1169562.jpg" 
-    food-counter="2"
-    price="27000"
-    title="Запеченная запеченная чайная">
+    image="listFoodOrders[0].image" 
+    food-counter="listFoodOrders[0].foodCounter"
+    price="listFoodOrders[0].price"
+    title="listFoodOrders[0].title">
   </food-order>
 </div>
 

@@ -1,5 +1,6 @@
 'use strict';
 
+<<<<<<< HEAD
 angular.module('Foodhub').component('customButton', {
     bindings: {
        'title': '@',
@@ -8,12 +9,22 @@ angular.module('Foodhub').component('customButton', {
        'isStretch' : '@',
        'isTransparent': '@',
        'onClick' : '&',
+=======
+angular.module('Foodhub').component('myButton', {
+    bindings: {
+       'title': '=',
+       'href': '=',
+       'target': '=',
+       'isStretch' : '=',
+       "isTransparent": "=",
+>>>>>>> user_card
     },
 
     template: require('./button.html'),
 
     controller: function() {
 
+<<<<<<< HEAD
       this.isTransparentBtn = function () {
         return ( typeof(  this.isTransparent)  !== 'undefined');
       }
@@ -32,3 +43,7 @@ angular.module('Foodhub').component('customButton', {
 
     }
 });
+=======
+    }
+});
+>>>>>>> user_card
