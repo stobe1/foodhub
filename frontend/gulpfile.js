@@ -40,7 +40,7 @@ var path = {
   watch: {
     html: 'src/**/*.html',
     js: 'src/js/**/*.js',
-    style: 'src/components/**/*.styl',
+    style: 'src/**/*.styl',
     img: 'src/components/images/**/*'
   }
 };
