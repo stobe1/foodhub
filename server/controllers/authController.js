@@ -1,10 +1,10 @@
 var passport = require('passport');
-var facebook = require('../lib/authFacebook');
+var facebook = require('../auth/facebook');
 
 exports.loginFacebook = passport.authenticate('facebook');
 
 exports.loginFacebookResult = function(req, res) {
-    res.redirect('/api/v1');
+  res.redirect('/api/v1/users');
 }
 
 exports.logout = function(req, res) {

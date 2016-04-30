@@ -10,7 +10,7 @@ var ordersController = require('../controllers/ordersController');
 router.get('/login/facebook', authController.loginFacebook);
 router.get('/login/facebook/return',
   passport.authenticate('facebook', {
-    failureRedirect: '/api/v1/login'
+    failureRedirect: '/api/v1/users'
   }),
   authController.loginFacebookResult);
 router.get('/logout', authController.logout);
