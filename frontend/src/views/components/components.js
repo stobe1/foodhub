@@ -5,7 +5,7 @@ angular.module('Foodhub')
     $scope.sessions = sessionList;    
 
     $scope.do_btn_action = function () {
-    	console.log($scope.sessions);
+    	alert("PRESS BTN")
     };
 
   }]);
