@@ -4,7 +4,7 @@ var authController = require('../controllers/authController');
 var usersController = require('../controllers/usersController');
 var shopsController = require('../controllers/shopsController');
 var sessionsController = require('../controllers/sessionsController');
-var odersController = require('../controllers/odersController');
+var ordersController = require('../controllers/ordersController');
 
 //Authentication//
 router.post('/login', authController.login);
@@ -26,8 +26,8 @@ router.post('/sessions', sessionsController.create);
 router.put('/sessions', sessionsController.update);
 
 //Orders//
-router.post('/orders', odersController.index);
-router.put('/orders', odersController.update);
-router.delete('/orders', odersController.delete);
+router.post('/orders', ordersController.create);
+router.put('/orders', ordersController.update);
+router.delete('/orders', ordersController.delete);
 
 exports.router = router;
