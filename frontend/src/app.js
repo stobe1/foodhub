@@ -2,6 +2,8 @@
 
 var angular = require('angular');
 require('angular-route');
+require('angular-resource');
+
 
 function appConfig($routeProvider, $httpProvider) {
   $routeProvider
@@ -44,7 +46,8 @@ function appRun () {
 
 var app = angular
   .module('Foodhub', [
-    'ngRoute'
+    'ngRoute',
+    'ngResource'
   ])
   .config(appConfig)
   .run(appRun);
@@ -55,4 +58,6 @@ require('./components/button/button');
 require('./components/session_list/session_list');
 require('./views/session_list_page/session_list_page');
 require('./views/components/components');
-require('./components/quantity-input/quantity-input')
+require('./components/quantity-input/quantity-input');
+require('./services/shops.js');
+require('./services/auth.js');
