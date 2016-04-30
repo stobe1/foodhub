@@ -34,14 +34,14 @@ var path = {
   src: {
     html: 'src/*.html',
     js: 'src/app.js',
-    style: 'src/assets/main.styl',
-    img: 'src/assets/images/**/*'
+    style: 'src/main.styl',
+    img: 'src/components/images/**/*'
   },
   watch: {
     html: 'src/**/*.html',
     js: 'src/js/**/*.js',
-    style: 'src/assets/**/*.styl',
-    img: 'src/assets/images/**/*'
+    style: 'src/components/**/*.styl',
+    img: 'src/components/images/**/*'
   }
 };
 
