@@ -14,18 +14,22 @@ function appConfig($routeProvider, $httpProvider) {
 
     .when('/profile', {
       template : require('./views/user_page/user_page.html'),
+      controller: 'UserPageController'
     })
 
     .when('/order', {
       template : require('./views/last_page/last_page.html'),
+      controller: 'LastPageController'
     })
 
     .when('/food', {
       template : require('./views/session_page/session_page_food/session_page_food.html'),
+      controller: 'SessionPageFoodController'
     })
 
     .when('/session', {
       template : require('./views/session_page/session_page_users/session_page_users.html'),
+      controller: 'SessionPageUsersController'
     })
 
     .when('/components', {
