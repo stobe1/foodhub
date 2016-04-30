@@ -18,6 +18,21 @@
 
 <div class="component-box">
   <food-order
+  <product-card
+    is-add="product_card.isAdd"
+    title="{{product_card.title}}"
+    text="{{product_card.text}}"
+    price="{{product_card.price}}"
+    image="{{product_card.image}}"
+    food-counter="product_card.foodCounter"
+    on-add="product_card.onAdd()"
+    on-delete="product_card.onDelete()">
+  </product-card>
+</div>
+
+
+<div class="component-box">
+  <food-order 
     image="listFoodOrders[0].image"
     food-counter="listFoodOrders[0].foodCounter"
     price="listFoodOrders[0].price"
@@ -25,6 +40,7 @@
     on-delete="drop_order(listFoodOrders[0])">
   </food-order>
 </div>
+
 
 <div class="component-box">
   <span ng-bind="outerFoodNumber"></span>
