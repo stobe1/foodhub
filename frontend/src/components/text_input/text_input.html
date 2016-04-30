@@ -1,4 +1,4 @@
-<div class="text-input text-input_invert">
-  <input type="text" id="text-input__input" class="text-input__input text-input__input_long" value="Значение">
-  <label class="text-input__headline" for="text-input__input">Лейбл</label>
+<div class="text-input" ng-class="{'text-input_invert': $ctrl.inverted}">
+  <input ng-model="$ctrl.model" type="text" id="{{'text-input__' + $ctrl.name}}" class="text-input__input text-input__input_long" >
+  <label class="text-input__headline" for="{{'text-input__' + $ctrl.name}}" ng-bind="$ctrl.label"></label>
 </div>
