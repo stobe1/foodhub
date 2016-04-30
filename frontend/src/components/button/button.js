@@ -15,15 +15,15 @@ angular.module('Foodhub').component('customButton', {
     controller: function() {
 
       this.isTransparentBtn = function () {
-        return (this.isTransparent != undefined);
+        return ( typeof(  this.isTransparent)  !== 'undefined');
       }
 
       this.isStretchBtn = function () {
-        return (this.isStretch != undefined);
+        return ( typeof( this.isStretch)  !== 'undefined');
       }
 
       this.getTargetData = function () {
-        return (this.isBlank != undefined) ? "_blank" : "_self";
+        return ( typeof( this.isBlank)  !== 'undefined') ? "_blank" : "_self";
       }
 
       this.click_btn = function ($event) {
