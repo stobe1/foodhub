@@ -1,4 +1,5 @@
 'use strict';
+
 angular.module('Foodhub').component('customButton', {
     bindings: {
        'title': '@',
@@ -12,7 +13,6 @@ angular.module('Foodhub').component('customButton', {
     template: require('./button.html'),
 
     controller: function() {
-
 
       this.isTransparentBtn = function () {
         return ( typeof(  this.isTransparent)  !== 'undefined');

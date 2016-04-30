@@ -9,7 +9,7 @@
 
       <span 
         class="food-order__basic-price" 
-        ng-bind="$ctrl.getNumLikeMoney( $ctrl.price )"></span>
+        ng-bind="$ctrl.getNumLikeMoney( $ctrl.num_price )"></span>
 
       <div class="food-order__quantity-input-container">
         <quantity-input ng-model="$ctrl.foodCounter"></quantity-input>
@@ -17,7 +17,7 @@
 
       <span 
         class="food-order__total-price" 
-        ng-bind="$ctrl.getNumLikeMoney( $ctrl.foodCounter * $ctrl.price )">
+        ng-bind="$ctrl.getNumLikeMoney( $ctrl.foodCounter * $ctrl.num_price )">
       </span>
     </div>
   </div>
