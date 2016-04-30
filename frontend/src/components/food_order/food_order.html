@@ -1,7 +1,7 @@
 <div class="food-order food-order_editable">
-  <i ng-click=" $ctrl.clickCloseBtn($event) " class="food-order__close">&#10005;</i>
+  <i ng-click=" $ctrl.clickCloseBtn() " class="food-order__close">&#10005;</i>
   <div class="food-order__image-container">
-    <img class="food-order__image"  src="{{ $ctrl.image }}">
+    <img class="food-order__image"  ng-src="{{ $ctrl.image }}">
   </div>
   <div class="food-order__glance-container">
     <h3 class="food-order__name" ng-bind="$ctrl.title"></h3>
@@ -9,7 +9,8 @@
 
       <span 
         class="food-order__basic-price" 
-        ng-bind="$ctrl.getNumLikeMoney( $ctrl.num_price )"></span>
+        ng-bind="$ctrl.getNumLikeMoney( $ctrl.num_price )">
+      </span>
 
       <div class="food-order__quantity-input-container">
         <quantity-input ng-model="$ctrl.foodCounter"></quantity-input>
@@ -17,7 +18,7 @@
 
       <span 
         class="food-order__total-price" 
-        ng-bind="$ctrl.getNumLikeMoney( $ctrl.foodCounter * $ctrl.num_price )">
+        ng-bind="$ctrl.getAllMoney()">
       </span>
     </div>
   </div>
