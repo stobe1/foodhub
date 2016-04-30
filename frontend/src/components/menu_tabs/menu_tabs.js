@@ -3,13 +3,11 @@ angular.module('Foodhub')
     return {
       restrict: 'E',
       transclude: true,
-      scope: {
-        tabList: '=list'
-      },
       controller: ['$scope', '$element', function($scope, $element) {
-        var panes = $scope.panes = [];
+        var panes = $scope.currentPanes = [];
 
-        this.select = $scope.select = function selectPane(pane) {
+        $scope.select = function selectPane(pane) {
+          console.log('select', pane);
           angular.forEach(panes, function(pane) {
             pane.selected = false;
           });
@@ -17,18 +15,10 @@ angular.module('Foodhub')
         };
 
         this.addPane = function addPane(pane) {
-          if (!panes.length) {
+          if (panes.length === 0) {
             $scope.select(pane);
           }
           panes.push(pane);
-        };
-
-        this.removePane = function removePane(pane) {
-          var index = panes.indexOf(pane);
-          panes.splice(index, 1);
-          if (pane.selected && panes.length > 0) {
-            $scope.select(panes[index < panes.length ? index : index-1]);
-          }
         };
       }],
       template: require('./menu_tabs.html'),
@@ -37,37 +27,14 @@ angular.module('Foodhub')
   })
   .directive('menuPane', ['$parse', function($parse) {
     return {
-      require: '^tabs',
+      require: '^menuTabs',
       restrict: 'E',
       transclude: true,
       scope:{
-        heading:'@'
+        title: '@'
       },
       link: function(scope, element, attrs, tabsCtrl) {
-        var getSelected, setSelected;
-        scope.selected = false;
-        if (attrs.active) {
-          getSelected = $parse(attrs.active);
-          setSelected = getSelected.assign;
-          scope.$watch(
-            function watchSelected() {return getSelected(scope.$parent);},
-            function updateSelected(value) {scope.selected = value;}
-          );
-          scope.selected = getSelected ? getSelected(scope.$parent) : false;
-        }
-        scope.$watch('selected', function(selected) {
-          if(selected) {
-            tabsCtrl.select(scope);
-          }
-          if(setSelected) {
-            setSelected(scope.$parent, selected);
-          }
-        });
-
         tabsCtrl.addPane(scope);
-        scope.$on('$destroy', function() {
-          tabsCtrl.removePane(scope);
-        });
       },
       template: require('./menu_pane.html'),
       replace: true
