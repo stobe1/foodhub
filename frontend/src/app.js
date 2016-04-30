@@ -14,18 +14,22 @@ function appConfig($routeProvider, $httpProvider) {
 
     .when('/profile', {
       template : require('./views/user_page/user_page.html'),
+      controller: 'UserPageController'
     })
 
     .when('/order', {
       template : require('./views/last_page/last_page.html'),
+      controller: 'LastPageController'
     })
 
     .when('/food', {
       template : require('./views/session_page/session_page_food/session_page_food.html'),
+      controller: 'SessionPageFoodController'
     })
 
     .when('/session', {
       template : require('./views/session_page/session_page_users/session_page_users.html'),
+      controller: 'SessionPageUsersController'
     })
 
     .when('/components', {
@@ -58,6 +62,10 @@ require('./components/button/button');
 require('./components/session_list/session_list');
 require('./views/session_list_page/session_list_page');
 require('./views/components/components');
+require('./views/last_page/last_page');
+require('./views/user_page/user_page');
+require('./views/session_page/session_page_food/session_page_food');
+require('./views/session_page/session_page_users/session_page_users');
 require('./components/quantity-input/quantity-input');
-require('./services/shops.js');
-require('./services/auth.js');
+require('./services/shops');
+require('./services/auth');
