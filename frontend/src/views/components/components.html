@@ -1,8 +1,19 @@
 <div class="component-box">
+  <food-order 
+    image="listFoodOrders[0].image"
+    food-counter="listFoodOrders[0].foodCounter"
+    price="listFoodOrders[1].price"
+    title="listFoodOrders[0].title"
+    on-delete="drop_order(listFoodOrders[0])">
+  </food-order>
+</div>
+
+<div class="component-box">
   <span ng-bind="outerFoodNumber"></span>
   <br>
   <quantity-input ng-model="outerFoodNumber"></quantity-input>
 </div>
+
 
 <div class="component-box">
   <session-list list="sessions"></session-list>

@@ -1,4 +1,5 @@
 var sessionList = require('../../fixtures/sessionList');
+var listFoodOrders = require('../../fixtures/listFoodOrders');
 
 angular.module('Foodhub')
   .controller('ComponentsController', ['$scope', function($scope) {
@@ -8,4 +9,13 @@ angular.module('Foodhub')
     	alert("PRESS BTN")
     };
 
-  }]);
+    $scope.sessions = sessionList;
+    $scope.listFoodOrders = listFoodOrders;
+
+
+    $scope.drop_order = function (item) {
+      alert("DROPPP !!! (from paren controller function)");
+      console.log(item);
+    };
+
+}]);

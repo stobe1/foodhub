@@ -1,16 +1,25 @@
 <div class="food-order food-order_editable">
-  <i class="food-order__close">&#10005;</i>
+  <i ng-click=" $ctrl.clickCloseBtn() " class="food-order__close">&#10005;</i>
   <div class="food-order__image-container">
-    <img src="http://s9.favim.com/orig/131221/chicken-cruelty-drawing-fast-food-Favim.com-1169562.jpg" class="food-order__image">
+    <img class="food-order__image"  ng-src="{{ $ctrl.image }}">
   </div>
   <div class="food-order__glance-container">
-    <h3 class="food-order__name">Драники с колбасками из свинины</h3>
+    <h3 class="food-order__name" ng-bind="$ctrl.title"></h3>
     <div class="food-order__quantity">
-      <span class="food-order__basic-price">57 000</span>
+
+      <span 
+        class="food-order__basic-price" 
+        ng-bind="$ctrl.getNumLikeMoney( $ctrl.num_price )">
+      </span>
+
       <div class="food-order__quantity-input-container">
-        //= ../quantity-input/quantity-input.html
+        <quantity-input ng-model="$ctrl.foodCounter"></quantity-input>
       </div>
-      <span class="food-order__total-price">114 000</span>
+
+      <span 
+        class="food-order__total-price" 
+        ng-bind="$ctrl.getAllMoney()">
+      </span>
     </div>
   </div>
 </div>
