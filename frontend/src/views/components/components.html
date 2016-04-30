@@ -1,5 +1,5 @@
 <div class="component-box">
-  <food-order 
+  <food-order
     image="listFoodOrders[0].image"
     food-counter="listFoodOrders[0].foodCounter"
     price="listFoodOrders[1].price"
@@ -20,7 +20,7 @@
 </div>
 
 <div class="component-box">
-  <custom-button 
+  <custom-button
     href="/lol"
     is-blank
     title="Просмотреть">
@@ -38,4 +38,8 @@
 
 <div class="component-box">
   <custom-button is-stretch title="Опубликовавать предложение"></custom-button>
+</div>
+<div class="component-box">
+  <text-input model="outerValue" label="Лейбл" name="phone" inverted="1"></text-input>
+  <span ng-bind="outerValue"></span>
 </div>
