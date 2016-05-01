@@ -1,9 +1,9 @@
 var express = require('express');
 var passport = require('passport');
 var morgan = require('morgan');
-var cookieParser = require('cookie-parser');
-var bodyParser = require('body-parser');
-var expressSession = require('express-session');
+var cookie = require('cookie-parser');
+var parser = require('body-parser');
+var session = require('express-session');
 var config = require('./config/config');
 var routes = require('./routes/routes');
 
@@ -16,14 +16,27 @@ app.use(function(req, res, next) {
   next();
 });
 
-app.use(bodyParser.urlencoded({
+app.use(morgan('combined'));
+
+app.use(cookie());
+
+app.use(session({
+  secret: 'keyboard cat',
+  resave: true,
+  saveUninitialized: true
+}));
+
+app.use(passport.initialize());
+app.use(passport.session());
+
+app.use(parser.urlencoded({
   extended: true
 }));
 
-app.use(bodyParser.json());
+app.use(parser.json());
 
 app.use('/api/v1', routes.router);
 
-app.listen(config.serverPort, function(){
+app.listen(config.serverPort, function() {
   console.log('Server is on ' + config.serverPort + ' port.');
 });
