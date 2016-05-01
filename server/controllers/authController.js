@@ -9,6 +9,6 @@ exports.loginFacebookResult = function(req, res) {
 
 exports.logout = function(req, res) {
   req.session.destroy(function(err) {
-    res.status(403).json({ error: 'Incorrect data' });
+    res.status(200);
   });
 };
