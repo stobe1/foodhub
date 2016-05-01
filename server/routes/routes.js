@@ -6,7 +6,7 @@ var shopsController = require('../controllers/shopsController');
 var sessionsController = require('../controllers/sessionsController');
 var ordersController = require('../controllers/ordersController');
 var passport = require('passport');
-var isLogin = require('../middleware/isLogin');
+var isAuthenticated = require('../middleware/isAuthenticated');
 
 //Authentication//
 router.get('/login/facebook', authController.loginFacebook);
@@ -15,27 +15,27 @@ router.get('/login/facebook/return',
     failureRedirect: '/api/v1/users'
   }),
   authController.loginFacebookResult);
-router.get('/logout', isLogin, authController.logout);
+router.get('/logout', isAuthenticated, authController.logout);
 
 //Users//
-router.get('/users', isLogin, usersController.index);
-router.get('/users/:id',isLogin, usersController.show);
-router.put('/users', isLogin, usersController.update);
+router.get('/users', isAuthenticated, usersController.index);
+router.get('/users/:id',isAuthenticated, usersController.show);
+router.put('/users', isAuthenticated, usersController.update);
 
 //Shops//
-router.get('/shops', isLogin, shopsController.index);
-router.get('/shops/:id', isLogin, shopsController.show);
+router.get('/shops', isAuthenticated, shopsController.index);
+router.get('/shops/:id', isAuthenticated, shopsController.show);
 
 //Sessions//
-router.get('/sessions', isLogin, sessionsController.index);
-router.get('/sessions/:id', isLogin, sessionsController.show);
-router.post('/sessions', isLogin, sessionsController.create);
-router.put('/sessions', isLogin, sessionsController.update);
+router.get('/sessions', isAuthenticated, sessionsController.index);
+router.get('/sessions/:id', isAuthenticated, sessionsController.show);
+router.post('/sessions', isAuthenticated, sessionsController.create);
+router.put('/sessions', isAuthenticated, sessionsController.update);
 
 //Orders//
 
-router.post('/orders', isLogin, ordersController.create);
-router.put('/orders', isLogin, ordersController.update);
-router.delete('/orders', isLogin, ordersController.delete);
+router.post('/orders', isAuthenticated, ordersController.create);
+router.put('/orders', isAuthenticated, ordersController.update);
+router.delete('/orders', isAuthenticated, ordersController.delete);
 
 exports.router = router;
