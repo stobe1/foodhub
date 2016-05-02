@@ -1,25 +1,28 @@
+const angular = require('angular');
+const templateHtml = require('./food_order.html');
+
 angular.module('Foodhub').component('foodOrder', {
   bindings: {
-    'price': '<',
-    'foodCounter': '=',
-    'title': '<',
-    'image': '<',
-    'onDelete': '&',
+    price: '<',
+    foodCounter: '=',
+    title: '<',
+    image: '<',
+    onDelete: '&',
   },
 
-  template: require('./food_order.html'),
+  template: templateHtml,
 
-  controller: function() {
+  controller: function foodOrderController() {
+    if (typeof(this.foodCounter) === 'string') {
+      this.foodCounter = parseInt(this.foodCounter, 10);
+    }
 
-    if(typeof(this.foodCounter) == 'string') 
-      this.foodCounter = parseInt(this.foodCounter);
-
-    this.clickCloseBtn = function () {
+    this.clickCloseBtn = function clickCloseBtn() {
       this.onDelete();
     };
 
-    this.getTotalPrice = function () {
+    this.getTotalPrice = function getTotalPrice() {
       return this.foodCounter * this.price;
-    }
-  }
+    };
+  },
 });

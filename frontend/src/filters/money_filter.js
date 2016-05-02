@@ -1,47 +1,66 @@
-angular.module('Foodhub')
-  .filter('moneyFilter', function moneyFilter() {
-    let services = {};
-    services.currencyName = "р.";
-    services.separator = ".";
-    services.spaсe = " ";
-    services.countNumAfterSeparator = 2;
+const angular = require('angular');
 
-    /**
-    * Форматирование числа или строки к виду денежных единиц
-    *
-    * @param {string or number} value
-    * @return {string} Строка в денежном формате
-    */
-    return function (value) {
-      if( typeof(value) === 'string'){
-        value = value.replace(/ /g,'');
-        value = parseFloat(value);
-      }
+function moneyFilter() {
+  const services = {};
+  services.currencyName = 'р.';
+  services.separator = '.';
+  services.spaсe = ' ';
+  services.countNumAfterSeparator = 2;
 
-      if( typeof(value) === 'number'){
-        let valueString = value+"";
+  /**
+  * Возвращает или символ или символ с services.spaсe в зависмиости от положения входного символа
+  *
+  * @param {char} curentChar
+  * @param {int} index
+  * @param {string} fullString
+  * @return {string} или curentChar, или services.spaсe + curentChar
+  */
+  function addSpace(curentChar, index, fullString) {
+    let returnData = curentChar;
 
-        let coutn_after = 0;
-        if(valueString.indexOf('.') > -1)
-          coutn_after = services.countNumAfterSeparator;
-
-        let normalNum = value.toFixed(coutn_after);
-
-        valueString = normalNum.replace(/./g, function(curentChar, index, full_string) {
-          let returnData = curentChar;
-
-          if(curentChar !== '.' && ((full_string.length - index) % 3 === 0))
-            returnData = services.spaсe + curentChar;
-
-          return returnData;
-        });
-
-        valueString = valueString.replace(/\./g, services.separator);
-
-        return valueString  + ' ' + services.currencyName;
-      }
-      return "";
+    if (curentChar !== '.' && ((fullString.length - index) % 3 === 0)) {
+      returnData = services.spaсe + curentChar;
     }
 
-    //return services;
-  });
+    return returnData;
+  }
+
+
+  /**
+  * Форматирование числа или строки к виду денежных единиц
+  *
+  * @param {string or number} dataValue
+  * @return {string} Строка в денежном формате
+  */
+  function returnFunction(dataValue) {
+    let value;
+    if (typeof(dataValue) === 'string') {
+      value = dataValue.replace(/ /g, '');
+      value = parseFloat(value);
+    }
+
+    if (typeof(dataValue) === 'number') {
+      let valueString = String(dataValue);
+      let value = dataValue;
+
+      let coutnAfter = 0;
+      if (valueString.indexOf('.') > -1) {
+        coutnAfter = services.countNumAfterSeparator;
+      }
+
+      const normalNum = value.toFixed(coutnAfter);
+
+      valueString = normalNum.replace(/./g, addSpace);
+
+      valueString = valueString.replace(/\./g, services.separator);
+      valueString = `${valueString} ${services.currencyName}`;
+
+      return valueString;
+    }
+    return '';
+  }
+
+  return returnFunction;
+}
+
+angular.module('Foodhub').filter('moneyFilter', moneyFilter);
