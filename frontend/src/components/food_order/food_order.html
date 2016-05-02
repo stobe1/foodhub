@@ -9,7 +9,7 @@
 
       <span 
         class="food-order__basic-price" 
-        ng-bind="$ctrl.getPrice()">
+        ng-bind="$ctrl.price | moneyFilter">
       </span>
 
       <div class="food-order__quantity-input-container">
@@ -19,7 +19,7 @@
 
       <span 
         class="food-order__total-price" 
-        ng-bind="$ctrl.getTotalPrice()">
+        ng-bind="$ctrl.getTotalPrice() | moneyFilter">
       </span>
     </div>
   </div>

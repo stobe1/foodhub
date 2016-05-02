@@ -1,5 +1,5 @@
 angular.module('Foodhub')
-  .factory('MoneyHelper', function MoneyHelper() {
+  .filter('moneyFilter', function moneyFilter() {
     let services = {};
     services.currencyName = "р.";
     services.separator = ".";
@@ -12,7 +12,7 @@ angular.module('Foodhub')
     * @param {string or number} value
     * @return {string} Строка в денежном формате
     */
-    services.convertToMoney = function (value) {
+    return function (value) {
       if( typeof(value) === 'string'){
         value = value.replace(/ /g,'');
         value = parseFloat(value);
@@ -25,15 +25,15 @@ angular.module('Foodhub')
         if(valueString.indexOf('.') > -1)
           coutn_after = services.countNumAfterSeparator;
 
-        let normal_num = value.toFixed(coutn_after);
+        let normalNum = value.toFixed(coutn_after);
 
-        valueString = normal_num.replace(/./g, function(curent_char, index, full_string) {
-          let return_data = curent_char;
+        valueString = normalNum.replace(/./g, function(curentChar, index, full_string) {
+          let returnData = curentChar;
 
-          if(curent_char !== '.' && ((full_string.length - index) % 3 === 0))
-            return_data = services.spaсe + curent_char;
+          if(curentChar !== '.' && ((full_string.length - index) % 3 === 0))
+            returnData = services.spaсe + curentChar;
 
-          return return_data;
+          return returnData;
         });
 
         valueString = valueString.replace(/\./g, services.separator);
@@ -43,5 +43,5 @@ angular.module('Foodhub')
       return "";
     }
 
-    return services;
+    //return services;
   });
