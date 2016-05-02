@@ -1,35 +1,28 @@
+const angular = require('angular');
+const templateHtml = require('./food_order.html');
+
 angular.module('Foodhub').component('foodOrder', {
   bindings: {
-    'price': '<',
-    'foodCounter': '=',
-    'title': '<',
-    'image': '<',
-    'onDelete': '&',
+    price: '<',
+    foodCounter: '=',
+    title: '<',
+    image: '<',
+    onDelete: '&',
   },
 
-  template: require('./food_order.html'),
+  template: templateHtml,
 
-  controller: function() {
-    this.num_price = parseInt(this.price+"".split(' ').join(''));
-    this.foodCounter = parseInt(this.foodCounter+"");
-
-    this.getNumLikeMoney = function (num) {
-      let n = parseInt(num);
-
-      n = n.toFixed(0).replace(/./g, function(c, i, a) {
-        return i && c !== "." && ((a.length - i) % 3 === 0) ? ' ' + c : c;
-      });
-
-      return n + " р.";
+  controller: function foodOrderController() {
+    if (typeof(this.foodCounter) === 'string') {
+      this.foodCounter = parseInt(this.foodCounter, 10);
     }
 
-    this.clickCloseBtn = function () {
+    this.clickCloseBtn = function clickCloseBtn() {
       this.onDelete();
     };
 
-    this.getAllMoney = function () {
-      return this.getNumLikeMoney(this.foodCounter * this.num_price);
-    }
-
-  }
+    this.getTotalPrice = function getTotalPrice() {
+      return this.foodCounter * this.price;
+    };
+  },
 });

@@ -72,3 +72,4 @@ require('./views/session_page/session_page_food/session_page_food');
 require('./views/session_page/session_page_users/session_page_users');
 require('./services/shops');
 require('./services/auth');
+require('./filters/money_filter');
