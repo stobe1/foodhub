@@ -7,10 +7,7 @@
     border-top: $border_separator
     font-size: 14px
 
-  &__tab-selector
-    display: none
-
-  &__tab-label
+  &__label
     display: inline-block
     margin: 0 0 -1px 0
     padding: 15px 30px 12px 30px
@@ -32,11 +29,13 @@
       color: rgba($color_main, 0.7)
       border-bottom-color: rgba($color_main, 0.7)
 
-    &.active
+    &_active
       text-decoration: none
       color: $color_main
       border-bottom-color: $color_main
 
-.selected
-  color: $color_main
-  border-bottom-color: $color_main
+.tab-pane
+  display: none
+
+  &_active
+    display: block

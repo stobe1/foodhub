@@ -1,4 +1,4 @@
 <div class="menu-tabs">
-  <a class="menu-tabs__tab-label" href="" ng-repeat="pane in currentPanes" ng-class="{active:pane.selected}" ng-click="select(pane)" ng-bind="pane.title"></a>
+  <a class="menu-tabs__label" href="" ng-repeat="pane in currentPanes" ng-class="{'menu-tabs__label_active':pane.selected}" ng-click="select(pane)" ng-bind="pane.title"></a>
   <section class="menu-tabs__content" ng-transclude></section>
 </div>

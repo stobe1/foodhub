@@ -6,9 +6,9 @@ angular.module('Foodhub')
     $scope.sessions = sessionList;
 
     $scope.panes = [
-      { title:"Пицца",   content:"контент вкладки 1" , active: true},
-      { title:"Драники", content:"контент вкладки 2"},
-      { title:"Суши",    content:"контент вкладки 3"}
+      { title:'Пицца', content:'контент вкладки 1' , active: true},
+      { title:'Драники', content:'контент вкладки 2'},
+      { title:'Суши', content:'контент вкладки 3'}
     ];
 
     $scope.doBtnAction = function () {
