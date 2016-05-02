@@ -1,7 +1,7 @@
 var config = require('../config/config');
 angular.module('Foodhub')
-  .factory('Sessions', function Sessions($resource) {
-    return $resource(config.api_url + '/sessions/:id', {}, {
+  .factory('Sessions', ['$resource', function Sessions($resource) {
+    var resource = $resource(config.apiUrl + '/sessions/:id', {}, {
       index: {
         method: 'GET',
         params: {
@@ -15,16 +15,28 @@ angular.module('Foodhub')
         }
       },
       create: {
-        method: 'POST',
-        params: {
-          isArray: true
-        }
+        method: 'POST'
       },
       update: {
-        method: 'PUT',
-        params: {
-          isArray: true
-        }
+        method: 'PUT'
       }
     });
-  });
+    
+    return {
+      getSessions: function (params) {
+        return resource.index(params).$promise;
+      },
+
+      getSession: function (params) {
+        return resource.show(params).$promise;
+      },
+
+      updateSession: function (params) {
+        return resource.update(params).$promise;
+      },
+
+      createSession: function (params) {
+        return resource.create(params).$promise;
+      }
+    }
+  }]);

@@ -1,12 +1,18 @@
 var config = require('../config/config');
 angular.module('Foodhub')
-  .factory('Auth', function Auth($resource) {
-    return $resource(config.api_url + '/:action', {}, {
+  .factory('Auth', ['$resource', function Auth($resource) {
+    var resource = $resource(config.apiUrl + '/:action', {}, {
       logout: {
-        method: 'GET',
+        method: 'POST',
         params: {
           action: 'logout'
         }
       }
     });
-  });
+    
+    return {
+      logout: function (params) {
+        return resource.logout(params).$promise;
+      }
+    }
+  }]);

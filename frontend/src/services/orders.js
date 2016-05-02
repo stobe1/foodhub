@@ -1,18 +1,12 @@
 var config = require('../config/config');
 angular.module('Foodhub')
-  .factory('Orders', function Orders($resource) {
-    return $resource(config.api_url + '/orders/:id', {}, {
+  .factory('Orders', ['$resource', function Orders($resource) {
+    var resource = $resource(config.apiUrl + '/orders/:id', {}, {
       create: {
-        method: 'POST',
-        params: {
-          isArray: true
-        }
+        method: 'POST'
       },
       update: {
-        method: 'PUT',
-        params: {
-          isArray: true
-        }
+        method: 'PUT'
       },
       destroy: {
         method: 'DELETE',
@@ -21,4 +15,18 @@ angular.module('Foodhub')
         }
       }
     });
-  });
+
+    return {
+      updateOrder: function (params) {
+        return resource.update(params).$promise;
+      },
+
+      createOrder: function (params) {
+        return resource.create(params).$promise;
+      },
+
+      destroyOrder: function (params) {
+        return resource.destroy(params).$promise;
+      }
+    }
+  }]);

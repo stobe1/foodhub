@@ -75,4 +75,3 @@ require('./services/orders');
 require('./services/sessions');
 require('./services/auth');
 require('./filters/money_filter');
-require('./services/API');

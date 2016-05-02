@@ -1,7 +1,7 @@
 var config = require('../config/config');
 angular.module('Foodhub')
-  .factory('Shops', function Shops($resource) {
-    return $resource(config.api_url + '/shops/:id', {}, {
+  .factory('Shops', ['$resource', function Shops($resource) {
+    var resource = $resource(config.apiUrl + '/shops/:id', {}, {
       index: {
         method: 'GET',
         params: {
@@ -15,4 +15,14 @@ angular.module('Foodhub')
         }
       }
     });
-  });
+
+    return {
+      getShops: function (params) {
+        return resource.index(params).$promise;
+      },
+
+      getShop: function (params) {
+        return resource.show(params).$promise;
+      }
+    }
+  }]);
