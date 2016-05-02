@@ -1,7 +1,7 @@
+var config = require('../config/config');
 angular.module('Foodhub')
   .factory('Sessions', function Sessions($resource) {
-    var config = require('../config/config');
-    return $resource(config.host_url + config.api_url + '/sessions/:id', {}, {
+    return $resource(config.api_url + '/sessions/:id', {}, {
       index: {
         method: 'GET',
         params: {

@@ -1,7 +1,7 @@
+var config = require('../config/config');
 angular.module('Foodhub')
   .factory('Orders', function Orders($resource) {
-    var config = require('../config/config');
-    return $resource(config.host_url + config.api_url + '/orders/:id', {}, {
+    return $resource(config.api_url + '/orders/:id', {}, {
       create: {
         method: 'POST',
         params: {
