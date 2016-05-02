@@ -9,27 +9,21 @@ angular.module('Foodhub').component('foodOrder', {
 
   template: require('./food_order.html'),
 
-  controller: function() {
-    this.num_price = parseInt(this.price+"".split(' ').join(''));
-    this.foodCounter = parseInt(this.foodCounter+"");
+  controller: function(MoneyHelper) {
 
-    this.getNumLikeMoney = function (num) {
-      let n = parseInt(num);
+    if(typeof(this.foodCounter) == 'string') 
+      this.foodCounter = parseInt(this.foodCounter);
 
-      n = n.toFixed(0).replace(/./g, function(c, i, a) {
-        return i && c !== "." && ((a.length - i) % 3 === 0) ? ' ' + c : c;
-      });
-
-      return n + " р.";
+    this.getPrice = function (num) {
+      return MoneyHelper.convertToMoney(this.price);
     }
 
     this.clickCloseBtn = function () {
       this.onDelete();
     };
 
-    this.getAllMoney = function () {
-      return this.getNumLikeMoney(this.foodCounter * this.num_price);
+    this.getTotalPrice = function () {
+      return MoneyHelper.convertToMoney(this.foodCounter * this.price);
     }
-
   }
 });
