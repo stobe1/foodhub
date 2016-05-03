@@ -11,6 +11,25 @@ angular.module('Foodhub')
       { title:'Суши', content:'контент вкладки 3'}
     ];
 
+    $scope.listFoodOrders = listFoodOrders;
+
+
+    $scope.cart = {
+      isFixed: 0,
+      confirmText: "Подтверждаю корзину",
+      confirmUrl: "/confirm",
+      onConfirm: function () {
+        alert("cart.onConfirm() | ComponentsController");
+      },
+      cancelText: "Отменить всё",
+      cancelUrl: "/cancel",
+      onCancel: function () {
+        alert("cart.onCancel() | ComponentsController");
+      },
+      listFoodOrders : $scope.listFoodOrders,
+    };
+    $scope.canChangeOrders = 0;
+
     $scope.doBtnAction = function () {
       alert("PRESS BTN")
     };

@@ -31,7 +31,22 @@
 
 
 <div class="component-box">
-  <food-order 
+  <cart
+    is-fixed="cart.isFixed"
+    confirm-text="cart.confirmText"
+    on-confirm="cart.onConfirm()"
+    cancel-text="cart.cancelText"
+    on-cancel="cart.onCancel()"
+    confirm-url="cart.confirmUrl"
+    can-change-orders="canChangeOrders"
+    cancel-url="cart.cancelUrl"
+    list-food-orders="cart.listFoodOrders"
+  >
+  </cart>
+</div>
+
+<div class="component-box">
+  <food-order
     image="listFoodOrders[0].image"
     food-counter="listFoodOrders[0].foodCounter"
     price="listFoodOrders[0].price"

@@ -63,6 +63,7 @@ require('./components/food_order/food_order');
 require('./components/user_card/user_card');
 require('./components/button/button');
 require('./components/text_input/text_input');
+require('./components/cart/cart');
 require('./components/quantity-input/quantity-input');
 require('./components/product_card/product_card');
 require('./components/menu_tabs/menu_tabs');
