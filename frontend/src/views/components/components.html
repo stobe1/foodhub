@@ -49,13 +49,16 @@
 
 <div class="component-box">
   <menu-tabs>
-    <menu-pane active="pane.active" title="Тестовая вкладка 1">
+    <menu-pane ng-repeat="pane in panes" title="{{pane.title}}">
+        <div ng-bind="pane.content"></div>
+    </menu-pane>
+    <menu-pane title="Тестовая вкладка (текст)">
+        <h3>Текст вкладки</h3>
+    </menu-pane>
+    <menu-pane title="Тестовая вкладка (компонент)">
         <div>
           <session-list list="sessions"></session-list>
         </div>
-    </menu-pane>
-    <menu-pane active="pane.active" title="Тестовая вкладка 2">
-        <h3>Текст вкладки 2</h3>
     </menu-pane>
   </menu-tabs>
 </div>
