@@ -8,6 +8,7 @@ angular.module('Foodhub').component('foodOrder', {
     title: '<',
     image: '<',
     onDelete: '&',
+    canChangeOrders: '<',
   },
 
   template: templateHtml,

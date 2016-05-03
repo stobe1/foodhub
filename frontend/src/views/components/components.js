@@ -12,8 +12,22 @@ angular.module('Foodhub')
     $scope.sessions = sessionList;
     $scope.listFoodOrders = listFoodOrders;
 
+    $scope.userCard ={
+      'name': "Иван Пупкин",
+      'listFoodOrders': $scope.listFoodOrders,
+      'isPaid' : 0
+    };
 
-    $scope.drop_order = function (item) {
+    $scope.isAdmin = 1;
+    $scope.canChangeOrders = 1;
+
+    $scope.dropUser = function (item) {
+      alert("dropUser from ComponentsController");
+      console.log(item);
+    };
+
+
+    $scope.dropOrder = function (item) {
       alert("drop_order from ComponentsController");
     };
 

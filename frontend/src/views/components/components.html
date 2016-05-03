@@ -1,3 +1,21 @@
+<style>
+  .component-box{
+    margin:40px;
+  }
+</style>
+
+<div class="component-box">
+  <user-card
+    name="userCard.name"
+    price="userCard.price"
+    list-food-orders="userCard.listFoodOrders"
+    is-paid="userCard.isPaid"
+    is-admin="isAdmin"
+    can-change-orders="canChangeOrders"
+    on-delete-user="dropUser(userCard)">
+  </user-card>
+</div>
+
 <div class="component-box">
   <food-order
     image="listFoodOrders[0].image"
