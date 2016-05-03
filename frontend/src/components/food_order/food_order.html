@@ -1,6 +1,6 @@
 <div class="food-order food-order_editable">
   <i 
-    ng-show="$ctrl.isCanChangeOrders" 
+    ng-show="$ctrl.canChangeOrders" 
     ng-click="$ctrl.clickCloseBtn()" 
     class="food-order__close">&#10005;</i>
 
@@ -19,11 +19,11 @@
       <div class="food-order__quantity-input-container">
         <span 
           class="food-order__counter" 
-          ng-show="!$ctrl.isCanChangeOrders" 
+          ng-show="!$ctrl.canChangeOrders" 
           ng-bind="$ctrl.foodCounter">
         </span>
 
-        <quantity-input ng-show="$ctrl.isCanChangeOrders" ng-model="$ctrl.foodCounter"></quantity-input>
+        <quantity-input ng-show="$ctrl.canChangeOrders" ng-model="$ctrl.foodCounter"></quantity-input>
       </div>
 
       <span 

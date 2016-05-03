@@ -5,9 +5,9 @@ angular.module('Foodhub').component('userCard', {
   bindings: {
     name: '<',
     listFoodOrders: '=',
-    isPay: '=',
+    isPaid: '=',
     isAdmin: '<',
-    isCanChangeOrders: '<',
+    canChangeOrders: '<',
     onDeleteUser: '&',
     onDeleteOrder: '&',
   },

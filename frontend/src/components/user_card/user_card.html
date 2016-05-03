@@ -16,13 +16,13 @@
       food-counter="itemFoodOrder.foodCounter"
       price="itemFoodOrder.price"
       title="itemFoodOrder.title"
-      is-can-change-orders="$ctrl.isCanChangeOrders"
+      can-change-orders="$ctrl.canChangeOrders"
       on-delete="$ctrl.deleteOrder(itemFoodOrder)">
     </food-order>
   </div>
 
   <div class="user-card__footer" ng-show=" $ctrl.isAdmin ">
-    <input class="user-card__input" ng-model=" $ctrl.isPay " id="user-card__check" type="checkbox">
+    <input class="user-card__input" ng-model=" $ctrl.isPaid " id="user-card__check" type="checkbox">
     <div class="user-card__input-custom"></div>
     <label class="user-card__input-label" for="user-card__check">Оплатил</label>
   </div>

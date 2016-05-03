@@ -16,11 +16,11 @@ angular.module('Foodhub')
     $scope.userCard ={
       'name': "Иван Пупкин",
       'listFoodOrders': $scope.listFoodOrders,
-      'isPay' : 0
+      'isPaid' : 0
     };
 
     $scope.isAdmin = 1;
-    $scope.isCanChangeOrders = 1;
+    $scope.canChangeOrders = 1;
 
     $scope.dropUser = function (item) {
       alert("dropUser from ComponentsController");
