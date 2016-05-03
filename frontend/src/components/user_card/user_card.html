@@ -1,24 +1,28 @@
 <div class="user-card user-card_editable"> 
-
   <div class="user-card__header">
-    <h3 class="user-card__name">Дункай 
-      <b class="user-card__price">(14 000)</b>
+    <h3 class="user-card__name">
+      <span ng-bind="$ctrl.name"></span>
+      <b class="user-card__price" ng-bind="$ctrl.price | moneyFilter"></b>
     </h3>
-    <span class="user-card__close">&#10005;</span>
+    <span
+      data-ng-click="$ctrl.clickClose($event)"
+      ng-show=" $ctrl.isAdmin " 
+      class="user-card__close">&#10005;</span>
   </div>
   
   <div class="user-card__body">
-    //= ../food_order/food_order.html
-    //= ../food_order/food_order.html
-  </div><!--.user-card__body-->
-
-
-  <div class="user-card__footer">
-    <input class="user-card__input" id="user-card__check" type="checkbox">
-    <div class="user-card__input-custom"></div>
-
-    <label class="user-card__input-label" for="user-card__check">Оплатил</label>
-
+    <!--food-order 
+      ng-repeat="itemFoodOrder in $ctrl.listFoodOrders"
+      image="itemFoodOrder.image"
+      food-counter="itemFoodOrder.foodCounter"
+      price="itemFoodOrder.price"
+      title="itemFoodOrder.title">
+    </food-order-->
   </div>
 
+  <div class="user-card__footer" ng-show=" $ctrl.isAdmin ">
+    <input class="user-card__input" ng-model=" $ctrl.isPay " id="user-card__check" type="checkbox">
+    <div class="user-card__input-custom"></div>
+    <label class="user-card__input-label" for="user-card__check">Оплатил</label>
+  </div>
 </div>
