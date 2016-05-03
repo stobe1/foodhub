@@ -6,6 +6,11 @@ module.exports = [{
 }, {
   price: 25000,
   foodCounter: 4,
+  title: "Драники в сметане",
+  image: 'img/services_logo/eda-by.png'
+}, {
+  price: 25000,
+  foodCounter: 3,
   title: "Куриный суп с рисом(ПОНЕДЕЛЬНИК)",
   image: 'http://www.pizzatempo.by/i/photo/catalog/products/t/r_186_500x500.jpg'
 }, {

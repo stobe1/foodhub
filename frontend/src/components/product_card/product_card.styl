@@ -2,7 +2,7 @@
   display: block
   height: auto
   width: 100%
-  max-width: 450px
+  max-width: 500px
   overflow: hidden
   card()
   background-color: white
@@ -21,12 +21,11 @@
     position: relative
     height: 200px
     background-color: $color_main
-    @media $mobile-max
-      overflow: hidden
+    overflow: hidden
 
   &__image
     display: block
-    height: 100%
+    width: 100%
     position: absolute
     top: 50%
     left: 50%
@@ -90,4 +89,3 @@
 
   &__footer
     padding: 0 15px 15px 10px
-

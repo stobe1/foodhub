@@ -5,7 +5,7 @@ angular.module('Foodhub')
   .controller('ComponentsController', ['$scope', 'Auth', 'Orders', 'Sessions', 'Shops', 'Users', function($scope, Auth, Orders, Sessions, Shops, Users) {
     $scope.sessions = sessionList;    
 
-    $scope.do_btn_action = function () {
+    $scope.doBtnAction = function () {
       alert("PRESS BTN")
     };
 
@@ -26,25 +26,26 @@ angular.module('Foodhub')
       console.log(item);
     };
 
-
-    $scope.dropOrder = function (item) {
-      alert("drop_order from ComponentsController");
+    $scope.dropOrder = function dropOrder(item) {
+      alert("drop! (from ComponentsController)");
+      console.log(item);
     };
 
-    $scope.product_card =  {
-      'isAdd': false,
-      'title': 'Пицца пицца',
-      'text': " fjsdjfsdfsd,hfb s,dbvh bdxvb bxcvbnxbvnzdbjhdfbg,v zbxv,zx",
-      "image" : "img/services_logo/edraniki-by.png",
-      'price': "20 000",
-      'foodCounter': 0,
-      onAdd : function () {
-        alert("controlle add");
-      },
+    $scope.onAddProduct = function onAddProduct (item) {
+      alert("onAddProduct(product) | функция вызвана в ComponentsController");
+    },
 
-      onDelete : function () {
-        alert("controlle delete");
-      },
+    $scope.onDeleteProduct = function onDeleteProduct (item) {
+      alert("onDeleteProduct(product) | функция вызвана в ComponentsController");
+    };
+
+    $scope.productCard =  {
+      isAdded: false,
+      title: 'Халаднік з бурачком',
+      text: "Лёгкі і свежы халодны суп з бураком, свежым храбусткім агурком, зялёнай цыбуляй, духмяным кропам і яйкам. Дастаўляецца разам са смятанай у асобным соуснiку. Вялікая смачная порцыя 400+ мл",
+      image : "http://edraniki.by/wp-content/uploads/2015/08/IMG_7435_1-600x533.jpg",
+      price: 50000,
+      foodCounter: 0,
     };
 
 

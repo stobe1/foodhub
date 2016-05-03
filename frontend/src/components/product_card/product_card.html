@@ -1,11 +1,11 @@
-<div class="product-card" ng-class="{product-card_active: $ctrl.isAdd}">
+<div class="product-card" ng-class="{'product-card_active': $ctrl.isAdded}">
 
   <div class="product-card__header">
     <div class="product-card__image-container">
-      <img class="product-card__image" src="{{ $ctrl.image }}" >
+      <img class="product-card__image" alt="" ng-src="{{ $ctrl.image }}" >
     </div>
-    <h3 class="product-card__info product-card__name" data-ng-bind=" $ctrl.title "></h3>
-    <h3 class="product-card__info product-card__description" data-ng-bind=" $ctrl.text "></h3>
+    <h3 class="product-card__info product-card__name" ng-bind=" $ctrl.title "></h3>
+    <h3 class="product-card__info product-card__description" ng-bind=" $ctrl.text "></h3>
   </div>
 
   <div class="product-card__body">
@@ -16,7 +16,7 @@
 
     <div class="product-card__half product-card__half-text-align-right">
       <span class="product-card__label">Цена за порцию:</span>
-      <h4 class="product-card__price" data-ng-bind="$ctrl.getNumLikeMoney( $ctrl.num_price )"></h4>
+      <h4 class="product-card__price" ng-bind="$ctrl.price | moneyFilter"></h4>
     </div>
 
   </div>
@@ -24,16 +24,16 @@
   <div class="product-card__footer">
 
     <custom-button 
-      ng-show="!$ctrl.isAdd" 
-      on-click="$ctrl.click_add()"
+      ng-show="!$ctrl.isAdded" 
+      on-click="$ctrl.clickAddBtn()"
       is-transparent
       title="Добавить в корзину">
     </custom-button>
 
 
     <custom-button 
-      ng-show="$ctrl.isAdd" 
-      on-click="$ctrl.click_delete()"
+      ng-show="$ctrl.isAdded" 
+      on-click="$ctrl.clickDeleteBtn()"
       title="Удалить из корзину">
     </custom-button>
 

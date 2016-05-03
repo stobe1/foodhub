@@ -17,16 +17,15 @@
 </div>
 
 <div class="component-box">
-  <food-order
   <product-card
-    is-add="product_card.isAdd"
-    title="{{product_card.title}}"
-    text="{{product_card.text}}"
-    price="{{product_card.price}}"
-    image="{{product_card.image}}"
-    food-counter="product_card.foodCounter"
-    on-add="product_card.onAdd()"
-    on-delete="product_card.onDelete()">
+    is-added="productCard.isAdded"
+    title="productCard.title"
+    text="productCard.text"
+    price="productCard.price"
+    image="productCard.image"
+    food-counter="productCard.foodCounter"
+    on-add="onAddProduct(productCard)"
+    on-delete="onDeleteProduct(productCard)">
   </product-card>
 </div>
 
@@ -37,7 +36,7 @@
     food-counter="listFoodOrders[0].foodCounter"
     price="listFoodOrders[0].price"
     title="listFoodOrders[0].title"
-    on-delete="drop_order(listFoodOrders[0])">
+    on-delete="dropOrder(listFoodOrders[0])">
   </food-order>
 </div>
 
@@ -65,7 +64,7 @@
   <custom-button
     is-transparent
     href="/lalka"
-    on-click="do_btn_action()"
+    on-click="doBtnAction()"
     title="Добавить в корзину">
   </custom-button>
 </div>
