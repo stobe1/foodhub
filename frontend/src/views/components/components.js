@@ -5,8 +5,8 @@ angular.module('Foodhub')
   .controller('ComponentsController', ['$scope', 'Auth', 'Orders', 'Sessions', 'Shops', 'Users', function($scope, Auth, Orders, Sessions, Shops, Users) {
     $scope.sessions = sessionList;    
 
-    $scope.do_btn_action = function () {
-    	alert("PRESS BTN")
+    $scope.doBtnAction = function () {
+      alert("PRESS BTN")
     };
 
     $scope.sessions = sessionList;
@@ -26,9 +26,26 @@ angular.module('Foodhub')
       console.log(item);
     };
 
+    $scope.dropOrder = function dropOrder(item) {
+      alert("drop! (from ComponentsController)");
+      console.log(item);
+    };
 
-    $scope.dropOrder = function (item) {
-      alert("drop_order from ComponentsController");
+    $scope.onAddProduct = function onAddProduct (item) {
+      alert("onAddProduct(product) | функция вызвана в ComponentsController");
+    },
+
+    $scope.onDeleteProduct = function onDeleteProduct (item) {
+      alert("onDeleteProduct(product) | функция вызвана в ComponentsController");
+    };
+
+    $scope.productCard =  {
+      isAdded: false,
+      title: 'Халаднік з бурачком',
+      text: "Лёгкі і свежы халодны суп з бураком, свежым храбусткім агурком, зялёнай цыбуляй, духмяным кропам і яйкам. Дастаўляецца разам са смятанай у асобным соуснiку. Вялікая смачная порцыя 400+ мл",
+      image : "http://edraniki.by/wp-content/uploads/2015/08/IMG_7435_1-600x533.jpg",
+      price: 50000,
+      foodCounter: 0,
     };
 
 

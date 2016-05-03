@@ -17,14 +17,29 @@
 </div>
 
 <div class="component-box">
-  <food-order
+  <product-card
+    is-added="productCard.isAdded"
+    title="productCard.title"
+    text="productCard.text"
+    price="productCard.price"
+    image="productCard.image"
+    food-counter="productCard.foodCounter"
+    on-add="onAddProduct(productCard)"
+    on-delete="onDeleteProduct(productCard)">
+  </product-card>
+</div>
+
+
+<div class="component-box">
+  <food-order 
     image="listFoodOrders[0].image"
     food-counter="listFoodOrders[0].foodCounter"
     price="listFoodOrders[0].price"
     title="listFoodOrders[0].title"
-    on-delete="drop_order(listFoodOrders[0])">
+    on-delete="dropOrder(listFoodOrders[0])">
   </food-order>
 </div>
+
 
 <div class="component-box">
   <span ng-bind="outerFoodNumber"></span>
@@ -49,7 +64,7 @@
   <custom-button
     is-transparent
     href="/lalka"
-    on-click="do_btn_action()"
+    on-click="doBtnAction()"
     title="Добавить в корзину">
   </custom-button>
 </div>

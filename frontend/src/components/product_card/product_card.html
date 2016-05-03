@@ -1,30 +1,42 @@
-<div class="product-card ">  <!--product-card_active-->
+<div class="product-card" ng-class="{'product-card_active': $ctrl.isAdded}">
 
   <div class="product-card__header">
     <div class="product-card__image-container">
-      <img class="product-card__image" src="http://naedaika.ru/wp-content/uploads/2013/03/bca6d70bf3.jpg" >
+      <img class="product-card__image" alt="" ng-src="{{ $ctrl.image }}" >
     </div>
-    <h3 class="product-card__info product-card__name">Запеченная курица.</h3>
-    <h3 class="product-card__info product-card__description">томатный соус, сыр Моцарелла, свинина отварная, шампиньоны, лук, соус Бернайс, перец чили, перец пеперони, фарш из говядины, перец кайенский, приправа к пицце, масло чесночное.</h3>
+    <h3 class="product-card__info product-card__name" ng-bind=" $ctrl.title "></h3>
+    <h3 class="product-card__info product-card__description" ng-bind=" $ctrl.text "></h3>
   </div>
 
-  
   <div class="product-card__body">
     <div class="product-card__half">
       <span class="product-card__label">Количество:</span>
-      //= ../quantity-input/quantity-input.html
+      <quantity-input ng-model="$ctrl.foodCounter"></quantity-input>
     </div>
 
     <div class="product-card__half product-card__half-text-align-right">
       <span class="product-card__label">Цена за порцию:</span>
-      <h4 class="product-card__price">100 000р</h4>
+      <h4 class="product-card__price" ng-bind="$ctrl.price | moneyFilter"></h4>
     </div>
 
-  </div><!--.product-card__body-->
+  </div>
 
   <div class="product-card__footer">
-    <a class="button button_transparent product-card__btn-add" href="">Добавить в корзину</a>
-    <a class="button product-card__btn-delete" href="">Удалить из корзину</a>
+
+    <custom-button 
+      ng-show="!$ctrl.isAdded" 
+      on-click="$ctrl.clickAddBtn()"
+      is-transparent
+      title="Добавить в корзину">
+    </custom-button>
+
+
+    <custom-button 
+      ng-show="$ctrl.isAdded" 
+      on-click="$ctrl.clickDeleteBtn()"
+      title="Удалить из корзину">
+    </custom-button>
+
   </div>
 
 </div>
