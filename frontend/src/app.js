@@ -4,7 +4,6 @@ var angular = require('angular');
 require('angular-route');
 require('angular-resource');
 
-
 function appConfig($routeProvider, $httpProvider) {
   $routeProvider
     .when('/', {
@@ -71,5 +70,8 @@ require('./views/user_page/user_page');
 require('./views/session_page/session_page_food/session_page_food');
 require('./views/session_page/session_page_users/session_page_users');
 require('./services/shops');
+require('./services/users');
+require('./services/orders');
+require('./services/sessions');
 require('./services/auth');
 require('./filters/money_filter');

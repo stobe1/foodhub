@@ -1,22 +1,18 @@
-'use strict';
-
+var config = require('../config/config');
 angular.module('Foodhub')
-  .factory('Auth', function Auth ($http, $rootScope, Shops) {
-  var currentUser
-
-  return {
-
-    getShops: function (params, callback) {
-      var cb = callback || angular.noop;
-
-      return Shops.index(params,
-        function (data) {
-          return cb(data);
-        },
-        function (err){
-          console.log('error', err);
-          return cb(err)
-        }).$promise;
+  .factory('Auth', ['$resource', function Auth($resource) {
+    var resource = $resource(config.apiUrl + '/:action', {}, {
+      logout: {
+        method: 'POST',
+        params: {
+          action: 'logout'
+        }
+      }
+    });
+    
+    return {
+      logout: function (params) {
+        return resource.logout(params).$promise;
+      }
     }
-  };
-});
+  }]);

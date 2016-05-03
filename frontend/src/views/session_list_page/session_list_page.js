@@ -1,9 +1,6 @@
 var sessionList = require('../../fixtures/sessionList');
 
 angular.module('Foodhub')
-  .controller('SessionListPageController', function($scope, Auth) {
+  .controller('SessionListPageController', function($scope) {
     $scope.sessions = sessionList;
-    Auth.getShops().then(function (shops) {
-      console.log(shops);
-    })
   });
