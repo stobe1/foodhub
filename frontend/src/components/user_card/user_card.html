@@ -2,22 +2,23 @@
   <div class="user-card__header">
     <h3 class="user-card__name">
       <span ng-bind="$ctrl.name"></span>
-      <b class="user-card__price" ng-bind="$ctrl.price | moneyFilter"></b>
+      <b class="user-card__price" ng-bind="$ctrl.getTotalPrice() | moneyFilter"></b>
     </h3>
     <span
       data-ng-click="$ctrl.clickClose($event)"
       ng-show=" $ctrl.isAdmin " 
       class="user-card__close">&#10005;</span>
   </div>
-  
   <div class="user-card__body">
-    <!--food-order 
+    <food-order 
       ng-repeat="itemFoodOrder in $ctrl.listFoodOrders"
       image="itemFoodOrder.image"
       food-counter="itemFoodOrder.foodCounter"
       price="itemFoodOrder.price"
-      title="itemFoodOrder.title">
-    </food-order-->
+      title="itemFoodOrder.title"
+      is-can-change-orders="$ctrl.isCanChangeOrders"
+      on-delete="$ctrl.deleteOrder(itemFoodOrder)">
+    </food-order>
   </div>
 
   <div class="user-card__footer" ng-show=" $ctrl.isAdmin ">

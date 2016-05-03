@@ -1,3 +1,9 @@
+<style>
+  .component-box{
+    margin:40px;
+  }
+</style>
+
 <div class="component-box">
   <user-card
     name="userCard.name"
@@ -5,18 +11,10 @@
     list-food-orders="userCard.listFoodOrders"
     is-pay="userCard.isPay"
     is-admin="isAdmin"
-    on-delete="dropUser(userCard)">
+    is-can-change-orders="isCanChangeOrders"
+    on-delete-user="dropUser(userCard)">
   </user-card>
 </div>
-
-
-
-
-
-
-
-
-
 
 <div class="component-box">
   <food-order

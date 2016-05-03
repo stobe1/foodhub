@@ -1,5 +1,9 @@
 <div class="food-order food-order_editable">
-  <i ng-click=" $ctrl.clickCloseBtn() " class="food-order__close">&#10005;</i>
+  <i 
+    ng-show="$ctrl.isCanChangeOrders" 
+    ng-click="$ctrl.clickCloseBtn()" 
+    class="food-order__close">&#10005;</i>
+
   <div class="food-order__image-container">
     <img class="food-order__image"  ng-src="{{ $ctrl.image }}">
   </div>
@@ -13,8 +17,13 @@
       </span>
 
       <div class="food-order__quantity-input-container">
+        <span 
+          class="food-order__counter" 
+          ng-show="!$ctrl.isCanChangeOrders" 
+          ng-bind="$ctrl.foodCounter">
+        </span>
 
-        <quantity-input ng-model="$ctrl.foodCounter"></quantity-input>
+        <quantity-input ng-show="$ctrl.isCanChangeOrders" ng-model="$ctrl.foodCounter"></quantity-input>
       </div>
 
       <span 

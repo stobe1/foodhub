@@ -19,7 +19,8 @@ angular.module('Foodhub')
       'isPay' : 0
     };
 
-    $scope.isAdmin = 0;
+    $scope.isAdmin = 1;
+    $scope.isCanChangeOrders = 1;
 
     $scope.dropUser = function (item) {
       alert("dropUser from ComponentsController");
