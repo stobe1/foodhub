@@ -87,7 +87,19 @@
 <div class="component-box">
   <custom-button is-stretch title="Опубликовавать предложение"></custom-button>
 </div>
+
 <div class="component-box">
   <text-input model="outerValue" label="Лейбл" name="phone" inverted="1"></text-input>
-  <span ng-bind="outerValue"></span>
+  form component output: <span ng-bind="outerValue"></span>
+</div>
+
+<div class="component-box">
+  <div><br>
+    form output values:<br>
+    phone:<span ng-bind="outPhone"></span>,<br>
+    mail:<span ng-bind="outMail"></span>,<br>
+    name:<span ng-bind="outName"></span>,<br>
+    paytype:<span ng-bind="outPaytype"></span>
+  </div>
+  <foodhub-form phone-value="outPhone" name-value="outName" mail-value="outMail" paytype-value="outPaytype"></foodhub-form>
 </div>
