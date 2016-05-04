@@ -1,7 +1,7 @@
 angular.module('Foodhub')
   .directive('menuTabs', function() {
     return {
-      restrict: 'E',
+      restrict: 'AE',
       transclude: true,
       template: require('./menu_tabs.html'),
       replace: true,
@@ -27,7 +27,7 @@ angular.module('Foodhub')
   .directive('menuPane', function() {
     return {
       require: '^menuTabs',
-      restrict: 'E',
+      restrict: 'AE',
       transclude: true,
       template: require('./menu_pane.html'),
       replace: true,
