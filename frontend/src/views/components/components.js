@@ -3,13 +3,18 @@ var listFoodOrders = require('../../fixtures/listFoodOrders');
 
 angular.module('Foodhub')
   .controller('ComponentsController', ['$scope', 'Auth', 'Orders', 'Sessions', 'Shops', 'Users', function($scope, Auth, Orders, Sessions, Shops, Users) {
-    $scope.sessions = sessionList;    
+    $scope.sessions = sessionList;
+
+    $scope.panes = [
+      { title:'Пицца', content:'контент вкладки 1' , active: true},
+      { title:'Драники', content:'контент вкладки 2'},
+      { title:'Суши', content:'контент вкладки 3'}
+    ];
 
     $scope.doBtnAction = function () {
       alert("PRESS BTN")
     };
 
-    $scope.sessions = sessionList;
     $scope.listFoodOrders = listFoodOrders;
 
     $scope.userCard ={
@@ -47,7 +52,6 @@ angular.module('Foodhub')
       price: 50000,
       foodCounter: 0,
     };
-
 
     //Users//
     var user = {

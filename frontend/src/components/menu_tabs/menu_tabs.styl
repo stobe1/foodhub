@@ -1,30 +1,27 @@
 .menu-tabs
   padding: 0
   height: 100%
-  font-size: 0
 
   &__content
-    display: none
     overflow: auto
     border-top: $border_separator
     font-size: 14px
 
-  &__tab-selector
-    display: none
-
-  &__tab-label
+  &__label
     display: inline-block
     margin: 0 0 -1px 0
     padding: 15px 30px 12px 30px
     font-size: 14px
     font-weight: 500
     text-transform: uppercase
+    text-decoration: none
     text-align: center
     color: $color_tab_label
     border-bottom: 2px solid transparent
     transition: color 0.3s ease, border-color 0.3s ease
 
     &:hover
+      text-decoration: none
       cursor: pointer
       border-bottom-color: $color_main
 
@@ -32,10 +29,13 @@
       color: rgba($color_main, 0.7)
       border-bottom-color: rgba($color_main, 0.7)
 
-  &__tab-selector:checked + &__tab-label
-    color: $color_main
-    border-bottom-color: $color_main
+    &_active
+      text-decoration: none
+      color: $color_main
+      border-bottom-color: $color_main
 
-for $i in (1..4)
-  #menu-tabs__tab{$i}:checked ~ #menu-tabs__content{$i}
+.tab-pane
+  display: none
+
+  &_active
     display: block

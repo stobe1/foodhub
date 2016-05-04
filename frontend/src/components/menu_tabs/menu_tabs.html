@@ -1,23 +1,4 @@
 <div class="menu-tabs">
-  <input class="menu-tabs__tab-selector" id="menu-tabs__tab1" type="radio" name="menu-tabs" checked>
-  <label class="menu-tabs__tab-label" for="menu-tabs__tab1" title="Вкладка 1">Блины</label>
-  <input class="menu-tabs__tab-selector" id="menu-tabs__tab2" type="radio" name="menu-tabs">
-  <label class="menu-tabs__tab-label" for="menu-tabs__tab2" title="Вкладка 2">Супы</label>
-  <input class="menu-tabs__tab-selector" id="menu-tabs__tab3" type="radio" name="menu-tabs">
-  <label class="menu-tabs__tab-label" for="menu-tabs__tab3" title="Вкладка 3">Пицца</label>
-  <input class="menu-tabs__tab-selector" id="menu-tabs__tab4" type="radio" name="menu-tabs">
-  <label class="menu-tabs__tab-label" for="menu-tabs__tab4" title="Вкладка 4">Напитки</label>
-
-  <section class="menu-tabs__content" id="menu-tabs__content1">
-    <p>Контент вкладки 1</p>
-  </section>
-  <section class="menu-tabs__content" id="menu-tabs__content2">
-    <p>Контент вкладки 2</p>
-  </section>
-  <section class="menu-tabs__content" id="menu-tabs__content3">
-    <p>Контент вкладки 3</p>
-  </section>
-  <section class="menu-tabs__content" id="menu-tabs__content4">
-    <p>Контент вкладки 4</p>
-  </section>
+  <a class="menu-tabs__label" href="" ng-repeat="pane in currentPanes" ng-class="{'menu-tabs__label_active': pane.selected}" ng-click="select(pane)" ng-bind="pane.title"></a>
+  <section class="menu-tabs__content" ng-transclude></section>
 </div>
