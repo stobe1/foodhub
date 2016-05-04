@@ -7,14 +7,14 @@ angular.module('Foodhub').component('sessionInfo', {
   },
   template: require('./session_info.html'),
 
-  controller: function($scope) {
+  controller: function() {
 
     this.validateTime = function(time) {
-      var regexp = /^(\d{1,2}):(\d{1,2})$/;
-      var timeParts = regexp.exec(time);
+      var regexp = /^(\d{1,2}):(\d{1,2})$/,
+          timeParts = regexp.exec(time);
       if (timeParts) {
-        var hours = parseInt(timeParts[1]);
-        var minutes = parseInt(timeParts[2]);
+        var hours = parseInt(timeParts[1]),
+            minutes = parseInt(timeParts[2]);
         return 0 <= hours && hours <= 23 && 0 <= minutes && minutes <= 59;
       } else {
         return false;
@@ -29,7 +29,7 @@ angular.module('Foodhub').component('sessionInfo', {
       return this.session.deliveryTime ? 'Время прибытия заказа:' : 'Время оформления заказа:';
     }
 
-    this.getRemeiningAmount = function() {
+    this.getRemainAmount = function() {
       return this.session.price < this.selectedShop.minOrderPrice ? this.selectedShop.minOrderPrice - this.session.price : 0;
     }
 
@@ -38,10 +38,10 @@ angular.module('Foodhub').component('sessionInfo', {
 
       if (!this.shops || !this.session) return;
 
-      $scope.sessionTime = this.session.deliveryTime ? this.session.deliveryTime : this.session.orderTime;
+      this.sessionTime = this.session.deliveryTime ? this.session.deliveryTime : this.session.orderTime;
 
       var index = this.shops.map(function(shop){ return shop.id }).indexOf(this.session.shopId);
-      if (index != -1) {
+      if (index !== -1) {
         this.selectedShop = this.shops[index];
       } else {
         this.selectedShop = this.shops[0];
@@ -51,14 +51,12 @@ angular.module('Foodhub').component('sessionInfo', {
       this.session.invalidTime = false;
     }
 
-    this.init();
-
-    $scope.$watch('sessionTime', (function() {
-      if (this.validateTime($scope.sessionTime)) {
+    this.onSessionTimeChanged = function() {
+      if (this.validateTime(this.sessionTime)) {
         if (this.session.deliveryTime) {
-          this.session.deliveryTime = $scope.sessionTime;
+          this.session.deliveryTime = this.sessionTime;
         } else {
-          this.session.orderTime = $scope.sessionTime;
+          this.session.orderTime = this.sessionTime;
         }
         this.session.valid = true;
         this.session.invalidTime = false;
@@ -66,6 +64,8 @@ angular.module('Foodhub').component('sessionInfo', {
         this.session.valid = false;
         this.session.invalidTime = true;
       }
-    }).bind(this))
+    }
+
+    this.init();
   }
 });
