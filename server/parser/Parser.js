@@ -22,11 +22,7 @@ class Parser {
     });
   }
 
-  toCheerio(url) {
-    return cheerio.load(url);
-  }
-
-  getCategories() {
+  _getPages() {
     throw new Error('Implementation of this method is required');
   }
 
