@@ -4,9 +4,9 @@ angular.module('Foodhub')
     label: '@?',
     inverted: '=?',
     name: '@?',
-    model: '=?'
+    model: '=?',
+    invalid: '<',
+    readonly: '<'
   },
-  template: require('./text_input.html'),
-  controller: function() {
-  },
+  template: require('./text_input.html')
 })

@@ -1,5 +1,7 @@
 var sessionList = require('../../fixtures/sessionList');
 var listFoodOrders = require('../../fixtures/listFoodOrders');
+var shops = require('../../fixtures/shops');
+var session = require('../../fixtures/sessionFull');
 
 angular.module('Foodhub')
   .controller('ComponentsController', ['$scope', 'Auth', 'Orders', 'Sessions', 'Shops', 'Users', function($scope, Auth, Orders, Sessions, Shops, Users) {
@@ -15,6 +17,8 @@ angular.module('Foodhub')
       alert("PRESS BTN")
     };
 
+    $scope.sessionInfoTitle = "Информация о заказе";
+    $scope.sessions = sessionList;
     $scope.listFoodOrders = listFoodOrders;
 
     $scope.userCard ={
@@ -30,6 +34,9 @@ angular.module('Foodhub')
       alert("dropUser from ComponentsController");
       console.log(item);
     };
+    $scope.shops = shops;
+    $scope.session = session;
+    $scope.readonly = false;
 
     $scope.dropOrder = function dropOrder(item) {
       alert("drop! (from ComponentsController)");
