@@ -19,7 +19,7 @@ angular.module('Foodhub').component('cart', {
 
     controller: function cartController() {
 
-      this.getTotalPrice = function getTotalPrice() {
+      this.getTotalPrice = function () {
         let price = 0;
 
         function getOrderTotalPrice(foodOrder) {
@@ -31,27 +31,19 @@ angular.module('Foodhub').component('cart', {
         return price;
       };
 
-      this.clickCancelBtn = function clickCancelBtn() {
+      this.clickCancelBtn = function () {
         this.onCancel();
       };
 
-      this.clickConfirmBtn = function clickConfirmBtn() {
+      this.clickConfirmBtn = function () {
         this.onConfirm();
       };
 
-      this.deleteOrder = function deleteOrder(orderForDelete) {
-        let indexDelete = -1;
+      this.deleteOrder = function (orderForDelete) {
+        var index = this.listFoodOrders.indexOf(orderForDelete);
 
-        function searchOrder(foodOrder, i) {
-          if (foodOrder === orderForDelete) {
-            indexDelete = i;
-          }
-        }
-
-        this.listFoodOrders.forEach(searchOrder);
-
-        if (indexDelete > -1) {
-          this.listFoodOrders.splice(indexDelete, 1);
+        if (index !== -1) {
+          this.listFoodOrders.splice(index, 1);
           this.onDeleteOrder();
         }
       };

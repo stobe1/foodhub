@@ -1,8 +1,8 @@
 <a 
   target="{{ $ctrl.getTargetData() }}"
-  data-ng-href=" {{ $ctrl.href }} "
-  data-ng-bind=" $ctrl.title "
-  data-ng-click=" $ctrl.click_btn($event) "
+  ng-href="{{ $ctrl.href }}"
+  ng-bind="$ctrl.title"
+  ng-click="$ctrl.click_btn()"
   class="button"
   data-ng-class="{
     button_stretch: $ctrl.isStretchBtn(), 

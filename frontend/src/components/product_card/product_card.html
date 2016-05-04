@@ -24,17 +24,16 @@
   <div class="product-card__footer">
 
     <custom-button 
+      is-transparent
       ng-show="!$ctrl.isAdded" 
       on-click="$ctrl.clickAddBtn()"
-      is-transparent
-      title="Добавить в корзину">
+      title="'Добавить в корзину'">
     </custom-button>
-
 
     <custom-button 
       ng-show="$ctrl.isAdded" 
       on-click="$ctrl.clickDeleteBtn()"
-      title="Удалить из корзину">
+      title="'Удалить из корзину'">
     </custom-button>
 
   </div>

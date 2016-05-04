@@ -1,12 +1,12 @@
-<div class="cart cart_open" ng-class="{ cart_fixed : $ctrl.isFixed }">
+<div class="cart cart_open" ng-class="{ 'cart_fixed' : $ctrl.isFixed }">
   <button class="cart__open-button cart__open-button_hidden"></button>
   <h2 class="cart__header">
-    Мои товары <b class="cart__total-price" ng-bind=" $ctrl.getTotalPrice() | moneyFilter" ></b>
+    Мои товары <b class="cart__total-price" ng-bind="$ctrl.getTotalPrice() | moneyFilter" ></b>
   </h2>
   <div class="cart__food-list">
     <div class="cart__food">
       <food-order 
-        ng-repeat="itemFoodOrder in $ctrl.listFoodOrders"
+        ng-repeat="itemFoodOrder in $ctrl.listFoodOrders track by $index"
         image="itemFoodOrder.image"
         food-counter="itemFoodOrder.foodCounter"
         price="itemFoodOrder.price"
@@ -22,8 +22,8 @@
         is-stretch
         ng-show="$ctrl.confirmText"
         ng-click="$ctrl.clickConfirmBtn()"
-        title="{{$ctrl.confirmText}}"
-        href="{{$ctrl.confirmUrl}}">
+        title="$ctrl.confirmText"
+        href="$ctrl.confirmUrl">
       </custom-button>
     </div>
 
@@ -33,8 +33,8 @@
         is-stretch
         ng-show="$ctrl.cancelText"
         ng-click="$ctrl.clickCancelBtn()"
-        title="{{$ctrl.cancelText}}"
-        href="{{$ctrl.cancelUrl}}">
+        title="$ctrl.cancelText"
+        href="$ctrl.cancelUrl">
       </custom-button>
     </div>
   </div>
