@@ -6,8 +6,6 @@ var request = require('request');
 class Parser {
   constructor() {
     this.url = '';
-    this.products = [];
-
   }
 
   load(url) {
