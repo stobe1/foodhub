@@ -39,3 +39,9 @@
     position: absolute
     top: 0
     left: 0
+
+.text-input_invalid .text-input__input:focus
+  border-bottom-color: $color_input_invalid
+
+  & + .text-input__headline
+    color: $color_input_invalid

@@ -1,40 +1,43 @@
 <div class="session-info">
-  <h1 class="session-info__header">Данные о заказе</h1>
+  <h1 class="session-info__header" ng-bind="$ctrl.title"></h1>
   <div class="session-info__column">
     <div class="session-info__element">
       <div class="session-info__select-container">
-        <select class="session-info__select" id="session-info__select">
-          <option value="1" class="session-info__option" selected>Пицца Темпо</option>
-          <option value="2" class="session-info__option">ЕДраники</option>
-          <option value="3" class="session-info__option">Лидо</option>
+        <select 
+          class="session-info__select" 
+          id="session-info__select{{ $ctrl.selectUniqID }}" 
+          ng-model="$ctrl.selectedShop" 
+          ng-options="shop.name for shop in $ctrl.shops" 
+          ng-change="$ctrl.onShopChanged()"
+          ng-disabled="$ctrl.readonly">
         </select>
-        <label class="session-info__input-label" for="session-info__select">Выбор доставки:</label>
+        <label class="session-info__input-label" for="session-info__select{{ $ctrl.selectUniqID }}">Выбор доставки:</label>
       </div>
     </div>
     <div class="session-info__element">
-      <span class="session-info__label">Заказ от</span>
-      <span class="session-info__value">140000 руб</span>
+      <span class="session-info__label">Заказ от:</span>
+      <span class="session-info__value" ng-bind="$ctrl.selectedShop.minOrderPrice | moneyFilter"></span>
     </div>
     <div class="session-info__element">
       <span class="session-info__label">Время доставки:</span>
-      <span class="session-info__value">08:30 - 22:30</span>
+      <span class="session-info__value" ng-bind="$ctrl.selectedShop.deliveryTime"></span>
     </div>
     <div class="session-info__element">
-      <a class="session-info__link" href="http://www.pizzatempo.by">www.pizzatempo.by</a>
-    </div>
-  </div>
-  <div class="session-info__column">
-    <div class="session-info__element">
-      //= ../text_input/text_input.html
+      <a class="session-info__link" ng-href="{{ $ctrl.selectedShop.siteUrl }}" target="_blank" ng-bind="$ctrl.selectedShop.siteUrl"></a>
     </div>
   </div>
   <div class="session-info__column">
     <div class="session-info__element">
-      //= ../text_input/text_input.html
+      <text-input model="$ctrl.sessionTime" label="{{ $ctrl.getTimeLabel() }}" name="time" inverted="true" invalid="$ctrl.session.invalidTime" readonly="$ctrl.readonly" on-change="$ctrl.onSessionTimeChanged()"></text-input>
+    </div>
+  </div>
+  <div class="session-info__column">
+    <div class="session-info__element">
+      <text-input model="$ctrl.session.price" label="Общая сумма заказа:" name="price" inverted="true" readonly="true"></text-input>
     </div>
     <div class="session-info__element">
       <span class="session-info__label">Осталось собрать:</span>
-      <span class="session-info__value">100000 руб</span>
+      <span class="session-info__value" ng-bind="$ctrl.getRemainAmount() | moneyFilter"></span>
     </div>
   </div>
 </div>
