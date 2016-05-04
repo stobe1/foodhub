@@ -41,6 +41,11 @@ module.exports = function(sequelize, DataTypes) {
         key: 'id'
       }
     },
+    externalFoodId: {
+      field: 'external_food_id',
+      type: DataTypes.STRING,
+      allowNull: false
+    },
     createdAt: {
       field: 'created_at',
       type: DataTypes.DATE,

@@ -41,17 +41,21 @@ module.exports = {
           onUpdate: 'cascade',
           onDelete: 'cascade'
         },
+        external_food_id: {
+          type: Sequelize.STRING,
+          allowNull: false
+        },
         created_at: {
           type: Sequelize.DATE
         },
         updated_at: {
           type: Sequelize.DATE
         }
-      }, { 
+      }, {
         charset: 'utf8',
         collate: 'utf8_general_ci'
       }
-    )
+    );
   },
 
   down: function (queryInterface, Sequelize) {
