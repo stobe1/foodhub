@@ -10,6 +10,15 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.STRING,
       allowNull: true
     },
+    shopId: {
+      field: 'shop_id',
+      type: DataTypes.INTEGER(11),
+      allowNull: true,
+      references: {
+        model: 'shops',
+        key: 'id'
+      }
+    },
     createdAt: {
       field: 'created_at',
       type: DataTypes.DATE,
