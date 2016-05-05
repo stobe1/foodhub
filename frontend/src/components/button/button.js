@@ -2,8 +2,8 @@
 
 angular.module('Foodhub').component('customButton', {
     bindings: {
-       'title': '@',
-       'href': '@',
+       'title': '<',
+       'href': '<',
        'isBlank': '@',
        'isStretch' : '@',
        'isTransparent': '@',
@@ -26,7 +26,7 @@ angular.module('Foodhub').component('customButton', {
         return ( typeof( this.isBlank)  !== 'undefined') ? "_blank" : "_self";
       }
 
-      this.click_btn = function ($event) {
+      this.click_btn = function () {
         this.onClick();
       }
 

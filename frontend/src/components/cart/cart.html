@@ -1,22 +1,41 @@
-<div class="cart cart_open">
+<div class="cart cart_open" ng-class="{ 'cart_fixed' : $ctrl.isFixed }">
   <button class="cart__open-button cart__open-button_hidden"></button>
   <h2 class="cart__header">
-    Мои товары <b class="cart__total-price">(50&nbsp;000&nbsp;руб)</b>
+    Мои товары <b class="cart__total-price" ng-bind="$ctrl.getTotalPrice() | moneyFilter" ></b>
   </h2>
   <div class="cart__food-list">
     <div class="cart__food">
-      //= ../food_order/food_order.html
+      <food-order 
+        ng-repeat="itemFoodOrder in $ctrl.listFoodOrders track by $index"
+        image="itemFoodOrder.image"
+        food-counter="itemFoodOrder.foodCounter"
+        price="itemFoodOrder.price"
+        title="itemFoodOrder.title"
+        can-change-orders="$ctrl.canChangeOrders"
+        on-delete="$ctrl.deleteOrder(itemFoodOrder)">
+      </food-order>
     </div>
   </div>
   <div class="cart__action-buttons">
-    <div class="cart__order-button">
-      <a href="" class="button button_stretch">Оформить заказ</a>
+    <div class="cart__confirm-button">
+      <custom-button 
+        is-stretch
+        ng-show="$ctrl.confirmText"
+        ng-click="$ctrl.clickConfirmBtn()"
+        title="$ctrl.confirmText"
+        href="$ctrl.confirmUrl">
+      </custom-button>
     </div>
-    <div class="cart__join-button">
-      <a href="" class="button button_stretch">Присоединиться</a>
-    </div>
+
     <div class="cart__cancel-button">
-      <a href="" class="button button_transparent button_stretch">Удалить предложение</a>
+      <custom-button
+        is-transparent
+        is-stretch
+        ng-show="$ctrl.cancelText"
+        ng-click="$ctrl.clickCancelBtn()"
+        title="$ctrl.cancelText"
+        href="$ctrl.cancelUrl">
+      </custom-button>
     </div>
   </div>
 </div>

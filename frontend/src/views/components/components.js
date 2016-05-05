@@ -13,6 +13,25 @@ angular.module('Foodhub')
       { title:'Суши', content:'контент вкладки 3'}
     ];
 
+    $scope.listFoodOrders = listFoodOrders;
+
+
+    $scope.cart = {
+      isFixed: false,
+      confirmText: "Подтверждаю корзину",
+      confirmUrl: "/confirm",
+      onConfirm: function () {
+        alert("cart.onConfirm() | ComponentsController");
+      },
+      cancelText: "Отменить всё",
+      cancelUrl: "/cancel",
+      onCancel: function () {
+        alert("cart.onCancel() | ComponentsController");
+      },
+      listFoodOrders : $scope.listFoodOrders,
+    };
+    $scope.canChangeOrders = 0;
+
     $scope.doBtnAction = function () {
       alert("PRESS BTN")
     };
@@ -24,7 +43,7 @@ angular.module('Foodhub')
     $scope.userCard ={
       'name': "Иван Пупкин",
       'listFoodOrders': $scope.listFoodOrders,
-      'isPaid' : 0
+      'isPaid' : false
     };
 
     $scope.isAdmin = 1;

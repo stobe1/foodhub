@@ -8,7 +8,6 @@
 <div class="component-box">
   <user-card
     name="userCard.name"
-    price="userCard.price"
     list-food-orders="userCard.listFoodOrders"
     is-paid="userCard.isPaid"
     is-admin="isAdmin"
@@ -32,7 +31,22 @@
 
 
 <div class="component-box">
-  <food-order 
+  <cart
+    is-fixed="false"
+    confirm-text="cart.confirmText"
+    on-confirm="cart.onConfirm()"
+    cancel-text="cart.cancelText"
+    on-cancel="cart.onCancel()"
+    confirm-url="cart.confirmUrl"
+    can-change-orders="canChangeOrders"
+    cancel-url="cart.cancelUrl"
+    list-food-orders="cart.listFoodOrders"
+  >
+  </cart>
+</div>
+
+<div class="component-box">
+  <food-order
     image="listFoodOrders[0].image"
     food-counter="listFoodOrders[0].foodCounter"
     price="listFoodOrders[0].price"
@@ -70,23 +84,23 @@
 
 <div class="component-box">
   <custom-button
-    href="/lol"
     is-blank
-    title="Просмотреть">
+    href="'/lol'"
+    title="'Просмотреть'">
   </custom-button>
 </div>
 
 <div class="component-box">
   <custom-button
     is-transparent
-    href="/lalka"
+    href="'/lol2'"
     on-click="doBtnAction()"
-    title="Добавить в корзину">
+    title="'Добавить в корзину'">
   </custom-button>
 </div>
 
 <div class="component-box">
-  <custom-button is-stretch title="Опубликовавать предложение"></custom-button>
+  <custom-button is-stretch title="'Опубликовавать предложение'"></custom-button>
 </div>
 
 <div class="component-box">
