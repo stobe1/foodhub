@@ -15,7 +15,7 @@ angular.module('Foodhub')
 
 
     $scope.cart = {
-      isFixed: 0,
+      isFixed: false,
       confirmText: "Подтверждаю корзину",
       confirmUrl: "/confirm",
       onConfirm: function () {
@@ -39,7 +39,7 @@ angular.module('Foodhub')
     $scope.userCard ={
       'name': "Иван Пупкин",
       'listFoodOrders': $scope.listFoodOrders,
-      'isPaid' : 0
+      'isPaid' : false
     };
 
     $scope.isAdmin = 1;
