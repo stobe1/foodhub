@@ -22,7 +22,7 @@ module.exports = {
         image_url: 'http://www.eda.by/data/newfiles/1442784752_55304917.jpg',
         price: 80000,
         shop_id: 2,
-        category_id: 2,
+        category_id: 4,
         external_food_id: '235daJSdj3sjSW',
         created_at: now,
         updated_at: now
