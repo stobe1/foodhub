@@ -2,10 +2,10 @@
 
 module.exports = {
   up: function (queryInterface, Sequelize) {
-    queryInterface.addIndex('users', ['email'])
+    return queryInterface.addIndex('users', ['email'])
   },
 
   down: function (queryInterface, Sequelize) {
-    queryInterface.removeIndex('users', ['email'])
+    return queryInterface.removeIndex('users', ['email'])
   }
 };

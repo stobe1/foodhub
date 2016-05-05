@@ -2,7 +2,7 @@
 
 module.exports = {
   up: function (queryInterface, Sequelize) {
-    queryInterface.createTable(
+    return queryInterface.createTable(
       'food_categories', {
         id: {
           type: Sequelize.INTEGER(11),
