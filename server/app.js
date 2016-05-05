@@ -6,6 +6,7 @@ var parser = require('body-parser');
 var session = require('express-session');
 var config = require('./config/config');
 var routes = require('./routes/routes');
+var errors = require('./errors/errors');
 
 var app = express();
 
@@ -39,6 +40,8 @@ app.use(parser.urlencoded({
 app.use(parser.json());
 
 app.use('/api/v1', routes.router);
+
+app.use(errors.handler);
 
 app.listen(config.serverPort, function() {
   console.log('Server is on ' + config.serverPort + ' port.');
