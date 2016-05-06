@@ -7,18 +7,15 @@ module.exports = function(sequelize, DataTypes) {
       autoIncrement: true
     },
     price: {
-      type: DataTypes.INTEGER(11),
-      allowNull: true
+      type: DataTypes.INTEGER(11)
     },
     isPayed: {
       field: 'is_payed',
-      type: DataTypes.BOOLEAN,
-      allowNull: true
+      type: DataTypes.BOOLEAN
     },
     sessionId: {
       field: 'session_id',
-      type: DataTypes.INTEGER(11),
-      allowNull: true,
+      type: DataTypes.INTEGER(11)
       references: {
         model: 'sessions',
         key: 'id'
@@ -26,8 +23,7 @@ module.exports = function(sequelize, DataTypes) {
     },
     userId: {
       field: 'user_id',
-      type: DataTypes.INTEGER(11),
-      allowNull: true,
+      type: DataTypes.INTEGER(11)
       references: {
         model: 'users',
         key: 'id'
@@ -35,13 +31,11 @@ module.exports = function(sequelize, DataTypes) {
     },
     createdAt: {
       field: 'created_at',
-      type: DataTypes.DATE,
-      allowNull: true
+      type: DataTypes.DATE
     },
     updatedAt: {
       field: 'updated_at',
-      type: DataTypes.DATE,
-      allowNull: true
+      type: DataTypes.DATE
     }
   }, {
     tableName: 'orders'
