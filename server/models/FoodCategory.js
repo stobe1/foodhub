@@ -11,20 +11,7 @@ module.exports = function(sequelize, DataTypes) {
     },
     shopId: {
       field: 'shop_id',
-      type: DataTypes.INTEGER(11),
-      references: {
-        model: 'shops',
-        key: 'id'
-      }
-    },
-    shopId: {
-      field: 'shop_id',
-      type: DataTypes.INTEGER(11),
-      allowNull: true,
-      references: {
-        model: 'shops',
-        key: 'id'
-      }
+      type: DataTypes.INTEGER(11)
     },
     createdAt: {
       field: 'created_at',

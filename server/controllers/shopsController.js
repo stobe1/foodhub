@@ -1,29 +1,40 @@
-exports.index = function(request, response) {
-  response.status(200).json({shops: [
-      {
-        id: 1,
-        name: 'ПиццаТемпо',
-        siteUrl: 'http://pizzatempo.com',
-        logoUrl: 'http://asdasdasd',
-        description: 'Лучшая пицца в Минске',
-        deliveryPrice: 50000,
-        minOrderPrice: 200000,
-        minFreeDeliveryPrice: 300000,
-        deliveryTime: 'понедельник - пятница: 12:00 - 20:00, суббота - воскресенье: 12:00 - 02:00'
-      }, {
-        id: 2,
-        name: 'Еда бай',
-        siteUrl: 'http://eda.by',
-        logoUrl: 'http://asdasdasd',
-        description: 'Лучшая еда в Минске',
-        deliveryPrice: 50000,
-        minOrderPrice: 200000,
-        minFreeDeliveryPrice: 300000,
-        deliveryTime: 'Круглосуточно без выходных!'
-      }
-    ]});
+var errors = require('../errors/errors');
+var models = require('../models/models');
+
+var shortQueryOptions = {
+  attributes: { 
+    exclude: ['createdAt', 'updatedAt'] 
+  }
+}
+
+var fullQueryOptions = {
+  attributes: { 
+    exclude: ['createdAt', 'updatedAt']
+  },
+  include: {
+    model: models.FoodCategory,
+    as: 'categories',
+    attributes: ['id', 'name'],
+    include: {
+      model: models.Food,
+      as: 'foods',
+      attributes: ['id', 'name', 'description', 'imageUrl', 'price']
+    }
+  }
+}
+
+exports.index = function(request, response, next) {
+  models.Shop.all(shortQueryOptions).then(function(shops) {
+    response.status(200).json({ shops: shops });
+  });
 };
 
-exports.show = function(request, response) {
-  response.send('Shops#show');
+exports.show = function(request, response, next) {
+  models.Shop.findById(request.params.id, fullQueryOptions).then(function(shop) {
+    if (shop) {
+      response.status(200).json(shop);
+    } else {
+      return next(new errors.notFound('Shop not found'));
+    }
+  });
 };

@@ -1,6 +1,5 @@
 var errors = require('../errors/errors');
-var db = require('../db');
-var User = db.import('../models/User');
+var models = require('../models/models');
 var _ = require('lodash');
 
 var queryOptions = {
@@ -9,13 +8,13 @@ var queryOptions = {
 var updatedFields = ['firstName', 'lastName', 'email', 'phone', 'paymentOption', 'address', 'avatarUrl'];
 
 exports.index = function(request, response, next) {
-  User.all(queryOptions).then(function(users) {
+  models.User.all(queryOptions).then(function(users) {
     response.status(200).json({ users: users });
   });
 }
 
 exports.show = function(request, response, next) {
-  User.findById(request.params.id, queryOptions).then(function(user) {
+  models.User.findById(request.params.id, queryOptions).then(function(user) {
     if (user) {
       response.status(200).json(user);
     } else {
@@ -25,7 +24,7 @@ exports.show = function(request, response, next) {
 }
 
 exports.update = function(request, response, next) {
-  User.findById(request.body.id, queryOptions).then(function(user) {
+  models.User.findById(request.body.id, queryOptions).then(function(user) {
     if (!user) {
       return next(new errors.notFound('User not found'));
     } else {

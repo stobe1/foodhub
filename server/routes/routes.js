@@ -20,12 +20,12 @@ router.get('/logout', isAuthenticated, authController.logout);
 
 //Users//
 router.get('/users',  isAuthenticated, usersController.index);
-router.get('/users/:id' ,isAuthenticated, validators.validParamsID, usersController.show);
+router.get('/users/:id', isAuthenticated, validators.validParamsID, usersController.show);
 router.put('/users', isAuthenticated, validators.validBodyID, validators.alowedToModifyUser, usersController.update);
 
 //Shops//
 router.get('/shops', isAuthenticated, shopsController.index);
-router.get('/shops/:id', isAuthenticated, shopsController.show);
+router.get('/shops/:id', isAuthenticated, validators.validParamsID, shopsController.show);
 
 //Sessions//
 router.get('/sessions', isAuthenticated, sessionsController.index);

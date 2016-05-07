@@ -22,19 +22,11 @@ module.exports = function(sequelize, DataTypes) {
     },
     shopId: {
       field: 'shop_id',
-      type: DataTypes.INTEGER(11),
-      references: {
-        model: 'shops',
-        key: 'id'
-      }
+      type: DataTypes.INTEGER(11)
     },
     categoryId: {
       field: 'category_id',
-      type: DataTypes.INTEGER(11),
-      references: {
-        model: 'food_categories',
-        key: 'id'
-      }
+      type: DataTypes.INTEGER(11)
     },
     externalFoodId: {
       field: 'external_food_id',
