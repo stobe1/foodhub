@@ -11,22 +11,18 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false
     },
     description: {
-      type: DataTypes.TEXT,
-      allowNull: true
+      type: DataTypes.TEXT
     },
     imageUrl: {
       field: 'image_url',
-      type: DataTypes.TEXT,
-      allowNull: true
+      type: DataTypes.TEXT
     },
     price: {
-      type: DataTypes.INTEGER(11),
-      allowNull: true
+      type: DataTypes.INTEGER(11)
     },
     shopId: {
       field: 'shop_id',
       type: DataTypes.INTEGER(11),
-      allowNull: true,
       references: {
         model: 'shops',
         key: 'id'
@@ -35,7 +31,6 @@ module.exports = function(sequelize, DataTypes) {
     categoryId: {
       field: 'category_id',
       type: DataTypes.INTEGER(11),
-      allowNull: true,
       references: {
         model: 'food_categories',
         key: 'id'
@@ -48,13 +43,11 @@ module.exports = function(sequelize, DataTypes) {
     },
     createdAt: {
       field: 'created_at',
-      type: DataTypes.DATE,
-      allowNull: true
+      type: DataTypes.DATE
     },
     updatedAt: {
       field: 'updated_at',
-      type: DataTypes.DATE,
-      allowNull: true
+      type: DataTypes.DATE
     }
   }, {
     tableName: 'foods'

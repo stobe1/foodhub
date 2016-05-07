@@ -8,64 +8,59 @@ module.exports = function(sequelize, DataTypes) {
     },
     firstName: {
       field: 'first_name',
-      type: DataTypes.STRING,
-      allowNull: true
+      type: DataTypes.STRING
     },
     lastName: {
       field: 'last_name',
-      type: DataTypes.STRING,
-      allowNull: true
+      type: DataTypes.STRING
     },
     email: {
       type: DataTypes.STRING,
-      allowNull: true
+      allowNull: true,
+      validate: {
+        isEmail: true
+      }
     },
     phone: {
-      type: DataTypes.STRING,
-      allowNull: true
+      type: DataTypes.STRING
     },
     paymentOption: {
       field: 'payment_option',
-      type: DataTypes.INTEGER(4),
-      allowNull: true
+      type: DataTypes.INTEGER(4)
     },
     address: {
-      type: DataTypes.TEXT,
-      allowNull: true
+      type: DataTypes.TEXT
     },
     avatarUrl: {
       field: 'avatar_url',
       type: DataTypes.TEXT,
-      allowNull: true
+      allowNull: true,
+      validate: {
+        isUrl: true
+      }
     },
     registrationService: {
       field: 'registration_service',
-      type: DataTypes.INTEGER(11),
-      allowNull: true
+      type: DataTypes.INTEGER(11)
     },
     externalUserId: {
       field: 'external_user_id',
-      type: DataTypes.BIGINT,
-      allowNull: true
+      type: DataTypes.BIGINT
     },
     token: {
-      type: DataTypes.STRING,
-      allowNull: true
+      type: DataTypes.STRING
     },
     tokenExpiresAt: {
       field: 'token_expires_at',
-      type: DataTypes.DATE,
-      allowNull: true
+      type: DataTypes.DATE
     },
     createdAt: {
       field: 'created_at',
-      type: DataTypes.DATE,
-      allowNull: true
+      type: DataTypes.DATE
     },
     updatedAt: {
       field: 'updated_at',
-      type: DataTypes.DATE,
-      allowNull: true
+      type: DataTypes.DATE
     }
   }, {
     tableName: 'users'

@@ -9,7 +9,6 @@ module.exports = function(sequelize, DataTypes) {
     shopId: {
       field: 'shop_id',
       type: DataTypes.INTEGER(11),
-      allowNull: true,
       references: {
         model: 'shops',
         key: 'id'
@@ -17,26 +16,21 @@ module.exports = function(sequelize, DataTypes) {
     },
     orderTime: {
       field: 'order_time',
-      type: DataTypes.DATE,
-      allowNull: true
+      type: DataTypes.DATE
     },
     deliveryTime: {
       field: 'delivery_time',
-      type: DataTypes.DATE,
-      allowNull: true
+      type: DataTypes.DATE
     },
     address: {
-      type: DataTypes.TEXT,
-      allowNull: true
+      type: DataTypes.TEXT
     },
     price: {
-      type: DataTypes.INTEGER(11),
-      allowNull: true
+      type: DataTypes.INTEGER(11)
     },
     userId: {
       field: 'user_id',
       type: DataTypes.INTEGER(11),
-      allowNull: true,
       references: {
         model: 'users',
         key: 'id'
@@ -49,13 +43,11 @@ module.exports = function(sequelize, DataTypes) {
     },
     createdAt: {
       field: 'created_at',
-      type: DataTypes.DATE,
-      allowNull: true
+      type: DataTypes.DATE
     },
     updatedAt: {
       field: 'updated_at',
-      type: DataTypes.DATE,
-      allowNull: true
+      type: DataTypes.DATE
     }
   }, {
     tableName: 'sessions'

@@ -7,8 +7,15 @@ module.exports = function(sequelize, DataTypes) {
       autoIncrement: true
     },
     name: {
-      type: DataTypes.STRING,
-      allowNull: true
+      type: DataTypes.STRING
+    },
+    shopId: {
+      field: 'shop_id',
+      type: DataTypes.INTEGER(11),
+      references: {
+        model: 'shops',
+        key: 'id'
+      }
     },
     shopId: {
       field: 'shop_id',
@@ -21,13 +28,11 @@ module.exports = function(sequelize, DataTypes) {
     },
     createdAt: {
       field: 'created_at',
-      type: DataTypes.DATE,
-      allowNull: true
+      type: DataTypes.DATE
     },
     updatedAt: {
       field: 'updated_at',
-      type: DataTypes.DATE,
-      allowNull: true
+      type: DataTypes.DATE
     }
   }, {
     tableName: 'food_categories'

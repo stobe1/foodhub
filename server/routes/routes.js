@@ -7,6 +7,7 @@ var sessionsController = require('../controllers/sessionsController');
 var ordersController = require('../controllers/ordersController');
 var passport = require('passport');
 var isAuthenticated = require('../middleware/isAuthenticated');
+var validators = require('../middleware/validators');
 
 //Authentication//
 router.get('/login/facebook', authController.loginFacebook);
@@ -18,9 +19,9 @@ router.get('/login/facebook/return',
 router.get('/logout', isAuthenticated, authController.logout);
 
 //Users//
-router.get('/users', isAuthenticated, usersController.index);
-router.get('/users/:id',isAuthenticated, usersController.show);
-router.put('/users', isAuthenticated, usersController.update);
+router.get('/users',  isAuthenticated, usersController.index);
+router.get('/users/:id' ,isAuthenticated, validators.validParamsID, usersController.show);
+router.put('/users', isAuthenticated, validators.validBodyID, validators.alowedToModifyUser, usersController.update);
 
 //Shops//
 router.get('/shops', isAuthenticated, shopsController.index);
