@@ -21,11 +21,7 @@ module.exports = function(sequelize, DataTypes) {
     },
     orderId: {
       field: 'order_id',
-      type: DataTypes.INTEGER(11),
-      references: {
-        model: 'orders',
-        key: 'id'
-      }
+      type: DataTypes.INTEGER(11)
     },
     createdAt: {
       field: 'created_at',

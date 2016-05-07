@@ -12,26 +12,46 @@ module.exports = function(sequelize, DataTypes) {
     },
     siteUrl: {
       field: 'site_url',
-      type: DataTypes.TEXT
+      type: DataTypes.TEXT,
+      allowNull: true,
+      validate: {
+        isUrl: true
+      }
     },
     logoUrl: {
       field: 'logo_url',
-      type: DataTypes.TEXT
+      type: DataTypes.TEXT,
+      allowNull: true,
+      validate: {
+        isUrl: true
+      }
     },
     description: {
       type: DataTypes.TEXT
     },
     deliveryPrice: {
       field: 'delivery_price',
-      type: DataTypes.INTEGER(11)
+      type: DataTypes.INTEGER(11),
+      allowNull: true,
+      validate: {
+        min: 0
+      }
     },
     minOrderPrice: {
       field: 'min_order_price',
-      type: DataTypes.INTEGER(11)
+      type: DataTypes.INTEGER(11),
+      allowNull: true,
+      validate: {
+        min: 0
+      }
     },
-    minFreeDeliveryTime: {
+    minFreeDeliveryPrice: {
       field: 'min_free_delivery_price',
-      type: DataTypes.INTEGER(11)
+      type: DataTypes.INTEGER(11),
+      allowNull: true,
+      validate: {
+        min: 0
+      }
     },
     deliveryTime: {
       field: 'delivery_time',

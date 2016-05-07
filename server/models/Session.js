@@ -30,11 +30,7 @@ module.exports = function(sequelize, DataTypes) {
     },
     userId: {
       field: 'user_id',
-      type: DataTypes.INTEGER(11),
-      references: {
-        model: 'users',
-        key: 'id'
-      }
+      type: DataTypes.INTEGER(11)
     },
     status: {
       type: DataTypes.INTEGER(4),

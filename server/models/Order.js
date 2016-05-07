@@ -16,18 +16,10 @@ module.exports = function(sequelize, DataTypes) {
     sessionId: {
       field: 'session_id',
       type: DataTypes.INTEGER(11)
-      references: {
-        model: 'sessions',
-        key: 'id'
-      }
     },
     userId: {
       field: 'user_id',
       type: DataTypes.INTEGER(11)
-      references: {
-        model: 'users',
-        key: 'id'
-      }
     },
     createdAt: {
       field: 'created_at',
