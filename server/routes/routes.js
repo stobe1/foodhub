@@ -19,7 +19,7 @@ router.get('/login/facebook/return',
 router.get('/logout', isAuthenticated, authController.logout);
 
 //Users//
-router.get('/users',  isAuthenticated, usersController.index);
+router.get('/users', isAuthenticated, usersController.index);
 router.get('/users/:id', isAuthenticated, validators.validParamsID, usersController.show);
 router.put('/users', isAuthenticated, validators.validBodyID, validators.alowedToModifyUser, usersController.update);
 
@@ -29,12 +29,11 @@ router.get('/shops/:id', isAuthenticated, validators.validParamsID, shopsControl
 
 //Sessions//
 router.get('/sessions', isAuthenticated, sessionsController.index);
-router.get('/sessions/:id', isAuthenticated, sessionsController.show);
+router.get('/sessions/:id', isAuthenticated, validators.validParamsID, sessionsController.show);
 router.post('/sessions', isAuthenticated, sessionsController.create);
-router.put('/sessions', isAuthenticated, sessionsController.update);
+router.put('/sessions', isAuthenticated, validators.validBodyID, sessionsController.update);
 
 //Orders//
-
 router.post('/orders', isAuthenticated, ordersController.create);
 router.put('/orders', isAuthenticated, ordersController.update);
 router.delete('/orders', isAuthenticated, ordersController.delete);

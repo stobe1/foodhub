@@ -8,11 +8,7 @@ module.exports = function(sequelize, DataTypes) {
     },
     shopId: {
       field: 'shop_id',
-      type: DataTypes.INTEGER(11),
-      references: {
-        model: 'shops',
-        key: 'id'
-      }
+      type: DataTypes.INTEGER(11)
     },
     orderTime: {
       field: 'order_time',
@@ -26,7 +22,11 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.TEXT
     },
     price: {
-      type: DataTypes.INTEGER(11)
+      type: DataTypes.INTEGER(11),
+      allowNull: true,
+      validate: {
+        min: 0
+      }
     },
     userId: {
       field: 'user_id',

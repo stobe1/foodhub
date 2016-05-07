@@ -13,11 +13,7 @@ module.exports = function(sequelize, DataTypes) {
     },
     foodId: {
       field: 'food_id',
-      type: DataTypes.INTEGER(11),
-      references: {
-        model: 'foods',
-        key: 'id'
-      }
+      type: DataTypes.INTEGER(11)
     },
     orderId: {
       field: 'order_id',
