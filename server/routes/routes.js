@@ -34,8 +34,8 @@ router.post('/sessions', isAuthenticated, sessionsController.create);
 router.put('/sessions', isAuthenticated, validators.validBodyID, sessionsController.update);
 
 //Orders//
-router.post('/orders', isAuthenticated, ordersController.create);
-router.put('/orders', isAuthenticated, ordersController.update);
-router.delete('/orders', isAuthenticated, ordersController.delete);
+router.post('/orders', isAuthenticated, validators.validBodySessionID, ordersController.create);
+router.put('/orders', isAuthenticated, validators.validBodyID, ordersController.update);
+router.delete('/orders/:id', isAuthenticated, validators.validParamsID, ordersController.delete);
 
 exports.router = router;
