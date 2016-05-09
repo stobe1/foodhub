@@ -7,7 +7,11 @@ module.exports = function(sequelize, DataTypes) {
       autoIncrement: true
     },
     price: {
-      type: DataTypes.INTEGER(11)
+      type: DataTypes.INTEGER(11),
+      allowNull: true,
+      validate: {
+        min: 0
+      }
     },
     isPayed: {
       field: 'is_payed',

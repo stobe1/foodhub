@@ -3,13 +3,22 @@ module.exports = function(sequelize, DataTypes) {
     id: {
       type: DataTypes.INTEGER(11),
       allowNull: false,
-      primaryKey: true
+      primaryKey: true,
+      autoIncrement: true
     },
     price: {
-      type: DataTypes.INTEGER(11)
+      type: DataTypes.INTEGER(11),
+      allowNull: true,
+      validate: {
+        min: 0
+      }
     },
     quantity: {
-      type: DataTypes.INTEGER(11)
+      type: DataTypes.INTEGER(11),
+      allowNull: true,
+      validate: {
+        min: 0
+      }
     },
     foodId: {
       field: 'food_id',

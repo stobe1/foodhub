@@ -16,6 +16,14 @@ exports.validBodyID = function (req, res, next) {
   }
 }
 
+exports.validBodySessionID = function (req, res, next) {
+  if (isNaN(Number(req.body.sessionId))) {
+    return next(new errors.badRequest('SessionID is invalid or missing'));
+  } else {
+    return next();
+  }
+}
+
 exports.alowedToModifyUser = function (req, res, next) {
   if (req.user.id !== Number(req.body.id)) {
     return next(new errors.forbidden('You are not allowed to update this user'));
