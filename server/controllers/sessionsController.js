@@ -24,7 +24,7 @@ var fullQueryOptions = {
   }, {
     model: models.Order,
     as: 'orders',
-    attributes: ['id', 'isPayed', 'price'],
+    attributes: ['id', 'isPaid', 'price'],
     include: [{
       model: models.User,
       as: 'owner',

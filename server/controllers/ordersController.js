@@ -4,7 +4,7 @@ var db = require('../db');
 var _ = require('lodash');
 
 var fullQueryOptions = {
-  attributes: ['id', 'isPayed', 'price', 'sessionId'],
+  attributes: ['id', 'isPaid', 'price', 'sessionId'],
   include: [{
     model: models.User,
     as: 'owner',
@@ -51,7 +51,7 @@ exports.create = function(request, response, next) {
       sessionId: sourceSession.id,
       userId: request.user.id,
       price: orderPrice,
-      isPayed: false
+      isPaid: false
     }
     return models.Order.create(newOrder, { isNewRecord: true });
   }).then(function(order) {
@@ -111,7 +111,7 @@ exports.update = function(request, response, next) { //TODO: add transaction
         return _.find(foods, { id: foodOrder.foodId }).price * foodOrder.quantity; //TODO: optimize for better perfomance
       }
     );
-    sourceOrder.updateAttributes({ isPayed: request.body.isPayed, price: orderPrice });
+    sourceOrder.updateAttributes({ isPaid: request.body.isPaid, price: orderPrice });
     return sourceOrder.save();
   }).then(function(order) {                                                             // 4. Updating order
     return models.FoodOrder.destroy({ where: { orderId: order.id } });
