@@ -1,10 +1,10 @@
 <div class="session-list">
   <div class="session-list__row" ng-repeat="session in sessionList">
     <div class="session-list__col session-list__col_service">
-      <a ng-href="{{session.deliveryUrl}}"><img class="session-list__service-img" alt="Логотип службы доставки" ng-src="{{session.image}}"></a>
+      <a target="_blank" ng-href="{{session.deliveryUrl}}"><img class="session-list__service-img" alt="Логотип службы доставки" ng-src="{{session.image}}"></a>
     </div>
     <div class="session-list__col session-list__col_desc">
-      <span class="session-list__new-line session-list__title"><a ng-href="{{session.deliveryUrl}}" ng-bind="session.deliveryUrl"></a></span>
+      <span class="session-list__new-line session-list__title"><a target="_blank" ng-href="{{session.deliveryUrl}}" ng-bind="session.deliveryUrl"></a></span>
       <div class="session-list__hide-on-mobile">
         <div class="session-list__new-line">
           <span class="session-list__label">Время работы: </span>
@@ -41,7 +41,7 @@
       </div>
     </div>
     <div class="session-list__col session-list__col_button">
-      <a href="/session_page_users.html" class="button">Просмотреть</a>
+      <a href="/#/session" class="button">Просмотреть</a>
     </div>
   </div>
 </div>
