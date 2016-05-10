@@ -26,15 +26,18 @@ var fullQueryOptions = {
 exports.index = function(request, response, next) {
   models.Shop.all(shortQueryOptions).then(function(shops) {
     response.status(200).json({ shops: shops });
+  }).catch(function(error) {
+    return next(error);
   });
 };
 
 exports.show = function(request, response, next) {
   models.Shop.findById(request.params.id, fullQueryOptions).then(function(shop) {
-    if (shop) {
-      response.status(200).json(shop);
-    } else {
-      return next(new errors.notFound('Shop not found'));
+    if (!shop) {
+      throw new errors.notFound('Shop not found');
     }
+    response.status(200).json(shop);
+  }).catch(function(error) {
+    return next(error);
   });
 };

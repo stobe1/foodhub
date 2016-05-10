@@ -7,6 +7,7 @@ var session = require('express-session');
 var config = require('./config/config');
 var routes = require('./routes/routes');
 var errors = require('./errors/errors');
+var stubAuth = require('./middleware/stubAuth');
 
 var app = express();
 
@@ -38,6 +39,8 @@ app.use(parser.urlencoded({
 }));
 
 app.use(parser.json());
+
+//app.use(stubAuth);
 
 app.use('/api/v1', routes.router);
 
