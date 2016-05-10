@@ -1,5 +1,5 @@
 angular.module('Foodhub')
-  .directive('quantityInput', function () {
+  .directive('quantityInput', function() {
     return {
       template: require('./quantity-input.html'),
       replace: true,
@@ -8,12 +8,12 @@ angular.module('Foodhub')
       scope: {},
       link: function($scope, $element, $attrs, ngModel) {
 
-        $scope.increaseCount = function () {
+        $scope.increaseCount = function() {
           $scope.foodCounter += 1;
           ngModel.$setViewValue($scope.foodCounter);
         };
 
-        $scope.decreaseCount = function () {
+        $scope.decreaseCount = function() {
           if ($scope.foodCounter > 0) {
             $scope.foodCounter -= 1;
             ngModel.$setViewValue($scope.foodCounter);

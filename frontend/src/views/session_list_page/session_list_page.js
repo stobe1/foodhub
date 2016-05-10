@@ -8,7 +8,7 @@ angular.module('Foodhub')
       var hours = (diff - diff % 3600000) / (3600000);
       var minutes = Math.round((diff - hours * 3600000) / 60000);
       return hours + ' часов ' + minutes + ' минут';
-    }
+    };
 
     $scope.getSessions = function() {
       return _.map($scope.sessions, function(session) {
@@ -23,9 +23,9 @@ angular.module('Foodhub')
           orderTimeLeft: $scope.getDifferenceString(new Date(session.orderTime), new Date()),
           totalPrice: session.price,
           priceLeft: session.price < shop.minOrderPrice ? shop.minOrderPrice - session.price : 0
-        }
+        };
       });
-    }
+    };
 
     $scope.init = function() {
       $rootScope.getShops().then(function(shops) {
@@ -35,7 +35,7 @@ angular.module('Foodhub')
         $scope.sessions = responce.sessions;
         $scope.mappedSessions = $scope.getSessions();
       });
-    }
+    };
 
     $scope.init();
   }]);

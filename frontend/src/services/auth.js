@@ -9,10 +9,10 @@ angular.module('Foodhub')
         }
       }
     });
-    
+
     return {
-      logout: function (params) {
+      logout: function(params) {
         return resource.logout(params).$promise;
       }
-    }
+    };
   }]);

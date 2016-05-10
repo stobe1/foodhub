@@ -15,6 +15,6 @@ angular.module('Foodhub')
       if (this.onChange) {
         this.onChange();
       }
-    }
+    };
   }
-})
+});

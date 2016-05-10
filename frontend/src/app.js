@@ -43,17 +43,17 @@ function appConfig($routeProvider, $httpProvider) {
 
 appConfig.$inject = ['$routeProvider', '$httpProvider'];
 
-function appRun ($rootScope, Shops, $timeout) {
+function appRun($rootScope, Shops, $timeout) {
   $rootScope.getShops = function() {
     if ($rootScope.shops) {
-      return $timeout(function() { return $rootScope.shops });
+      return $timeout(function() { return $rootScope.shops; });
     } else {
       return Shops.getShops().then(function(responce) {
         $rootScope.shops = responce.shops;
         return responce.shops;
       });
     }
-  }
+  };
 }
 
 appRun.$inject = ['$rootScope', 'Shops', '$timeout'];
@@ -92,4 +92,4 @@ require('./services/sessions');
 require('./services/auth');
 require('./filters/money_filter');
 require('./filters/timeFilter');
-require('./components/form/form')
+require('./components/form/form');

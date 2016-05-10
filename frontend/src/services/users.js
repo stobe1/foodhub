@@ -20,16 +20,16 @@ angular.module('Foodhub')
     });
 
     return {
-      getUsers: function (params) {
+      getUsers: function(params) {
         return resource.index(params).$promise;
       },
 
-      getUser: function (params) {
+      getUser: function(params) {
         return resource.show(params).$promise;
       },
 
-      updateUser: function (params) {
+      updateUser: function(params) {
         return resource.update(params).$promise;
       }
-    }
+    };
   }]);

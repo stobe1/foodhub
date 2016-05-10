@@ -17,12 +17,12 @@ angular.module('Foodhub')
     });
 
     return {
-      getShops: function (params) {
+      getShops: function(params) {
         return resource.index(params).$promise;
       },
 
-      getShop: function (params) {
+      getShop: function(params) {
         return resource.show(params).$promise;
       }
-    }
+    };
   }]);

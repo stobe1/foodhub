@@ -6,5 +6,5 @@ angular.module('Foodhub')
     mailValue: '=?',
     paytypeValue: '=?'
   },
-  template: require('./form.html'), 
-})
+  template: require('./form.html'),
+});
