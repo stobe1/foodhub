@@ -13,8 +13,8 @@ module.exports = function(sequelize, DataTypes) {
         min: 0
       }
     },
-    isPayed: {
-      field: 'is_payed',
+    isPaid: {
+      field: 'is_paid',
       type: DataTypes.BOOLEAN
     },
     sessionId: {

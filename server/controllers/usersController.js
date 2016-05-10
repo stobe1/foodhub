@@ -10,32 +10,34 @@ var updatedFields = ['firstName', 'lastName', 'email', 'phone', 'paymentOption',
 exports.index = function(request, response, next) {
   models.User.all(queryOptions).then(function(users) {
     response.status(200).json({ users: users });
+  }).catch(function(error) {
+    return next(error);
   });
 }
 
 exports.show = function(request, response, next) {
   models.User.findById(request.params.id, queryOptions).then(function(user) {
-    if (user) {
-      response.status(200).json(user);
-    } else {
-      return next(new errors.notFound('User not found'));
+    if (!user) {
+      throw new errors.notFound('User not found');
     }
+    response.status(200).json(user);
+  }).catch(function(error) {
+    return next(error);
   });
 }
 
 exports.update = function(request, response, next) {
   models.User.findById(request.body.id, queryOptions).then(function(user) {
     if (!user) {
-      return next(new errors.notFound('User not found'));
-    } else {
-      return user;
-    }    
+      throw new errors.notFound('User not found');
+    }
+    return user;
   }).then(function(user) {
     user.updateAttributes(_.pick(request.body, updatedFields));
     return user.save();
   }).then(function(user) {
     response.status(200).json(user);
   }).catch(function(error) {
-    return next(new errors.badRequest(error.message));
-  });;
+    return next(error);
+  });
 }

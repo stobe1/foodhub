@@ -4,7 +4,7 @@ var db = require('../db');
 var _ = require('lodash');
 
 var fullQueryOptions = {
-  attributes: ['id', 'isPayed', 'price', 'sessionId'],
+  attributes: ['id', 'isPaid', 'price', 'sessionId'],
   include: [{
     model: models.User,
     as: 'owner',
@@ -27,35 +27,33 @@ exports.create = function(request, response, next) {
   var sourceFoods;
   models.Session.findById(request.body.sessionId).then(function(session) { //TODO: add transaction
     sourceSession = session;
-    if (session) {
-      var foodOptions = {
-        attributes: ['id', 'price'],
-        where: { shopId: session.shopId }
-      }
-      return models.Food.all(foodOptions);
-    } else {
-      return next(new errors.notFound('There is no session with this ID'));
+    if (!session) {
+      throw new errors.notFound('There is no session with this ID');
     }
+    var foodOptions = {
+      attributes: ['id', 'price'],
+      where: { shopId: session.shopId }
+    }
+    return models.Food.all(foodOptions);
   }).then(function(foods) {
     sourceFoods = foods;
     var foodIds = _.map(foods, 'id');
     var ordersFoodIds = _.map(request.body.foodOrders, 'foodId');
-    if (_.difference(ordersFoodIds, foodIds).length === 0) {
-      var orderPrice = _.sumBy(request.body.foodOrders,
-        function(foodOrder) { 
-          return _.find(foods, { id: foodOrder.foodId }).price * foodOrder.quantity; //TODO: optimize for better perfomance
-        }
-      );
-      var newOrder = {
-        sessionId: sourceSession.id,
-        userId: request.user.id,
-        price: orderPrice,
-        isPayed: false
-      }
-      return models.Order.create(newOrder, { isNewRecord: true });
-    } else {
-      return next(new errors.badRequest('You can add only food from shop ' + sourceSession.shopId));
+    if (_.difference(ordersFoodIds, foodIds).length !== 0) {
+      throw new errors.badRequest('You can add only food from shop ' + sourceSession.shopId);
     }
+    var orderPrice = _.sumBy(request.body.foodOrders,
+      function(foodOrder) { 
+        return _.find(foods, { id: foodOrder.foodId }).price * foodOrder.quantity; //TODO: optimize for better perfomance
+      }
+    );
+    var newOrder = {
+      sessionId: sourceSession.id,
+      userId: request.user.id,
+      price: orderPrice,
+      isPaid: false
+    }
+    return models.Order.create(newOrder, { isNewRecord: true });
   }).then(function(order) {
     sourceOrder = order;
     var newFoodOrdersPromises = _.map(request.body.foodOrders, function(foodOrder) {
@@ -77,7 +75,7 @@ exports.create = function(request, response, next) {
   }).then(function(order) {
     response.status(201).json(order);
   }).catch(function(error) {
-    return next(new errors.badRequest(error.message));
+    return next(error);
   });
 };
 
@@ -89,6 +87,9 @@ exports.update = function(request, response, next) { //TODO: add transaction
     sourceOrder = order;
     if (!order) {
       throw new errors.notFound('There is no order with this ID');
+    }
+    if (order.owner.id !== request.user.id) {
+      throw new errors.forbidden('You are not allowed to update this order');
     }
     return models.Session.findById(order.sessionId);
   }).then(function(session) {                                                        // 2. Getting session
@@ -110,7 +111,7 @@ exports.update = function(request, response, next) { //TODO: add transaction
         return _.find(foods, { id: foodOrder.foodId }).price * foodOrder.quantity; //TODO: optimize for better perfomance
       }
     );
-    sourceOrder.updateAttributes({ isPayed: request.body.isPayed, price: orderPrice });
+    sourceOrder.updateAttributes({ isPaid: request.body.isPaid, price: orderPrice });
     return sourceOrder.save();
   }).then(function(order) {                                                             // 4. Updating order
     return models.FoodOrder.destroy({ where: { orderId: order.id } });
@@ -142,17 +143,15 @@ exports.delete = function(request, response, next) {
   var sourceOrder;
   models.Order.findById(request.params.id, fullQueryOptions).then(function(order) {
     sourceOrder = order;
-    if (order) {
-      return models.Session.findById(order.sessionId);
-    } else {
+    if (!order) {
       throw new errors.notFound('There is no order with this ID');
     }
+    return models.Session.findById(order.sessionId);
   }).then(function(session) {
-    if (session.userId === request.user.id || sourceOrder.userId === request.user.id) {
-      return models.Order.destroy({ where: { id: sourceOrder.id } });
-    } else {
+    if (session.userId !== request.user.id && sourceOrder.owner.id !== request.user.id) {
       throw new errors.forbidden('You are not allowed to delete this order');
     }
+    return models.Order.destroy({ where: { id: sourceOrder.id } });
   }).then(function(result) {
     response.status(200).json(sourceOrder);
   }).catch(function(error) {

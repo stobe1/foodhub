@@ -7,7 +7,7 @@ module.exports = {
       { 
         id: 1,
         price: 100000,
-        is_payed: true,
+        is_paid: true,
         session_id: 1,
         user_id: 1,
         created_at: now,
@@ -15,7 +15,7 @@ module.exports = {
       }, {
         id: 2,
         price: 50000,
-        is_payed: false,
+        is_paid: false,
         session_id: 1,
         user_id: 2,
         created_at: now,
@@ -23,7 +23,7 @@ module.exports = {
       }, { 
         id: 3,
         price: 100000,
-        is_payed: true,
+        is_paid: true,
         session_id: 2,
         user_id: 1,
         created_at: now,
@@ -31,7 +31,7 @@ module.exports = {
       }, {
         id: 4,
         price: 50000,
-        is_payed: false,
+        is_paid: false,
         session_id: 2,
         user_id: 2,
         created_at: now,
