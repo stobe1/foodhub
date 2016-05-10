@@ -21,22 +21,22 @@ angular.module('Foodhub')
         method: 'PUT'
       }
     });
-    
+
     return {
-      getSessions: function (params) {
+      getSessions: function(params) {
         return resource.index(params).$promise;
       },
 
-      getSession: function (params) {
+      getSession: function(params) {
         return resource.show(params).$promise;
       },
 
-      updateSession: function (params) {
+      updateSession: function(params) {
         return resource.update(params).$promise;
       },
 
-      createSession: function (params) {
+      createSession: function(params) {
         return resource.create(params).$promise;
       }
-    }
+    };
   }]);

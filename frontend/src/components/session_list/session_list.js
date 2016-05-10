@@ -1,5 +1,5 @@
 angular.module('Foodhub')
-  .directive('sessionList', function () {
+  .directive('sessionList', function() {
     return {
       template: require('./session_list.html'),
       replace: true,

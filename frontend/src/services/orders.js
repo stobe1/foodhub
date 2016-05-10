@@ -17,16 +17,16 @@ angular.module('Foodhub')
     });
 
     return {
-      updateOrder: function (params) {
+      updateOrder: function(params) {
         return resource.update(params).$promise;
       },
 
-      createOrder: function (params) {
+      createOrder: function(params) {
         return resource.create(params).$promise;
       },
 
-      destroyOrder: function (params) {
+      destroyOrder: function(params) {
         return resource.destroy(params).$promise;
       }
-    }
+    };
   }]);
