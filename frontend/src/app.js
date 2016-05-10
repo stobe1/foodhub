@@ -16,7 +16,7 @@ function appConfig($routeProvider, $httpProvider) {
       controller: 'UserPageController'
     })
 
-    .when('/order', {
+    .when('/order/:id', {
       template : require('./views/last_page/last_page.html'),
       controller: 'LastPageController'
     })
