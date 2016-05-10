@@ -81,12 +81,25 @@ angular.module('Foodhub')
 
     //Users//
     var user = {
-      firstName: 'Homer',
+      id: 1,
+      firstName: 'Homer22',
       lastName: 'Simpson',
-      email: 'homersimpson.gmail.com'
+      email: 'homersimpson@gmail.com'
     }
 
-    Users.updateUser(user).then(function(response) {
-      console.log(response);
+    // Orders.createOrder({ sessionId: 3, foodOrders: [{foodId: 1, quantity: 10}, {foodId: 1, quantity: 3}] }).then(function(response) {
+    //   console.log(response);
+    // });
+
+    // Orders.destroyOrder({id: 20}).then(function(order) {
+    //   console.log(order);
+    // });
+
+    // Sessions.getSession({id: 3}).then(function(session) {
+    //   console.log(session);
+    // });
+
+    Orders.destroyOrder({id: 24}).then(function(order) {
+      console.log(order);
     });
 }]);
