@@ -2,13 +2,13 @@ var errors = require('../errors/errors');
 var models = require('../models/models');
 
 var shortQueryOptions = {
-  attributes: { 
-    exclude: ['createdAt', 'updatedAt'] 
+  attributes: {
+    exclude: ['createdAt', 'updatedAt']
   }
 }
 
 var fullQueryOptions = {
-  attributes: { 
+  attributes: {
     exclude: ['createdAt', 'updatedAt']
   },
   include: {

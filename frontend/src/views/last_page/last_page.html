@@ -10,72 +10,21 @@
     </div>
 
     <div class="last-page__part last-page__part_big">
-      <h2 class="last-page__block-title">Вcе товары (<span class="last-page__whole-price">550 000</span>)</h2>
-
-      <div class="checkout-card">
+      <h2 class="last-page__block-title">Вcе товары (<span class="last-page__whole-price">{{session.price}}</span>)</h2>
+      <div class="checkout-card" ng-repeat="(key, value) in foodInfo">
         <div class="checkout-card__food">
           <food-order
-            image="listFoodOrders[0].image"
-            food-counter="listFoodOrders[0].foodCounter"
-            price="listFoodOrders[0].price"
-            title="listFoodOrders[0].title"
-            on-delete="dropOrder(listFoodOrders[0])">
+            image="value.image"
+            food-counter="value.counter"
+            price="value.price"
+            title="key">
           </food-order>
         </div>
         <div class="checkout-card__people">
           <span class="checkout-card__bold-text">Заказали:</span>
-          <span class="checkout-card__names">Иван Мороз(x1), Михаил Савич(x2)</span>
+          <span class="checkout-card__names">{{value.orderedBy}}</span>
         </div>
       </div>
-
-      <div class="checkout-card">
-        <div class="checkout-card__food">
-          <food-order
-            image="listFoodOrders[1].image"
-            food-counter="listFoodOrders[1].foodCounter"
-            price="listFoodOrders[1].price"
-            title="listFoodOrders[1].title"
-            on-delete="dropOrder(listFoodOrders[1])">
-          </food-order>
-        </div>
-        <div class="checkout-card__people">
-          <span class="checkout-card__bold-text">Заказали:</span>
-          <span class="checkout-card__names">Михаил Савич(x2)</span>
-        </div>
-      </div>
-
-      <div class="checkout-card">
-        <div class="checkout-card__food">
-          <food-order
-            image="listFoodOrders[2].image"
-            food-counter="listFoodOrders[2].foodCounter"
-            price="listFoodOrders[2].price"
-            title="listFoodOrders[2].title"
-            on-delete="dropOrder(listFoodOrders[2])">
-          </food-order>
-        </div>
-        <div class="checkout-card__people">
-          <span class="checkout-card__bold-text">Заказали:</span>
-          <span class="checkout-card__names">Иван Мороз(x1), Михаил Савич(x2)</span>
-        </div>
-      </div>
-
-      <div class="checkout-card">
-        <div class="checkout-card__food">
-          <food-order
-            image="listFoodOrders[3].image"
-            food-counter="listFoodOrders[3].foodCounter"
-            price="listFoodOrders[3].price"
-            title="listFoodOrders[3].title"
-            on-delete="dropOrder(listFoodOrders[3])">
-          </food-order>
-        </div>
-        <div class="checkout-card__people">
-          <span class="checkout-card__bold-text">Заказали: </span>
-          <span class="checkout-card__names">Иван Мороз(x1), Михаил Савич(x2), Григорий Пенский(x1), Григорий Пенский(x1)</span>
-        </div>
-      </div>
-
     </div>
 
     <div class="last-page__footer">
