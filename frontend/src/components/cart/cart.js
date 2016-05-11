@@ -1,51 +1,38 @@
-const angular = require('angular');
-const templateHtml = require('./cart.html');
+var angular = require('angular');
+var _ = require('lodash');
 
 angular.module('Foodhub').component('cart', {
-    bindings: {
-      isFixed: '<',
-      confirmText: '<',
-      confirmUrl: '<',
-      onConfirm: '&',
-      cancelText: '<',
-      cancelUrl: '<',
-      onCancel: '&',
-      canChangeOrders: '<',
-      listFoodOrders : '=',
-      onDeleteOrder: '&',
-    },
+  bindings: {
+    isFixed: '<',
+    onConfirm: '&',
+    order : '='
+  },
 
-    template: templateHtml,
+  template: require('./cart.html'),
 
-    controller: function cartController() {
+  controller: function cartController() {
+    this.confirmText = "Подтвердить";
+    this.cancelText = "Отменить";
 
-      this.getTotalPrice = function () {
-        let price = 0;
+    this.getTotalPrice = function() {
+      if (!this.order) return 0;
+      this.order.price = _.sumBy(this.order.foodOrders, function(foodOrder) { return foodOrder.price * foodOrder.quantity });
+      return this.order.price;
+    };
 
-        function getOrderTotalPrice(foodOrder) {
-          price += foodOrder.price * foodOrder.foodCounter;
-        }
+    this.clickCancelBtn = function () {
+      if (!this.order) return;
+      this.order.foodOrders = [];
+    };
 
-        this.listFoodOrders.forEach(getOrderTotalPrice);
+    this.clickConfirmBtn = function () {
+      if (!this.order) return;
+      this.onConfirm()(this.order);
+    };
 
-        return price;
-      };
-
-      this.clickCancelBtn = function () {
-        this.onCancel();
-      };
-
-      this.clickConfirmBtn = function () {
-        this.onConfirm();
-      };
-
-      this.deleteOrder = function (orderForDelete) {
-        var index = this.listFoodOrders.indexOf(orderForDelete);
-
-        if (index !== -1) {
-          this.listFoodOrders.splice(index, 1);
-          this.onDeleteOrder();
-        }
-      };
-    },
+    this.deleteOrder = function (index) {
+      if (!this.order) return;
+      this.order.foodOrders.splice(index, 1);
+    }
+  }
 });

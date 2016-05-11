@@ -4,7 +4,7 @@ angular.module('Foodhub')
   .controller('SessionListPageController', ['$scope', 'Sessions', '$rootScope', '$filter', function($scope, Sessions, $rootScope, $filter) {
 
     $scope.getDifferenceString = function(date1, date2) {
-      var diff = Math.abs(date2 - date1);
+      var diff = date1 - date2;
       var hours = (diff - diff % 3600000) / (3600000);
       var minutes = Math.round((diff - hours * 3600000) / 60000);
       return hours + ' часов ' + minutes + ' минут';

@@ -1,31 +1,19 @@
 const angular = require('angular');
-const templateHtml = require('./product_card.html');
 
 angular.module('Foodhub').component('productCard', {
   bindings: {
-    isAdded: '=',
-    title: '<',
-    text: '<',
-    image: '<',
-    price: '<',
-    foodCounter: '=',
+    isAdded: '<',
     onAdd: '&',
-    onDelete: '&',
+    food: '<'
   },
 
-  template: templateHtml,
+  template: require('./product_card.html'),
 
   controller: function productCardController() {
+    this.quantity = 1;
     this.clickAddBtn = function clickAddBtn() {
-      this.isAdded = true;
-      this.foodCounter = (this.foodCounter > 0) ? this.foodCounter : 1;
-      this.onAdd();
-    };
-
-    this.clickDeleteBtn = function clickDeleteBtn() {
-      this.isAdded = false;
-      this.foodCounter = 0;
-      this.onDelete();
+      this.quantity = (this.quantity > 0) ? this.quantity : 1;
+      this.onAdd()(this.food, this.quantity);
     };
   },
 });

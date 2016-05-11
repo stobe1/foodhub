@@ -6,13 +6,13 @@
   <div class="cart__food-list">
     <div class="cart__food">
       <food-order 
-        ng-repeat="itemFoodOrder in $ctrl.listFoodOrders track by $index"
-        image="itemFoodOrder.image"
-        food-counter="itemFoodOrder.foodCounter"
-        price="itemFoodOrder.price"
-        title="itemFoodOrder.title"
-        can-change-orders="$ctrl.canChangeOrders"
-        on-delete="$ctrl.deleteOrder(itemFoodOrder)">
+        ng-repeat="foodOrder in $ctrl.order.foodOrders track by $index"
+        image="foodOrder.imageUrl"
+        food-counter="foodOrder.quantity"
+        price="foodOrder.price"
+        title="foodOrder.name"
+        can-change-orders="true"
+        on-delete="$ctrl.deleteOrder($index)">
       </food-order>
     </div>
   </div>
@@ -20,10 +20,8 @@
     <div class="cart__confirm-button">
       <custom-button 
         is-stretch
-        ng-show="$ctrl.confirmText"
         ng-click="$ctrl.clickConfirmBtn()"
-        title="$ctrl.confirmText"
-        href="$ctrl.confirmUrl">
+        title="$ctrl.confirmText">
       </custom-button>
     </div>
 
@@ -31,10 +29,8 @@
       <custom-button
         is-transparent
         is-stretch
-        ng-show="$ctrl.cancelText"
         ng-click="$ctrl.clickCancelBtn()"
-        title="$ctrl.cancelText"
-        href="$ctrl.cancelUrl">
+        title="$ctrl.cancelText">
       </custom-button>
     </div>
   </div>

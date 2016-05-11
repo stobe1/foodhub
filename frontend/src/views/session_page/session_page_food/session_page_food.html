@@ -1,14 +1,19 @@
-//= ../session_info/session_info.html
+<session-info title="sessionInfoTitle" session="session" shops="shops" readonly="!isNewSession"></session-info>
 
 <div class="main-content__column">
   <div class="session-page">
-    <div class="session-page__content">
-      <div class="session-page__col-big">
-        //= session_page_food_content.html
+    <div class="session-page__col-big">
+      <div class="session-page__header">
+        <h2 class="session-page__header-title">Список товаров для заказа</h2>
       </div>
-      <div class="session-page__col-small">
-        //= ../cart/cart.html
-      </div>
+      <menu-tabs>
+        <menu-pane class="session-page__category" ng-repeat="category in selectedShop.categories track by $index" title="{{category.name}}">
+          <product-card  class="session-page__food-card" ng-repeat="food in category.foods track by $index" food="food" is-added="isFoodAdded()" on-add="addFoodToCart"></product-card>
+        </menu-pane>
+      </menu-tabs>
+    </div>
+    <div class="session-page__col-small">
+      <cart is-fixed="false" on-confirm="saveOrder" order="order"></cart>
     </div>
   </div>
 </div>
