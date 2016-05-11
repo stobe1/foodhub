@@ -7,10 +7,10 @@
     <div class="cart__food">
       <food-order 
         ng-repeat="foodOrder in $ctrl.order.foodOrders track by $index"
-        image="foodOrder.imageUrl"
+        image="foodOrder.food.imageUrl"
         food-counter="foodOrder.quantity"
-        price="foodOrder.price"
-        title="foodOrder.name"
+        price="foodOrder.food.price"
+        title="foodOrder.food.name"
         can-change-orders="true"
         on-delete="$ctrl.deleteOrder($index)">
       </food-order>
