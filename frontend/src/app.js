@@ -43,17 +43,17 @@ function appConfig($routeProvider, $httpProvider) {
 
 appConfig.$inject = ['$routeProvider', '$httpProvider'];
 
-function appRun($rootScope, Shops, $timeout) {
+function appRun ($rootScope, Shops, $timeout) {
   $rootScope.getShops = function() {
     if ($rootScope.shops) {
-      return $timeout(function() { return $rootScope.shops; });
+      return $timeout(function() { return $rootScope.shops });
     } else {
-      return Shops.getShops().then(function(responce) {
-        $rootScope.shops = responce.shops;
-        return responce.shops;
+      return Shops.getShops().then(function(response) {
+        $rootScope.shops = response.shops;
+        return response.shops;
       });
     }
-  };
+  }
 }
 
 appRun.$inject = ['$rootScope', 'Shops', '$timeout'];

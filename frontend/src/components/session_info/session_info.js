@@ -1,3 +1,5 @@
+var _ = require('lodash');
+
 angular.module('Foodhub').component('sessionInfo', {
   bindings: {
     'title': '<',
@@ -7,7 +9,8 @@ angular.module('Foodhub').component('sessionInfo', {
   },
   template: require('./session_info.html'),
 
-  controller: function() {
+  controller: function($scope, $attrs, $timeout) {
+    this.selectUniqID = Math.random().toString(36).substring(10);
 
     this.validateTime = function(time) {
       var regexp = /^(\d{1,2}):(\d{1,2})$/,
@@ -21,21 +24,28 @@ angular.module('Foodhub').component('sessionInfo', {
       }
     };
 
+    this.getTotalPrice = function() {
+      if (!this.session) return;
+      this.session.price = _.sumBy(this.session.orders, 'price');
+      return this.session.price;
+    };
+
     this.onShopChanged = function() {
+      if (!this.selectedShop || !this.session) return;
       this.session.shopId = this.selectedShop.id;
     };
 
     this.getTimeLabel = function() {
+      if (!this.session) return;
       return this.session.deliveryTime ? 'Время прибытия заказа:' : 'Время оформления заказа:';
     };
 
     this.getRemainAmount = function() {
+      if (!this.selectedShop || !this.session) return;
       return this.session.price < this.selectedShop.minOrderPrice ? this.selectedShop.minOrderPrice - this.session.price : 0;
     };
 
     this.init = function() {
-      this.selectUniqID = Math.random().toString(36).substring(10);
-
       if (!this.shops || !this.session) return;
 
       this.sessionTime = this.session.deliveryTime ? this.session.deliveryTime : this.session.orderTime;
@@ -52,6 +62,7 @@ angular.module('Foodhub').component('sessionInfo', {
     };
 
     this.onSessionTimeChanged = function() {
+      if (!this.session) return;
       if (this.validateTime(this.sessionTime)) {
         if (this.session.deliveryTime) {
           this.session.deliveryTime = this.sessionTime;
@@ -66,6 +77,8 @@ angular.module('Foodhub').component('sessionInfo', {
       }
     };
 
-    this.init();
+    $scope.$on('initSessionInfo', function() {
+      $timeout(function() { this.init() }.bind(this));      
+    }.bind(this));
   }
 });

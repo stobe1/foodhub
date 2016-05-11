@@ -2,40 +2,30 @@
 
   <div class="product-card__header">
     <div class="product-card__image-container">
-      <img class="product-card__image" alt="" ng-src="{{ $ctrl.image }}" >
+      <img class="product-card__image" alt="" ng-src="{{ $ctrl.food.imageUrl }}" >
     </div>
-    <h3 class="product-card__info product-card__name" ng-bind=" $ctrl.title "></h3>
-    <h3 class="product-card__info product-card__description" ng-bind=" $ctrl.text "></h3>
+    <h3 class="product-card__info product-card__name" ng-bind="$ctrl.food.name"></h3>
+    <h3 class="product-card__info product-card__description" ng-bind="$ctrl.food.description"></h3>
   </div>
 
   <div class="product-card__body">
     <div class="product-card__half">
       <span class="product-card__label">Количество:</span>
-      <quantity-input ng-model="$ctrl.foodCounter"></quantity-input>
+      <quantity-input ng-model="$ctrl.quantity"></quantity-input>
     </div>
 
     <div class="product-card__half product-card__half-text-align-right">
       <span class="product-card__label">Цена за порцию:</span>
-      <h4 class="product-card__price" ng-bind="$ctrl.price | moneyFilter"></h4>
+      <h4 class="product-card__price" ng-bind="$ctrl.food.price | moneyFilter"></h4>
     </div>
-
   </div>
 
   <div class="product-card__footer">
-
     <custom-button 
       is-transparent
-      ng-show="!$ctrl.isAdded" 
       on-click="$ctrl.clickAddBtn()"
       title="'Добавить в корзину'">
     </custom-button>
-
-    <custom-button 
-      ng-show="$ctrl.isAdded" 
-      on-click="$ctrl.clickDeleteBtn()"
-      title="'Удалить из корзины'">
-    </custom-button>
-
   </div>
 
 </div>
