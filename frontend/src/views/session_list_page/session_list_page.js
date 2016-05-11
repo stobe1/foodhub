@@ -1,13 +1,18 @@
 var _ = require('lodash');
 
+var moment = require('moment/min/moment-with-locales.js');
+moment.locale('ru');
+
 angular.module('Foodhub')
   .controller('SessionListPageController', ['$scope', 'Sessions', '$rootScope', '$filter', function($scope, Sessions, $rootScope, $filter) {
 
-    $scope.getDifferenceString = function(date1, date2) {
-      var diff = date1 - date2;
-      var hours = (diff - diff % 3600000) / (3600000);
-      var minutes = Math.round((diff - hours * 3600000) / 60000);
-      return hours + ' часов ' + minutes + ' минут';
+    $scope.timeFromNow = function(date) {
+      var timeLeft = moment(date);
+      if (date > new Date()) {
+        return timeLeft.fromNow(true);
+      } else {
+        return 0;
+      }
     };
 
     $scope.getSessions = function() {
@@ -20,8 +25,8 @@ angular.module('Foodhub')
           deliveryTimetable: shop.deliveryTime,
           minimalDeliveryPrice: 1000000,
           authorName: session.owner.firstName + ' ' + session.owner.lastName,
-          orderTime: $filter('timeFilter')(new Date(session.orderTime)),
-          orderTimeLeft: $scope.getDifferenceString(new Date(session.orderTime), new Date()),
+          orderTime: moment(new Date(session.orderTime)).format('LT'),
+          orderTimeLeft: $scope.timeFromNow(new Date(session.orderTime)),
           totalPrice: session.price,
           priceLeft: session.price < shop.minOrderPrice ? shop.minOrderPrice - session.price : 0
         };
@@ -32,8 +37,8 @@ angular.module('Foodhub')
       $rootScope.getShops().then(function(shops) {
         $scope.shops = shops;
         return Sessions.getSessions();
-      }).then(function(responce) {
-        $scope.sessions = responce.sessions;
+      }).then(function(response) {
+        $scope.sessions = response.sessions;
         $scope.mappedSessions = $scope.getSessions();
       });
     };

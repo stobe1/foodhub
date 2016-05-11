@@ -53,7 +53,7 @@ function appRun ($rootScope, Shops, $timeout) {
         return response.shops;
       });
     }
-  }
+  };
   $rootScope.currentUser = {
     id: 1,
     firstName: 'Гена',
