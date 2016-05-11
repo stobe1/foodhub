@@ -4,7 +4,7 @@ var request = require('request');
 var cheerio = require('cheerio');
 var Parser = require('./Parser');
 
-class PizzaTempo extends Parser {
+module.exports = class PizzaTempo extends Parser {
   constructor() {
     super();
     this.url = 'http://www.pizzatempo.by/';
@@ -93,4 +93,4 @@ class PizzaTempo extends Parser {
       return promise.then(() => pages);
     });
   }
-}
+};
