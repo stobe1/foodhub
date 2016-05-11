@@ -40,7 +40,7 @@ app.use(parser.urlencoded({
 
 app.use(parser.json());
 
-//app.use(stubAuth);
+app.use(stubAuth);
 
 app.use('/api/v1', routes.router);
 

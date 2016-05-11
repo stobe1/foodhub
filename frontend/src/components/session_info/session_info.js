@@ -30,6 +30,7 @@ angular.module('Foodhub').component('sessionInfo', {
       return this.session.price;
     };
 
+
     this.onShopChanged = function() {
       if (!this.selectedShop || !this.session) return;
       this.session.shopId = this.selectedShop.id;
@@ -78,7 +79,7 @@ angular.module('Foodhub').component('sessionInfo', {
     };
 
     $scope.$on('initSessionInfo', function() {
-      $timeout(function() { this.init() }.bind(this));      
+      $timeout(function() { this.init() }.bind(this));
     }.bind(this));
   }
 });
