@@ -1,28 +1,25 @@
 <div class="user-card user-card_editable"> 
   <div class="user-card__header">
     <h3 class="user-card__name">
-      <span ng-bind="$ctrl.name"></span>
+      <span ng-bind="$ctrl.order.owner.firstName + ' ' + $ctrl.order.owner.lastName"></span>
       <b class="user-card__price" ng-bind="$ctrl.getTotalPrice() | moneyFilter"></b>
     </h3>
-    <span
-      data-ng-click="$ctrl.clickClose($event)"
-      ng-show=" $ctrl.isAdmin " 
-      class="user-card__close">&#10005;</span>
+    <span ng-click="$ctrl.deleteOrder()" ng-show=" $ctrl.canDelete" class="user-card__close">&#10005;</span>
   </div>
   <div class="user-card__body">
     <food-order 
-      ng-repeat="itemFoodOrder in $ctrl.listFoodOrders"
-      image="itemFoodOrder.image"
-      food-counter="itemFoodOrder.foodCounter"
-      price="itemFoodOrder.price"
-      title="itemFoodOrder.title"
-      can-change-orders="$ctrl.canChangeOrders"
-      on-delete="$ctrl.deleteOrder(itemFoodOrder)">
+      ng-repeat="foodOrder in $ctrl.order.foodOrders track by $index"
+      image="foodOrder.food.imageUrl"
+      food-counter="foodOrder.quantity"
+      price="foodOrder.food.price"
+      title="foodOrder.food.name"
+      can-change-orders="false"
+      on-delete="$ctrl.deleteFoodOrder($index)">
     </food-order>
   </div>
 
-  <div class="user-card__footer" ng-show=" $ctrl.isAdmin ">
-    <input class="user-card__input" ng-model=" $ctrl.isPaid " id="user-card__check" type="checkbox">
+  <div class="user-card__footer" ng-show="$ctrl.canChangePaymentStatus">
+    <input class="user-card__input" ng-model="$ctrl.order.isPaid" ng-change="$ctrl.saveOrder()" id="user-card__check" type="checkbox">
     <div class="user-card__input-custom"></div>
     <label class="user-card__input-label" for="user-card__check">Оплатил</label>
   </div>

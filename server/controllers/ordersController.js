@@ -88,9 +88,6 @@ exports.update = function(request, response, next) { //TODO: add transaction
     if (!order) {
       throw new errors.notFound('There is no order with this ID');
     }
-    if (order.owner.id !== request.user.id) {
-      throw new errors.forbidden('You are not allowed to update this order');
-    }
     return models.Session.findById(order.sessionId);
   }).then(function(session) {                                                        // 2. Getting session
     sourceSession = session;                                                           

@@ -21,12 +21,12 @@ function appConfig($routeProvider, $httpProvider) {
       controller: 'LastPageController'
     })
 
-    .when('/food', {
+    .when('/food/:id', {
       template : require('./views/session_page/session_page_food/session_page_food.html'),
       controller: 'SessionPageFoodController'
     })
 
-    .when('/session', {
+    .when('/session/:id', {
       template : require('./views/session_page/session_page_users/session_page_users.html'),
       controller: 'SessionPageUsersController'
     })
@@ -53,6 +53,11 @@ function appRun ($rootScope, Shops, $timeout) {
         return response.shops;
       });
     }
+  }
+  $rootScope.currentUser = {
+    id: 1,
+    firstName: 'Гена',
+    lastName: 'Русецкий'
   }
 }
 
