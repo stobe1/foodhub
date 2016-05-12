@@ -1,5 +1,11 @@
 <div class="session-list">
-  <div class="session-list__row" ng-repeat="session in sessionList">
+  <div 
+    class="session-list__row" 
+    ng-repeat="session in $ctrl.list | orderBy:'-status':1"
+    ng-class="{'session-list__history' : $ctrl.isHistory(session.status)}"
+
+    >
+
     <div class="session-list__col session-list__col_service">
       <a target="_blank" ng-href="{{session.deliveryUrl}}"><img class="session-list__service-img" alt="Логотип службы доставки" ng-src="{{session.image}}"></a>
     </div>
@@ -19,8 +25,8 @@
         </div>
       </div>
     </div>
-    <div class="session-list__col session-list__col_author">
-      <div class="session-list__new-line">
+    <div class="session-list__col session-list__col_author" >
+      <div class="session-list__new-line" >
         <span class="session-list__title" ng-bind="session.authorName"></span>
         <span class="session-list__label" ng-hide="session.deliveryTime"> оформит заказ в:</span>
         <span class="session-list__label" ng-show="session.deliveryTime"> заказал на:</span>
@@ -42,7 +48,24 @@
       </div>
     </div>
     <div class="session-list__col session-list__col_button">
-      <a ng-href="/#/session/{{ session.id }}" class="button">Просмотреть</a>
+      <custom-button 
+        ng-show="$ctrl.isHistory(session.status)"
+        href="'/#/session/' + session.id" 
+        title="'Завершенно'">
+      </custom-button>
+
+      <custom-button 
+        ng-show="$ctrl.isActive(session.status)"
+        href="'/#/session/' + session.id" 
+        title="'Просмотр'">
+      </custom-button>
+
+
+      <custom-button 
+        ng-show="$ctrl.isSent(session.status)"
+        href="'/#/session/' + session.id" 
+        title="'Доставляется'">
+      </custom-button>
     </div>
   </div>
 </div>

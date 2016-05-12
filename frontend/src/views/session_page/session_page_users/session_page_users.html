@@ -1,5 +1,10 @@
-<session-info title="sessionInfoTitle" session="session" shops="shops"></session-info>
-
+<session-info 
+  title="sessionInfoTitle"
+  session="session"
+  can-change-time="(isSessionCreator(session) && session.status == 0)"
+  can-change-shop="false"
+  shops="shops">
+</session-info>
 <div class="main-content__column">
   <div class="session-page">
     <div class="session-page__col-full">
@@ -9,35 +14,48 @@
           <custom-button
             href="'#/food/' + session.id"
             is-stretch="true"
-            ng-show="session.status == 0 || isSessionCreator(session)"
+            ng-show="session.status == 0" 
             title="getJoinButtonLabel()">
           </custom-button>
         </div>
       </div>
-
       <div class="session-page__part">
         <div class="session-page__participants-order" ng-repeat="order in session.orders">
-          <user-card order="order" can-change-payment-status="isSessionCreator(session)" can-delete="isSessionCreator(session) || isOrderCreator(order)" on-edit="saveOrder" on-delete="deleteOrder"></user-card>
+          <user-card 
+            order="order" 
+            can-change-payment-status="isSessionCreator(session)" 
+            can-delete="(isSessionCreator(session) || isOrderCreator(order)) && session.status == 0"
+            on-edit="saveOrder" 
+            on-delete="deleteOrder">
+          </user-card>
         </div>
       </div>
     </div>
 
 
     <div class="session-page__footer">
-      <div class="session-page__footer-button">
-        <custom-button
+      <div class="session-page__footer-button" ng-show="isSessionCreator(session) && session.status == 0" >
+        <custom-button 
           href="'#/order/' + session.id"
-          ng-show="isSessionCreator(session) && session.status == 0 && !isOrdersEmpty(session)"
           is-stretch="true"
           title="'Офомить заказ'">
         </custom-button>
       </div>
 
 
-      <div class="session-page__footer-button">
+      <div class="session-page__footer-button" ng-show="isSessionCreator(session) && session.status == 1" >
         <custom-button
           on-click="deleteSession(session)"
           ng-show="isSessionCreator(session) && session.status == 0 && !isOrdersEmpty(session)"
+          on-click="deleteSession(session)"
+          is-stretch="true"
+          title="'Завершить сессию'">
+        </custom-button>
+      </div>
+
+      <div class="session-page__footer-button" ng-show="isSessionCreator(session) && session.status == 0" >
+        <custom-button 
+          on-click="deleteSession(session)"
           is-stretch="true"
           title="'Удалить сессию'">
         </custom-button>

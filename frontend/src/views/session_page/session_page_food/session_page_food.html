@@ -1,5 +1,10 @@
-<session-info title="sessionInfoTitle" session="session" shops="shops" can-change-time="isSessionCreator(session)" can-change-shop="isNewSession"></session-info>
-
+<session-info 
+  title="sessionInfoTitle" 
+  session="session" 
+  shops="shops" 
+  can-change-time="(isSessionCreator(session) && session.status == 0) || isNewSession"
+  can-change-shop="isNewSession">
+</session-info>
 <div class="main-content__column">
   <div class="session-page">
     <div class="session-page__col-big">
