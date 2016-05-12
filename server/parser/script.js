@@ -7,6 +7,7 @@ var models = require('../models/models');
 
 var tempo = new PizzaTempo();
 var tempoProducts = tempo.getProducts();
+var tempoShopId = 1;
 
 tempoProducts.then((res) => {
   var category = {};
@@ -19,7 +20,7 @@ tempoProducts.then((res) => {
       imageUrl: item.imageUrl,
       price: item.price,
       category: item.category,
-      shopId: 1,
+      shopId: tempoShopId,
       externalFoodId: item.externalFoodId
     };
   });
@@ -27,7 +28,7 @@ tempoProducts.then((res) => {
   category = Object.keys(category).map((item) => {
     return {
       name: item,
-      shopId: 1
+      shopId: tempoShopId
     };
   });
 
@@ -37,12 +38,12 @@ tempoProducts.then((res) => {
       where: {},
       transaction: t
     }).then(() => {
-      models.Food.destroy({
+      return models.Food.destroy({
         where: {},
         transaction: t
       });
     }).then(() => {
-      models.FoodCategory.bulkCreate(category, {
+      return models.FoodCategory.bulkCreate(category, {
         transaction: t
       });
     }).then(() => {
@@ -62,7 +63,9 @@ tempoProducts.then((res) => {
         delete item.category;
         return item;
       });
-      models.Food.bulkCreate(res);
+      return models.Food.bulkCreate(res, {
+        transaction: t
+      });
     });
   });
 
