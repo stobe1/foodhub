@@ -9,9 +9,9 @@
   transition: box-shadow .15s
 
   &_active
-    box-shadow: 1px 1px 4px $color_main
+    box-shadow: 1px 1px 5px 1px $color_main
 
-  &:hover
+  &:hover:not(&_active)
     card_hover()
 
   &__header

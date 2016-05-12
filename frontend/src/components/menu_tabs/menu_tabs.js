@@ -7,7 +7,7 @@ angular.module('Foodhub')
       replace: true,
       controller: ['$scope', function($scope) {
         var panes = $scope.currentPanes = [];
-        var stepLength = 150;
+        var stepLength = 300;
 
         $scope.toLeft = function () {
           $scope.leftPosition +=  stepLength;

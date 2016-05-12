@@ -4,7 +4,7 @@
   <div class="session-page">
     <div class="session-page__col-full">
       <div class="session-page__header">
-        <h2 class="session-page__header-title" ng-bind="getHeaderTitleLabel()"></h2>
+        <h2 class="session-page__header-title">Список людей принявших предложение</h2>
         <a ng-href="#/food/{{ session.id }}" class="session-page__button button" ng-show="session.status == 0 || isSessionCreator(session)" ng-bind="getJoinButtonLabel()"></a>
       </div>
 

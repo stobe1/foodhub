@@ -25,6 +25,11 @@ angular.module('Foodhub').component('sessionInfo', {
       }
     };
 
+    this.getNameOwner = function () {
+      if(this.session)
+      return this.session.owner.firstName + ' ' +this.session.owner.lastName;
+    }
+
     this.getTotalPrice = function() {
       if (!this.session) return;
       this.session.price = _.sumBy(this.session.orders, 'price');
