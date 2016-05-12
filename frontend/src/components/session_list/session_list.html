@@ -22,9 +22,10 @@
     <div class="session-list__col session-list__col_author">
       <div class="session-list__new-line">
         <span class="session-list__title" ng-bind="session.authorName"></span>
-        <span class="session-list__label"> заказал на:</span>
+        <span class="session-list__label" ng-hide="session.deliveryTime"> оформит заказ в:</span>
+        <span class="session-list__label" ng-show="session.deliveryTime"> заказал на:</span>
       </div>
-      <span class="session-list__title session-list__title_big" ng-bind="session.orderTime"></span>
+      <span class="session-list__title session-list__title_big" ng-bind="session.deliveryTime || session.orderTime"></span>
       <div class="session-list__new-line">
         <span class="session-list__label">Осталось </span>
         <span class="session-list__title" ng-bind="session.orderTimeLeft"></span>

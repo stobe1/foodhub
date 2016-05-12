@@ -16,7 +16,7 @@ angular.module('Foodhub').component('cart', {
 
     this.getTotalPrice = function() {
       if (!this.order) return 0;
-      this.order.price = _.sumBy(this.order.foodOrders, function(foodOrder) { return foodOrder.price * foodOrder.quantity });
+      this.order.price = _.sumBy(this.order.foodOrders, function(foodOrder) { return foodOrder.food.price * foodOrder.quantity });
       return this.order.price;
     };
 

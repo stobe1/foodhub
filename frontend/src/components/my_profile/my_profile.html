@@ -1,9 +1,8 @@
 <div class="my-profile">
-  <span class="my-profile__name">Василий прохоров </span>
+  <span class="my-profile__name" ng-bind="currentUser.firstName + ' ' + currentUser.lastName"></span>
 
   <div class="my-profile__image-container">
-    <img
-      class="my-profile__image" alt="alt" src="https://upload.wikimedia.org/wikipedia/commons/8/80/Knut_IMG_8095.jpg">
+    <img class="my-profile__image" alt="alt" ng-src="{{ currentUser.avatarUrl }}">
   </div>
 
   <ul class="my-profile__menu">

@@ -2,7 +2,9 @@
   position: relative
   background-color: $color_secondary_bg
   border: $border_separator
-  
+  padding-bottom: 20px
+  clearfix()
+
   &__button
     position: absolute
     top: 40%
@@ -14,7 +16,24 @@
       top: 18px
       left: 0
       right: 0
-    
+
+  &__confirm-order-button
+    margin-top: 20px
+    margin-left: 40px
+
+    @media $mobile-max
+      margin-top: 10px
+      margin-left: 20px
+      width: calc(100% - 40px)
+
+  &__delete-session-button
+    margin-top: 20px
+    margin-left: 20px
+
+    @media $mobile-max
+      margin-top: 10px
+      margin-left: 20px
+      width: calc(100% - 40px)
 
   &__header
     position: relative
@@ -44,6 +63,7 @@
     
   &__part
     padding: 0 0 0 20px
+    clearfix()
     
   &__col-big
     float: left

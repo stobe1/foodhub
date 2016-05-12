@@ -5,11 +5,12 @@ angular.module('Foodhub').component('sessionInfo', {
     'title': '<',
     'shops': '<',
     'session': '=',
-    'readonly': '<'
+    'canChangeTime': '<',
+    'canChangeShop': '<'
   },
   template: require('./session_info.html'),
 
-  controller: function($scope, $attrs, $timeout) {
+  controller: function($scope, $attrs, $timeout, $rootScope) {
     this.selectUniqID = Math.random().toString(36).substring(10);
 
     this.validateTime = function(time) {
@@ -34,11 +35,7 @@ angular.module('Foodhub').component('sessionInfo', {
     this.onShopChanged = function() {
       if (!this.selectedShop || !this.session) return;
       this.session.shopId = this.selectedShop.id;
-    };
-
-    this.getTimeLabel = function() {
-      if (!this.session) return;
-      return this.session.deliveryTime ? 'Время прибытия заказа:' : 'Время оформления заказа:';
+      $rootScope.$broadcast('selectedShopChanged', this.selectedShop.id);
     };
 
     this.getRemainAmount = function() {

@@ -9,7 +9,7 @@
           ng-model="$ctrl.selectedShop" 
           ng-options="shop.name for shop in $ctrl.shops" 
           ng-change="$ctrl.onShopChanged()"
-          ng-disabled="$ctrl.readonly">
+          ng-disabled="!$ctrl.canChangeShop">
         </select>
         <label class="session-info__input-label" for="session-info__select{{ $ctrl.selectUniqID }}">Выбор доставки:</label>
       </div>
@@ -27,8 +27,11 @@
     </div>
   </div>
   <div class="session-info__column">
-    <div class="session-info__element">
-      <text-input model="$ctrl.sessionTime" label="{{ $ctrl.getTimeLabel() }}" name="time" inverted="true" invalid="$ctrl.session.invalidTime" readonly="$ctrl.readonly" on-change="$ctrl.onSessionTimeChanged()"></text-input>
+    <div class="session-info__element" ng-hide="this.session.deliveryTime">
+      <text-input model="$ctrl.sessionTime" label="Время оформления заказа:" name="orderTime" inverted="true" invalid="$ctrl.session.invalidTime" readonly="!$ctrl.canChangeTime" on-change="$ctrl.onSessionTimeChanged()"></text-input>
+    </div>
+    <div class="session-info__element" ng-show="this.session.deliveryTime">
+      <text-input model="$ctrl.sessionTime" label="Время прибытия заказа:" name="deliveryTime" inverted="true" invalid="$ctrl.session.invalidTime" readonly="!$ctrl.canChangeTime" on-change="$ctrl.onSessionTimeChanged()"></text-input>
     </div>
   </div>
   <div class="session-info__column">

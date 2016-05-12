@@ -1,5 +1,7 @@
+var moment = require('moment/min/moment-with-locales.js');
+
 angular.module('Foodhub')
-  .controller('LastPageController', ['$scope', '$filter', '$routeParams', '$rootScope', 'Sessions', 'Users', function($scope, $filter, $routeParams, $rootScope, Sessions, Users) {
+  .controller('LastPageController', ['$scope', '$filter', '$routeParams', '$rootScope', 'Sessions', 'Users', '$location', function($scope, $filter, $routeParams, $rootScope, Sessions, Users, $location) {
     $scope.sessionInfoTitle = 'Информация о заказе';
 
     $scope.init = function() {
@@ -7,15 +9,11 @@ angular.module('Foodhub')
         $scope.shops = shops;
         return Sessions.getSession({ id: $routeParams.id });
       }).then(function(session) {
-        if (!session) {
-          $location.path('/');
-        } else {
-          $scope.session = session;
-          $scope.foodInfo = foodFromSession(session);
-          $scope.session.orderTime = $filter('timeFilter')(new Date($scope.session.orderTime));
-          $scope.session.deliveryTime = $filter('timeFilter')(new Date($scope.session.deliveryTime));
-          $rootScope.$broadcast('initSessionInfo');
-        }
+        $scope.session = session;
+        $scope.foodInfo = foodFromSession(session);
+        $scope.session.orderTime = $filter('timeFilter')(new Date($scope.session.orderTime));
+        $scope.session.deliveryTime = $filter('timeFilter')(new Date($scope.session.deliveryTime));
+        $rootScope.$broadcast('initSessionInfo');
         return Users.getUser({id: session.owner.id});
       }).then(function(user) {
         $scope.outPhone = user.phone;
@@ -26,6 +24,18 @@ angular.module('Foodhub')
         $scope.outAddress = user.address;
       });
     };
+
+    $scope.postOrder = function() {
+      //OrderPoster.PostOrder.then(function() {
+        var sessionParams = {
+          id: $scope.session.id,
+          status: 1,
+          deliveryTime: moment(new Date()).add(2, 'hours').toDate()
+        }
+      Sessions.updateSession(sessionParams).then(function(session) {
+        $location.path('/session/' + session.id);
+      });
+    }
 
     function foodFromSession(session) {
       var food = {};
