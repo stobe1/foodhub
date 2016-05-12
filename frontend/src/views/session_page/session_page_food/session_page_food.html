@@ -8,7 +8,7 @@
       </div>
       <menu-tabs>
         <menu-pane class="session-page__category" ng-repeat="category in selectedShop.categories track by $index" title="{{category.name}}">
-          <product-card class="session-page__participants-order" ng-repeat="food in category.foods track by $index" food="food" is-added="isFoodAdded()" on-add="addFoodToCart"></product-card>
+          <product-card class="session-page__participants-order" ng-repeat="food in category.foods track by $index" food="food" on-add="addFoodToCart"></product-card>
         </menu-pane>
       </menu-tabs>
     </div>

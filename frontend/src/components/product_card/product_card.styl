@@ -9,9 +9,9 @@
   transition: box-shadow .15s
 
   &_active
-    box-shadow: 1px 1px 4px $color_main
+    box-shadow: 1px 1px 5px 1px $color_main
 
-  &:hover
+  &:hover:not(&_active)
     card_hover()
 
   &__header
@@ -25,7 +25,7 @@
 
   &__image
     display: block
-    width: 100%
+    width: 102%
     position: absolute
     top: 50%
     left: 50%
@@ -33,7 +33,7 @@
 
     @media $mobile
       height: auto
-      width: 100%
+      width: 102%
 
   &:hover &__description
     opacity: 1
@@ -59,9 +59,9 @@
   &__name
     bottom: 0
     padding: 45px 10px 10px 20px
-    font-size: 18px
-    font-weight: 500
-    background: linear-gradient(to top, rgba(#000, 0.8) 0, rgba(231, 56, 39, 0) 100%)
+    font-size: 16px
+    font-weight: 400
+    background: linear-gradient(to top, rgba(#333, 0.8) 0, rgba(231, 56, 39, 0) 100%)
 
   &__body
     padding: 15px 20px 10px 20px

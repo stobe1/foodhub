@@ -6,6 +6,76 @@
     overflow: auto
     border-top: $border_separator
     font-size: 14px
+    
+  &__arrow-left
+  &__arrow-right
+    width: 40px
+    height: 100%
+    position: absolute
+    top:0
+    &:hover:before
+      opacity: 1
+    
+    &:before
+    &:after
+      position: absolute
+      top: 0
+      width: 60px
+      content: ""
+      display: block
+      height: 100%
+      z-index: 1
+    
+    &:before
+      opacity: 0.7
+      width: 40px
+      background-repeat: no-repeat
+      background-size: 27px
+      background-position: center center
+      z-index: 2
+      
+
+    
+
+  &__arrow-right
+    right: 0
+      
+    &:before
+      right: 0
+      background-image: embedurl('ic_keyboard_arrow_right_black_24dp_2x.png')
+      
+    &:after
+      right: 0
+      background: linear-gradient(to left, rgba(#fff, 0.8) 0, rgba(231, 56, 39, 0) 100%)
+    
+
+  &__arrow-left
+    left:0
+    
+    &:before
+      left:0
+      background-image: embedurl('ic_keyboard_arrow_left_black_24dp_2x.png')
+    
+    &:after
+      left: 0
+      background: linear-gradient(to right, rgba(#fff, 0.8) 0, rgba(231, 56, 39, 0) 100%)
+      
+  &__max-container
+    width: 9000px
+
+  &__small-container
+    width: 100%
+    position: relative
+    overflow: hidden
+    padding-bottom: 1px
+    
+  &__big-container
+    display: inline-block
+    width: auto
+    position: absolute
+    top: 0px
+    position: relative
+    transition: left 0.2s
 
   &__label
     display: inline-block
@@ -24,6 +94,9 @@
       text-decoration: none
       cursor: pointer
       border-bottom-color: $color_main
+      
+    &:focus
+      text-decoration: none
 
     &:active
       color: rgba($color_main, 0.7)

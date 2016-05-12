@@ -24,15 +24,6 @@ angular.module('Foodhub')
       return $rootScope.currentUser.id === order.owner.id;
     }
 
-    $scope.getHeaderTitleLabel = function() {
-      if (!$scope.session) return false;
-      if ($scope.isSessionCreator($scope.session)) {
-        return 'Список людей принявших мое предложение';
-      } else {
-        return 'Список людей принявших предложение ' + $scope.session.owner.firstName + ' ' + $scope.session.owner.lastName;
-      }
-    }
-
     $scope.getJoinButtonLabel = function() {
       if (!$scope.session) return false;
       if ($scope.isSessionCreator($scope.session)) {

@@ -1,21 +1,39 @@
 .session-page
   position: relative
-  background-color: $color_secondary_bg
+  background-color: rgba($color_secondary_bg, 0.3)
   border: $border_separator
-  padding-bottom: 20px
+  margin-bottom: 50px
   clearfix()
 
   &__button
     position: absolute
-    top: 40%
-    margin: auto
+    top: 27px
     right: 20px
     width: 300px
+    
+    @media $mobile-max
+      position: relative
+      right: 0
+      width: 100%
+      padding-right: 20px
+      padding-left: 20px
+      
+  &__footer
+    padding: 20px
+    width: 100%
+    @media $mobile-max
+      padding: 20px
+    
+  &__footer-button
+    width: 200px
+    display: inline-block
+    margin-right: 15px
     @media $mobile-max
       width: 100%
-      top: 18px
-      left: 0
-      right: 0
+      padding-right: 0px
+      margin: 0px 0px 10px 0px
+    
+    
 
   &__confirm-order-button
     margin-top: 20px
@@ -37,6 +55,8 @@
 
   &__header
     position: relative
+    @media $mobile-max
+      padding-bottom: 40px
     
   &__header-title
     page_header_title()
@@ -62,13 +82,14 @@
     clearfix()
     
   &__part
-    padding: 0 0 0 20px
+    padding: 0 0 0 0px
     clearfix()
     
   &__col-big
     float: left
     width: 70%
     border-right:$border_separator
+    padding-bottom: 40px;
     @media $desktop
       width: 62%
 
@@ -92,16 +113,17 @@
       display: block
 
   &__participants-order
-    padding: 20px 0 0 0
-    margin: 0 20px 0 0
+    padding: 18px 0 0 0
+    margin: 3px 0px 3px 18px
     float: left
-    width: calc(33.33% - 20px)
+    width: calc(33.33% - 25px)
+    
     
     @media $desktop
-      width: calc(50% - 20px)
+      width: calc(50% - 25px)
     
     @media $tablet-max
-      width: calc(50% - 20px)
+      width: calc(50% - 25px)
       
     @media $mobile-max
-      width: calc(100% - 20px)
+      width: calc(100% - 40px)

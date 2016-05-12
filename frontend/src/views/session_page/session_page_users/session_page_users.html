@@ -4,8 +4,15 @@
   <div class="session-page">
     <div class="session-page__col-full">
       <div class="session-page__header">
-        <h2 class="session-page__header-title" ng-bind="getHeaderTitleLabel()"></h2>
-        <a ng-href="#/food/{{ session.id }}" class="session-page__button button" ng-show="session.status == 0 || isSessionCreator(session)" ng-bind="getJoinButtonLabel()"></a>
+        <h2 class="session-page__header-title">Список людей принявших предложение</h2>
+        <div class="session-page__button">
+          <custom-button 
+            href="'#/food/' + session.id"
+            is-stretch="true"
+            ng-show="session.status == 0 || isSessionCreator(session)" 
+            title="getJoinButtonLabel()">
+          </custom-button>
+        </div>
       </div>
 
       <div class="session-page__part">
@@ -14,7 +21,28 @@
         </div>
       </div>
     </div>
-    <a ng-href="#/order/{{ session.id }}" class="session-page__confirm-order-button button" ng-show="isSessionCreator(session) && session.status == 0">Офомить заказ</a>
-    <a ng-href="#" ng-click="deleteSession(session)" class="session-page__delete-session-button button" ng-show="isSessionCreator(session) && session.status == 0">Удалить сессию</a>
+
+
+    <div class="session-page__footer">
+      <div class="session-page__footer-button">
+        <custom-button 
+          href="'#/order/' + session.id"
+          ng-show="isSessionCreator(session) && session.status == 0" 
+          is-stretch="true"
+          title="'Офомить заказ'">
+        </custom-button>
+      </div>
+
+
+      <div class="session-page__footer-button">
+        <custom-button 
+          on-click="deleteSession(session)"
+          ng-show="isSessionCreator(session) && session.status == 0" 
+          is-stretch="true"
+          title="'Удалить сессию'">
+        </custom-button>
+      </div>
+    </div>
+
   </div>
 </div>

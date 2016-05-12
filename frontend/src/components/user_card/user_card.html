@@ -19,8 +19,8 @@
   </div>
 
   <div class="user-card__footer" ng-show="$ctrl.canChangePaymentStatus">
-    <input class="user-card__input" ng-model="$ctrl.order.isPaid" ng-change="$ctrl.saveOrder()" id="user-card__check" type="checkbox">
+    <input class="user-card__input" ng-model="$ctrl.order.isPaid" ng-change="$ctrl.saveOrder()" id="user-card__check{{$ctrl.order.owner.id}}" type="checkbox">
     <div class="user-card__input-custom"></div>
-    <label class="user-card__input-label" for="user-card__check">Оплатил</label>
+    <label class="user-card__input-label" for="user-card__check{{$ctrl.order.owner.id}}">Оплатил</label>
   </div>
 </div>
