@@ -63,6 +63,8 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.DATE
     }
   }, {
-    tableName: 'users'
+    tableName: 'users',
+    createdAt: 'created_at',
+    updatedAt: 'updated_at'
   });
 };
