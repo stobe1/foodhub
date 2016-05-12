@@ -2,8 +2,9 @@
 
 var PizzaTempo = require('./PizzaTempo');
 var db = require('../db');
-var Food = db.import('../models/Food');
-var FoodCategory = db.import('../models/FoodCategory');
+var models = require('../models/models');
+// var Food = db.import('../models/Food');
+// var FoodCategory = db.import('../models/FoodCategory');
 
 
 var tempo = new PizzaTempo();
@@ -14,24 +15,13 @@ tempoProducts.then((res) => {
   res = res.map((item) => {
     category[item.category] = true;
 
-    var categoryId;
-    var id = 1;
-
-    for(var key in category) {
-      if(item.category == key) {
-        categoryId = id;
-      } else {
-        id++;
-      }
-    }
-
     return {
       name: item.name,
       description: item.description,
       imageUrl: item.imageUrl,
       price: item.price,
+      category: item.category,
       shopId: 1,
-      categoryId: categoryId,
       externalFoodId: item.externalFoodId
     };
   });
@@ -44,10 +34,38 @@ tempoProducts.then((res) => {
   });
 
   db.transaction((t) => {
-    return FoodCategory.bulkCreate(category, {transaction: t}).then(() => {
-      return FoodCategory.findAll();
+
+    return models.FoodCategory.destroy({
+      truncate: true,
+      cascade: true,
+      transaction: t
+    }).then(() => {
+      models.FoodCategory.bulkCreate(category, {
+        transaction: t
+      });
+    }).then(() => {
+      return models.FoodCategory.findAll({
+        where: {
+          shopId: 1
+        },
+        transaction: t
+      });
     }).then((categories) => {
-      console.log(categories);
+      res = res.map((item) => {
+        categories.forEach((category) => {
+          if (category.name == item.category) {
+            item.categoryId = category.id;
+          }
+        });
+
+        delete item.category;
+        return item;
+      });
+
+      return res;
+
+    }).then((products) => {
+      models.Food.bulkCreate(products);
     });
   });
 

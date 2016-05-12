@@ -30,7 +30,7 @@ module.exports = class PizzaTempo extends Parser {
                   name: $elem.find('h3').text(),
                   description: $elem.find('.leftCol').text(),
                   imageUrl: $elem.find('.photo').attr('href'),
-                  price: $elem.find('.price').text(),
+                  price: parseInt($elem.find('.price').text().replace(' ', '')),
                   externalFoodId: $elem.find('.orderButton').attr('rel'),
                   category: categoryName
                 });
@@ -48,7 +48,7 @@ module.exports = class PizzaTempo extends Parser {
                     name: name + ' ' + $elem.text(),
                     description: description + ' ' + $elem.next().text(),
                     imageUrl: imageUrl,
-                    price: $elem.next().next().text(),
+                    price: parseInt($elem.next().next().text().replace(' ', '')),
                     externalFoodId: id + '-' + (i + 1),
                     category: categoryName
                   });
