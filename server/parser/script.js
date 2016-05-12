@@ -3,8 +3,6 @@
 var PizzaTempo = require('./PizzaTempo');
 var db = require('../db');
 var models = require('../models/models');
-// var Food = db.import('../models/Food');
-// var FoodCategory = db.import('../models/FoodCategory');
 
 
 var tempo = new PizzaTempo();
