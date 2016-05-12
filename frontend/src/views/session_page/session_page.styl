@@ -1,8 +1,8 @@
 .session-page
   position: relative
-  background-color: $color_secondary_bg
+  background-color: rgba($color_secondary_bg, 0.3)
   border: $border_separator
-  padding-bottom: 20px
+  margin-bottom: 50px
   clearfix()
 
   &__button
@@ -69,6 +69,7 @@
     float: left
     width: 70%
     border-right:$border_separator
+    padding-bottom: 40px;
     @media $desktop
       width: 62%
 
@@ -92,10 +93,10 @@
       display: block
 
   &__participants-order
-    padding: 20px 0 0 0
-    margin: 0 20px 0 0
+    padding: 18px 0 0 0
+    margin: 3px 0px 3px 18px
     float: left
-    width: calc(33.33% - 20px)
+    width: calc(33.33% - 25px)
     
     @media $desktop
       width: calc(50% - 20px)

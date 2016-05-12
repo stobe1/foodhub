@@ -1,4 +1,22 @@
 <div class="menu-tabs">
-  <a class="menu-tabs__label" href="" ng-repeat="pane in currentPanes" ng-class="{'menu-tabs__label_active': pane.selected}" ng-click="select(pane)" ng-bind="pane.title"></a>
+
+  <div class="menu-tabs__small-container">
+    <a ng-show="leftPosition < 0" ng-click="toLeft()" class="menu-tabs__arrow-left"></a>
+    <a ng-show="isShowRight(leftPosition)" ng-click="toRight()" class="menu-tabs__arrow-right"></a>
+
+    <div class="menu-tabs__max-container">
+      <div class="menu-tabs__big-container" style="left: {{leftPosition}}px">
+        <a 
+          class="menu-tabs__label" 
+          href="" 
+          ng-repeat="pane in currentPanes" 
+          ng-class="{'menu-tabs__label_active': pane.selected}" 
+          ng-click="select(pane)" 
+          ng-bind="pane.title">
+        </a>
+      </div>
+    </div>
+  </div>
+
   <section class="menu-tabs__content" ng-transclude></section>
 </div>

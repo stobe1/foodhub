@@ -80,18 +80,34 @@ angular.module('Foodhub')
       });
     };
 
-    $scope.addFoodToCart = function(food, quantity) {
-      $scope.order.foodOrders.push({
-        quantity: quantity,
-        price: food.price * quantity,
-        food: {
-          id: food.id,
-          name: food.name,
-          description: food.description,
-          imageUrl: food.imageUrl,
-          price: food.price,
+    function findOrderIndexByFoodId(FoodId) {
+      let OrderIndex = -1;
+      $scope.order.foodOrders.forEach(function (item, i) {
+        if(item.food.id == FoodId){
+          OrderIndex = i;
         }
       });
+      return OrderIndex;
+    }
+
+    $scope.addFoodToCart = function(food, quantity) {
+      let indexOrder = findOrderIndexByFoodId(food.id);
+
+      if(indexOrder != -1){
+        $scope.order.foodOrders[indexOrder].quantity += quantity;
+      }else{
+        $scope.order.foodOrders.push({
+          quantity: quantity,
+          price: food.price * quantity,
+          food: {
+            id: food.id,
+            name: food.name,
+            description: food.description,
+            imageUrl: food.imageUrl,
+            price: food.price,
+          }
+        });
+      }
     }
 
     $scope.saveOrder = function(order) {
