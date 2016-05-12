@@ -37,8 +37,6 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.DATE
     }
   }, {
-    tableName: 'food_orders',
-    createdAt: 'created_at',
-    updatedAt: 'updated_at'
+    tableName: 'food_orders'
   });
 };

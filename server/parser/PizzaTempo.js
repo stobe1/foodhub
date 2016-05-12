@@ -4,7 +4,7 @@ var request = require('request');
 var cheerio = require('cheerio');
 var Parser = require('./Parser');
 
-module.exports = class PizzaTempo extends Parser {
+class PizzaTempo extends Parser {
   constructor() {
     super();
     this.url = 'http://www.pizzatempo.by/';
@@ -30,7 +30,7 @@ module.exports = class PizzaTempo extends Parser {
                   name: $elem.find('h3').text(),
                   description: $elem.find('.leftCol').text(),
                   imageUrl: $elem.find('.photo').attr('href'),
-                  price: parseInt($elem.find('.price').text().replace(/\s+/g, '')),
+                  price: $elem.find('.price').text(),
                   externalFoodId: $elem.find('.orderButton').attr('rel'),
                   category: categoryName
                 });
@@ -48,7 +48,7 @@ module.exports = class PizzaTempo extends Parser {
                     name: name + ' ' + $elem.text(),
                     description: description + ' ' + $elem.next().text(),
                     imageUrl: imageUrl,
-                    price: parseInt($elem.next().next().text().replace(/\s+/g, '')),
+                    price: $elem.next().next().text(),
                     externalFoodId: id + '-' + (i + 1),
                     category: categoryName
                   });
@@ -93,4 +93,4 @@ module.exports = class PizzaTempo extends Parser {
       return promise.then(() => pages);
     });
   }
-};
+}
