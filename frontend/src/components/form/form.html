@@ -6,7 +6,13 @@
     <text-input model="$ctrl.mailValue" name="email" label="E-mail" type="email"></text-input>
   </div>
   <div class="form__line">
-    <text-input model="$ctrl.nameValue" name="personName" label="Имя" type="text"></text-input>
+    <text-input model="$ctrl.firstName" name="firstName" label="Имя" type="text"></text-input>
+  </div>
+  <div class="form__line">
+    <text-input model="$ctrl.lastName" name="lastName" label="Фамилия" type="text"></text-input>
+  </div>
+  <div class="form__line">
+    <text-input model="$ctrl.address" name="address" label="Адрес" type="text"></text-input>
   </div>
   <div class="form__line">
     <div class="form__headline">
@@ -14,11 +20,11 @@
     </div>
     <div class="form__paytype">
       <div class="form__paytype-item">
-        <input ng-model="$ctrl.paytypeValue" ng-value="1" name="radiobutton" class="form__paytype-radio" type="radio" id="form__paytype-option1" checked>
+        <input ng-model="$ctrl.paytypeValue" ng-value="0" name="radiobutton" class="form__paytype-radio" type="radio" id="form__paytype-option1" checked>
         <label class="form__paytype-label" for="form__paytype-option1">Наличными курьеру</label>
       </div>
       <div class="form__paytype-item">
-        <input ng-model="$ctrl.paytypeValue" ng-value="2" name="radiobutton" class="form__paytype-radio" type="radio" id="form__paytype-option2">
+        <input ng-model="$ctrl.paytypeValue" ng-value="1" name="radiobutton" class="form__paytype-radio" type="radio" id="form__paytype-option2">
         <label class="form__paytype-label" for="form__paytype-option2">Карточкой курьеру</label>
       </div>
     </div>
