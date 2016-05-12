@@ -1,5 +1,4 @@
 'use strict';
-
 module.exports = {
   up: function (queryInterface, Sequelize) {
     var now = new Date();
@@ -34,11 +33,41 @@ module.exports = {
         token_expires_at: now,
         created_at: now,
         updated_at: now
+      }, {
+        id: 3,
+        first_name: "Александр",
+        last_name: "Дмовский",
+        email: "dmowski@yandex.ru",
+        phone: "+375454654654564",
+        payment_option: 0,
+        address: "г. Минск, ул. Якуба Коласа, д. 28, кв. 1219.",
+        avatar_url: "hhttp://tamgdeya.ru/photos/norm/1/1_GCh88r5I.jpg",
+        registration_service: 1,
+        external_user_id: "6548546487",
+        token: "qqwwee8rr",
+        token_expires_at: now,
+        created_at: now,
+        updated_at: now
+      }, {
+        id: 4,
+        first_name: "Аркадий",
+        last_name: "Стругацкий",
+        email: "arki@gmail.com",
+        phone: "+846583215",
+        payment_option: 0,
+        address: "г. Минск, ул. Сурганова, д. 47",
+        avatar_url: "http://www.by-time.ru/upload/iblock/e04/ans009.jpg",
+        registration_service: 1,
+        external_user_id: "65487321",
+        token: "qq4wweerr",
+        token_expires_at: now,
+        created_at: now,
+        updated_at: now
       }
     ]);
   },
 
   down: function (queryInterface, Sequelize) {
-    return queryInterface.bulkDelete('users', [{id: 1}, {id: 2}]);
+    return queryInterface.bulkDelete('users', [{id: 1}, {id: 2}, {id: 3}, {id: 4}]);
   }
 };
