@@ -31,11 +31,6 @@ function appConfig($routeProvider, $httpProvider) {
       controller: 'SessionPageUsersController'
     })
 
-    .when('/components', {
-      template : require('./views/components/components.html'),
-      controller: 'ComponentsController'
-    })
-
     .otherwise({
       redirectTo: '/'
     });
@@ -92,7 +87,6 @@ require('./components/product_card/product_card');
 require('./components/menu_tabs/menu_tabs');
 require('./components/session_info/session_info');
 require('./views/session_list_page/session_list_page');
-require('./views/components/components');
 require('./views/last_page/last_page');
 require('./views/user_page/user_page');
 require('./views/session_page/session_page_food/session_page_food');

@@ -23,10 +23,11 @@ angular.module('Foodhub')
           image: shop.logoUrl,
           deliveryUrl: shop.siteUrl,
           deliveryTimetable: shop.deliveryTime,
-          minimalDeliveryPrice: 1000000,
+          minimalDeliveryPrice: shop.minOrderPrice,
           authorName: session.owner.firstName + ' ' + session.owner.lastName,
           orderTime: moment(new Date(session.orderTime)).format('LT'),
-          orderTimeLeft: $scope.timeFromNow(new Date(session.orderTime)),
+          deliveryTime: session.deliveryTime ? moment(new Date(session.deliveryTime)).format('LT') : null,
+          orderTimeLeft: session.deliveryTime ? $scope.timeFromNow(new Date(session.orderTime)) : $scope.timeFromNow(new Date(session.orderTime)),
           totalPrice: session.price,
           priceLeft: session.price < shop.minOrderPrice ? shop.minOrderPrice - session.price : 0
         };

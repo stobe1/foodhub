@@ -1,11 +1,11 @@
-<session-info title="sessionInfoTitle" session="session" shops="shops" readonly="true"></session-info>
+<session-info title="sessionInfoTitle" session="session" shops="shops"></session-info>
 
 <div class="main-content__column">
   <div class="session-page">
     <div class="session-page__col-full">
       <div class="session-page__header">
-        <h2 class="session-page__header-title">Список людей принявших мое предложение</h2>
-        <a ng-href="#/food/{{ session.id }}"  class="session-page__button button">Прсоедениться</a>
+        <h2 class="session-page__header-title" ng-bind="getHeaderTitleLabel()"></h2>
+        <a ng-href="#/food/{{ session.id }}" class="session-page__button button" ng-show="session.status == 0 || isSessionCreator(session)" ng-bind="getJoinButtonLabel()"></a>
       </div>
 
       <div class="session-page__part">
@@ -14,5 +14,7 @@
         </div>
       </div>
     </div>
+    <a ng-href="#/order/{{ session.id }}" class="session-page__confirm-order-button button" ng-show="isSessionCreator(session) && session.status == 0">Офомить заказ</a>
+    <a ng-href="#" ng-click="deleteSession(session)" class="session-page__delete-session-button button" ng-show="isSessionCreator(session) && session.status == 0">Удалить сессию</a>
   </div>
 </div>

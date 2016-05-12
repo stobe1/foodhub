@@ -8,6 +8,11 @@ angular.module('Foodhub')
       $location.path('/');
     }
 
+    $scope.isSessionCreator = function(session) {
+      if (!$rootScope.currentUser || !session) return false;
+      return $rootScope.currentUser.id === session.owner.id;
+    }
+
     $scope.getNewSession = function() {
       var date = new Date();
       date.setTime(date.getTime() + 1000 * 60 * 60);
@@ -17,7 +22,8 @@ angular.module('Foodhub')
         deliveryTime: null,
         address: '',
         price: 0,
-        orders: []
+        orders: [],
+        owner: $rootScope.currentUser
       }
     }
 
@@ -35,12 +41,13 @@ angular.module('Foodhub')
         $scope.selectedShop = shop;
       });
     }
+
     $scope.initExistingSessions = function() {
       $scope.isNewSession = false;
       Sessions.getSession({ id: $routeParams.id }).then(function(session) {
         $scope.session = session;
         $scope.session.orderTime = $filter('timeFilter')(new Date($scope.session.orderTime));
-        $scope.session.deliveryTime = $filter('timeFilter')(new Date($scope.session.deliveryTime));
+        $scope.session.deliveryTime = $scope.session.deliveryTime ? $filter('timeFilter')(new Date($scope.session.deliveryTime)) : null;
         var order = _.find($scope.session.orders, function(order) {return order.owner.id === $rootScope.currentUser.id});
         if (order) {
           $scope.isExistingOrder = true;
@@ -104,6 +111,7 @@ angular.module('Foodhub')
             sessionId: session.id,
             foodOrders: _.map(order.foodOrders, function(foodOrder) { return { foodId: foodOrder.food.id, quantity: foodOrder.quantity } })
           }
+          $scope.session = session;
           return Orders.createOrder(orderParams);
         }).then(function(order) {
           $location.path('/session/' + $scope.session.id);
@@ -127,6 +135,13 @@ angular.module('Foodhub')
         });
       }
     }
+
+    $scope.$on('selectedShopChanged', function(event, shopId) {
+      Shops.getShop({ id: shopId }).then(function(shop) {
+        $scope.selectedShop = shop;
+        $scope.order.foodOrders = [];
+      });
+    });
 
     $scope.init();
   }]);

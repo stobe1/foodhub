@@ -1,4 +1,4 @@
-<session-info title="sessionInfoTitle" session="session" shops="shops" readonly="true"></session-info>
+<session-info title="sessionInfoTitle" session="session" shops="shops"></session-info>
 
 <div class="main-content__column">
   <div class="last-page">
@@ -26,8 +26,8 @@
     </div>
 
     <div class="last-page__footer">
-      <a href="" class="button">Отправить</a>
-      <a href="" class="button button_transparent">Отмена</a>
+      <a ng-click="postOrder()" class="button">Отправить</a>
+      <a ng-href="/#/session/{{session.id}}" class="button button_transparent">Отмена</a>
     </div>
   </div>
 </div>
