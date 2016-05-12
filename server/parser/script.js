@@ -36,9 +36,13 @@ tempoProducts.then((res) => {
   db.transaction((t) => {
 
     return models.FoodCategory.destroy({
-      truncate: true,
-      cascade: true,
+      where: {},
       transaction: t
+    }).then(() => {
+      models.Food.destroy({
+        where: {},
+        transaction: t
+      });
     }).then(() => {
       models.FoodCategory.bulkCreate(category, {
         transaction: t
@@ -57,15 +61,10 @@ tempoProducts.then((res) => {
             item.categoryId = category.id;
           }
         });
-
         delete item.category;
         return item;
       });
-
-      return res;
-
-    }).then((products) => {
-      models.Food.bulkCreate(products);
+      models.Food.bulkCreate(res);
     });
   });
 
