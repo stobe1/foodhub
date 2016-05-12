@@ -2,9 +2,11 @@ angular.module('Foodhub')
 .component('foodhubForm', {
   bindings: {
     phoneValue: '=?',
-    nameValue: '=?',
+    firstName: '=?',
+    lastName: '=?',
     mailValue: '=?',
-    paytypeValue: '=?'
+    paytypeValue: '=?',
+    address: '=?'
   },
   template: require('./form.html'),
 });

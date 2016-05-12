@@ -1,6 +1,5 @@
 angular.module('Foodhub')
-  .controller('LastPageController', ['$scope', '$filter', '$routeParams', '$rootScope', 'Orders', 'Sessions', 'Shops', 'Users', function($scope, $filter, $routeParams, $rootScope, Orders, Sessions, Shops, Users) {
-    // $scope.listFoodOrders = listFoodOrders;
+  .controller('LastPageController', ['$scope', '$filter', '$routeParams', '$rootScope', 'Sessions', 'Users', function($scope, $filter, $routeParams, $rootScope, Sessions, Users) {
     $scope.sessionInfoTitle = 'Информация о заказе';
 
     $scope.init = function() {
@@ -20,8 +19,11 @@ angular.module('Foodhub')
         return Users.getUser({id: session.owner.id});
       }).then(function(user) {
         $scope.outPhone = user.phone;
-        $scope.outName = user.firstName;
+        $scope.outFirstName = user.firstName;
+        $scope.outLastName = user.lastName;
         $scope.outMail = user.email;
+        $scope.outPaytypeValue = user.paymentOption;
+        $scope.outAddress = user.address;
       });
     };
 

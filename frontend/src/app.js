@@ -55,9 +55,16 @@ function appRun ($rootScope, Shops, $timeout) {
     }
   };
   $rootScope.currentUser = {
-    id: 1,
-    firstName: 'Гена',
-    lastName: 'Русецкий'
+    id:1,
+    firstName: "Гена",
+    lastName: "Русецкий",
+    email: "ant478@gmail.com",
+    phone: "+375447092034",
+    paymentOption: 0,
+    address: "г. Минск, ул. Якуба Коласа, д. 8, кв. 35.",
+    avatarUrl: "https://www.petfinder.com/wp-content/uploads/2012/11/140272627-grooming-needs-senior-cat-632x475.jpg",
+    registrationService: 1,
+    externalUserId: 123456
   }
 }
 

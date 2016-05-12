@@ -1,16 +1,14 @@
-<div>
-  <session-info title="sessionInfoTitle" session="session" shops="shops" readonly="true"></session-info>
-</div>
+<session-info title="sessionInfoTitle" session="session" shops="shops" readonly="true"></session-info>
 
 <div class="main-content__column">
   <div class="last-page">
     <div class="last-page__part">
       <h2 class="last-page__block-title">Контактные данные</h2>
-      <foodhub-form phone-value="outPhone" name-value="outName" mail-value="outMail" paytype-value="outPaytype"></foodhub-form>
+      <foodhub-form phone-value="outPhone" first-name="outFirstName" last-name="outLastName" mail-value="outMail" paytype-value="outPaytypeValue" address="outAddress"></foodhub-form>
     </div>
 
     <div class="last-page__part last-page__part_big">
-      <h2 class="last-page__block-title">Вcе товары (<span class="last-page__whole-price">{{session.price}}</span>)</h2>
+      <h2 class="last-page__block-title">Вcе товары (<span class="last-page__whole-price" ng-bind="session.price"></span>)</h2>
       <div class="checkout-card" ng-repeat="(key, value) in foodInfo">
         <div class="checkout-card__food">
           <food-order
@@ -22,7 +20,7 @@
         </div>
         <div class="checkout-card__people">
           <span class="checkout-card__bold-text">Заказали:</span>
-          <span class="checkout-card__names">{{value.orderedBy}}</span>
+          <span class="checkout-card__names" ng-bind="value.orderedBy"></span>
         </div>
       </div>
     </div>
