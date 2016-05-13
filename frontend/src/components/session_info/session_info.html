@@ -27,18 +27,19 @@
       <span class="session-info__value" ng-bind="$ctrl.selectedShop.minOrderPrice | moneyFilter"></span>
     </div>
     <div class="session-info__element">
-      <span class="session-info__label">Время оформления заказа:</span>
+      <span class="session-info__label">Время работы:</span>
       <span class="session-info__value" ng-bind="$ctrl.selectedShop.deliveryTime"></span>
     </div>
     <div class="session-info__element">
       <a class="session-info__link" ng-href="{{ $ctrl.selectedShop.siteUrl }}" target="_blank" ng-bind="$ctrl.selectedShop.siteUrl"></a>
     </div>
   </div>
+
   <div class="session-info__column">
     <div class="session-info__element">
       <text-input 
         model="$ctrl.sessionTime" 
-        label="Время заказ" 
+        label="Время оформления заказа" 
         name="time" 
         inverted="true" 
         invalid="$ctrl.session.invalidTime" 
@@ -47,6 +48,7 @@
       </text-input>
     </div>
   </div>
+
   <div class="session-info__column">
     <div class="session-info__element">
       <text-input 
