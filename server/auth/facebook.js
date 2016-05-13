@@ -11,18 +11,23 @@ passport.use(new Strategy({
     callbackURL: config.auth.facebook.callback
   },
   function(accessToken, refreshToken, profile, cb) {
-    User
-      .findOrCreate({
+    User.findOrCreate(
+      {
         where: {
           externalUserId: profile.id
         },
         defaults: {
-          firstName: profile.displayName,
+          firstName: profile.displayName.trim().split(' ')[0],
+          lastName: profile.displayName.trim().substring(profile.displayName.trim().split(' ')[0].length, profile.displayName.length).trim(),
+          email: '',
+          phone: '',
           token: accessToken,
+          paymentOption: 0,
+          address: '',
+          avatarUrl: 'http://cdn.fishki.net/upload/post/201506/08/1559628/9df18f050741a1da79d70751018f8811.jpg',
           registrationService: 0
         }
-      })
-      .spread(function(user, created){
+      }).spread(function(user, created){
         return cb(null, user);
       })
   }));

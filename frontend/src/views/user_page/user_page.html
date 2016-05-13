@@ -17,7 +17,7 @@
     <div class="user-page__part user-page__part_smal">
       <h2 class="user-page__block-title">Фотография</h2>
 
-      <img class="user-page__image" alt="alt" ng-src="{{ tempUser.avatarUrl }}">
+      <img class="user-page__image" alt="alt" ng-src="{{ tempUser.avatarUrl || defaultAvatarUrl }}">
       <custom-button 
         is-transparent
         ng-click=""

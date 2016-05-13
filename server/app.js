@@ -28,7 +28,10 @@ app.use(cookie());
 app.use(session({
   secret: 'keyboard cat',
   resave: true,
-  saveUninitialized: true
+  saveUninitialized: true,
+  cookie: {
+    maxAge: 2000000
+  }
 }));
 
 app.use(passport.initialize());
@@ -40,10 +43,10 @@ app.use(parser.urlencoded({
 
 app.use(parser.json());
 
-app.use(stubAuth);
+//app.use(stubAuth);
 
 app.use('/api/v1', routes.router);
-
+app.use(express.static('../frontend/build'));
 app.use(errors.handler);
 
 app.listen(config.serverPort, function() {
