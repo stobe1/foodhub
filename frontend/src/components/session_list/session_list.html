@@ -46,7 +46,7 @@
       <div class="session-list__new-line">
         <span class="session-list__label">Общая сумма заказа:</span>
       </div>
-      <span class="session-list__title session-list__title_big" ng-bind="session.totalPrice"></span>
+      <span class="session-list__title session-list__title_big" ng-bind="session.totalPrice | moneyFilter"></span>
       <div class="session-list__new-line">
         <span class="session-list__label">Осталось </span>
         <span class="session-list__title" ng-bind="session.priceLeft"></span>
