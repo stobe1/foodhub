@@ -1,6 +1,8 @@
 .last-page
+  position: relative
+  background-color: rgba($color_secondary_bg, 0.3)
   border: $border_separator
-  background-color: #fff
+  margin-bottom: 50px
 
   &__footer
     padding: 40px 20px
@@ -9,9 +11,17 @@
     @media $tablet-max
       text-align: center
 
+  &__block-title
+    page_header_title()
+    border:none
+    
+
+  &__part-content
+    padding: 0 20px;
+
   &__part
     display: inline-block
-    padding: 0 20px
+    padding: 0 0px
     vertical-align: top
     width: 35%
     margin-bottom: 30px

@@ -20,6 +20,7 @@ angular.module('Foodhub')
         var shop = _.find($scope.shops, { id: session.shopId });
         return {
           id: session.id,
+          status: session.status,
           image: shop.logoUrl,
           deliveryUrl: shop.siteUrl,
           deliveryTimetable: shop.deliveryTime,

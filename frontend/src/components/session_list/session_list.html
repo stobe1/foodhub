@@ -1,5 +1,16 @@
 <div class="session-list">
-  <div class="session-list__row" ng-repeat="session in sessionList">
+  <div 
+    class="session-list__row" 
+    ng-repeat="session in $ctrl.list | orderBy:'-status':1"
+    ng-class="{'session-list__history' : $ctrl.isHistory(session.status),
+               'session-list__active' : $ctrl.isActive(session.status),
+               'session-list__sent' : $ctrl.isSent(session.status)}"
+    >
+    
+    <h3 class="session-list__title-block" ng-show="$ctrl.isActive(session.status)">Активные предложения</h3>
+    <h3 class="session-list__title-block" ng-show="$ctrl.isSent(session.status)">Оформлены и ждут доставки</h3>
+    <h3 class="session-list__title-block" ng-show="$ctrl.isHistory(session.status)">Завершенные</h3>
+
     <div class="session-list__col session-list__col_service">
       <a target="_blank" ng-href="{{session.deliveryUrl}}"><img class="session-list__service-img" alt="Логотип службы доставки" ng-src="{{session.image}}"></a>
     </div>
@@ -19,30 +30,57 @@
         </div>
       </div>
     </div>
-    <div class="session-list__col session-list__col_author">
-      <div class="session-list__new-line">
-        <span class="session-list__title" ng-bind="session.authorName"></span>
-        <span class="session-list__label" ng-hide="session.deliveryTime"> оформит заказ в:</span>
-        <span class="session-list__label" ng-show="session.deliveryTime"> заказал на:</span>
+    <div class="session-list__col session-list__col_author" >
+
+
+      <div class="session-list__new-line" >
+        <span 
+          class="session-list__title" 
+          ng-bind="session.authorName">
+        </span>
+
+        <span 
+          class="session-list__label"
+          ng-show="$ctrl.isActive(session.status)"> оформит заказ в:
+        </span>
+
+        <span 
+          class="session-list__label" 
+          ng-show="$ctrl.isSent(session.status)"> заказал на:
+          </span>
       </div>
-      <span class="session-list__title session-list__title_big" ng-bind="session.deliveryTime || session.orderTime"></span>
-      <div class="session-list__new-line">
+
+      <span 
+        class="session-list__title session-list__title_big" 
+        ng-bind="session.deliveryTime || session.orderTime">
+      </span>
+
+      <div class="session-list__new-line" ng-show="session.orderTimeLeft > 0">
         <span class="session-list__label">Осталось </span>
         <span class="session-list__title" ng-bind="session.orderTimeLeft"></span>
       </div>
+
     </div>
     <div class="session-list__col session-list__col_price">
       <div class="session-list__new-line">
         <span class="session-list__label">Общая сумма заказа:</span>
       </div>
-      <span class="session-list__title session-list__title_big" ng-bind="session.totalPrice"></span>
+
+      <span 
+        class="session-list__title session-list__title_big" 
+        ng-bind="session.totalPrice | moneyFilter">
+      </span>
+
       <div class="session-list__new-line">
         <span class="session-list__label">Осталось </span>
         <span class="session-list__title" ng-bind="session.priceLeft"></span>
       </div>
     </div>
     <div class="session-list__col session-list__col_button">
-      <a ng-href="/#/session/{{ session.id }}" class="button">Просмотреть</a>
+      <custom-button 
+        href="'/#/session/' + session.id" 
+        title="'Просмотр'">
+      </custom-button>
     </div>
   </div>
 </div>

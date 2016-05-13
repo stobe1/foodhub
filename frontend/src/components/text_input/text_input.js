@@ -4,6 +4,7 @@ angular.module('Foodhub')
     label: '@?',
     inverted: '<?',
     name: '@?',
+    placeholder: '@?',
     model: '=',
     invalid: '<?',
     readonly: '<?',

@@ -1,6 +1,8 @@
 <div class="session-info">
   <h1 class="session-info__header">
     <span ng-bind="$ctrl.title"></span>
+    <span ng-show="$ctrl.session.status == 1">(В ожидании доставки)</span>
+    <span ng-show="$ctrl.session.status == 2">(Завершенно)</span>
   </h1>
   <h3 class="session-info__sub-header">
     Автор: <span class="session-info__owner-name" ng-bind="$ctrl.getNameOwner()"></span>
@@ -15,7 +17,7 @@
           ng-model="$ctrl.selectedShop" 
           ng-options="shop.name for shop in $ctrl.shops" 
           ng-change="$ctrl.onShopChanged()"
-          ng-disabled="$ctrl.readonly">
+          ng-disabled="!$ctrl.canChangeShop">
         </select>
         <label class="session-info__input-label" for="session-info__select{{ $ctrl.selectUniqID }}">Выбор доставки:</label>
       </div>
@@ -25,21 +27,37 @@
       <span class="session-info__value" ng-bind="$ctrl.selectedShop.minOrderPrice | moneyFilter"></span>
     </div>
     <div class="session-info__element">
-      <span class="session-info__label">Время доставки:</span>
+      <span class="session-info__label">Время работы:</span>
       <span class="session-info__value" ng-bind="$ctrl.selectedShop.deliveryTime"></span>
     </div>
     <div class="session-info__element">
       <a class="session-info__link" ng-href="{{ $ctrl.selectedShop.siteUrl }}" target="_blank" ng-bind="$ctrl.selectedShop.siteUrl"></a>
     </div>
   </div>
+
   <div class="session-info__column">
     <div class="session-info__element">
-      <text-input model="$ctrl.sessionTime" label="{{ $ctrl.getTimeLabel() }}" name="time" inverted="true" invalid="$ctrl.session.invalidTime" readonly="$ctrl.readonly" on-change="$ctrl.onSessionTimeChanged()"></text-input>
+      <text-input 
+        model="$ctrl.sessionTime" 
+        label="Время оформления заказа" 
+        name="time" 
+        inverted="true" 
+        invalid="$ctrl.session.invalidTime" 
+        readonly="!$ctrl.canChangeTime" 
+        on-change="$ctrl.onSessionTimeChanged()">
+      </text-input>
     </div>
   </div>
+
   <div class="session-info__column">
     <div class="session-info__element">
-      <text-input model="$ctrl.getTotalPrice()" label="Общая сумма заказа:" name="price" inverted="true" readonly="true"></text-input>
+      <text-input 
+        model="$ctrl.getTotalPrice()" 
+        label="Общая сумма заказа:" 
+        name="price" 
+        inverted="true" 
+        readonly="true">
+      </text-input>
     </div>
     <div class="session-info__element">
       <span class="session-info__label">Осталось собрать:</span>
