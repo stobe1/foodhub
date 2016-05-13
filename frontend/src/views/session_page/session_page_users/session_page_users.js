@@ -16,6 +16,7 @@ angular.module('Foodhub')
       return $rootScope.currentUser.id === session.owner.id;
     }
     $scope.isOrdersEmpty = function(session) {
+      console.log(!session);
       return !session || session.orders.length === 0;
     }
     $scope.isSessionParticipant = function(session) {
