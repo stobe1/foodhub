@@ -2,7 +2,7 @@
   <span class="my-profile__name" ng-bind="currentUser.firstName + ' ' + currentUser.lastName"></span>
 
   <div class="my-profile__image-container">
-    <img class="my-profile__image" alt="alt" ng-src="{{ currentUser.avatarUrl }}">
+    <img class="my-profile__image" alt="alt" ng-src="{{ currentUser.avatarUrl || defaultAvatarUrl }}">
   </div>
 
   <ul class="my-profile__menu">

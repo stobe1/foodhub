@@ -13,7 +13,7 @@ module.exports = {
         address: "г. Минск, ул. Якуба Коласа, д. 8, кв. 35.",
         avatar_url: "https://www.petfinder.com/wp-content/uploads/2012/11/140272627-grooming-needs-senior-cat-632x475.jpg",
         registration_service: 1,
-        external_user_id: "123456",
+        external_user_id: "102611093490074",
         token: "qqwweerr",
         token_expires_at: now,
         created_at: now,

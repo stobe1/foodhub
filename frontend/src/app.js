@@ -3,6 +3,7 @@
 var angular = require('angular');
 require('angular-route');
 require('angular-resource');
+require('angular-cookies');
 
 function appConfig($routeProvider, $httpProvider) {
   $routeProvider
@@ -31,14 +32,28 @@ function appConfig($routeProvider, $httpProvider) {
       controller: 'SessionPageUsersController'
     })
 
+    .when('/sign_in', {
+      template : require('./views/sign_in_page/sign_in_page.html'),
+      controller: 'SignInPageController'
+    })
+
     .otherwise({
       redirectTo: '/'
     });
+
+  $httpProvider.interceptors.push('errorInterceptor');
 }
 
 appConfig.$inject = ['$routeProvider', '$httpProvider'];
 
-function appRun ($rootScope, Shops, $timeout) {
+function appRun ($rootScope, Shops, $timeout, $cookies, $location) {
+  $rootScope.defaultAvatarUrl = 'http://cdn.fishki.net/upload/post/201506/08/1559628/9df18f050741a1da79d70751018f8811.jpg';
+  try {
+    $rootScope.currentUser = JSON.parse($cookies.get('currentUser'));
+  } catch(e) {
+    $location.path('/sign_in');
+  }
+  
   $rootScope.getShops = function() {
     if ($rootScope.shops) {
       return $timeout(function() { return $rootScope.shops });
@@ -49,26 +64,15 @@ function appRun ($rootScope, Shops, $timeout) {
       });
     }
   };
-  $rootScope.currentUser = {
-    id:1,
-    firstName: "Гена",
-    lastName: "Русецкий",
-    email: "ant478@gmail.com",
-    phone: "+375447092034",
-    paymentOption: 0,
-    address: "г. Минск, ул. Якуба Коласа, д. 8, кв. 35.",
-    avatarUrl: "https://www.petfinder.com/wp-content/uploads/2012/11/140272627-grooming-needs-senior-cat-632x475.jpg",
-    registrationService: 1,
-    externalUserId: 123456
-  }
 }
 
-appRun.$inject = ['$rootScope', 'Shops', '$timeout'];
+appRun.$inject = ['$rootScope', 'Shops', '$timeout', '$cookies', '$location'];
 
 var app = angular
   .module('Foodhub', [
     'ngRoute',
-    'ngResource'
+    'ngResource',
+    'ngCookies'
   ])
   .config(appConfig)
   .run(appRun);
@@ -86,11 +90,14 @@ require('./components/quantity-input/quantity-input');
 require('./components/product_card/product_card');
 require('./components/menu_tabs/menu_tabs');
 require('./components/session_info/session_info');
+require('./components/sign-in/sign-in');
+require('./components/form/form');
 require('./views/session_list_page/session_list_page');
 require('./views/last_page/last_page');
 require('./views/user_page/user_page');
 require('./views/session_page/session_page_food/session_page_food');
 require('./views/session_page/session_page_users/session_page_users');
+require('./views/sign_in_page/sign_in_page');
 require('./services/shops');
 require('./services/users');
 require('./services/orders');
@@ -98,4 +105,4 @@ require('./services/sessions');
 require('./services/auth');
 require('./filters/money_filter');
 require('./filters/timeFilter');
-require('./components/form/form');
+require('./errorIntercepter');

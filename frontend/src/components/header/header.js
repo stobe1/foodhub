@@ -5,6 +5,7 @@ angular.module('Foodhub')
     return {
       template: require('./header.html'),
       replace: true,
-      restrict: 'E'
+      restrict: 'E',
+      controller: function($scope, $attrs, $rootScope) { }
     };
   });
