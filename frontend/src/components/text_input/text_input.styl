@@ -26,12 +26,12 @@
     &_long
       width: 100%
 
-    &:focus
-      box-shadow: 0 1px 0 $color_main
-      border-color: $color_main
-
-      & + .text-input__headline
-        color: $color_main
+    // &:focus
+    //   box-shadow: 0 1px 0 $color_main
+    //   border-color: $color_main
+    //
+    //   & + .text-input__headline
+    //     color: $color_main
 
   &__headline
     font-size: 12px
@@ -40,9 +40,17 @@
     top: 0
     left: 0
 
-.text-input_invalid .text-input__input:focus
+.text-input_invalid .text-input__input
+  border-color: $color_input_invalid !important
+  box-shadow: 0 1px 0 $color_input_invalid !important
+
+.ng-invalid
   border-color: $color_input_invalid
   box-shadow: 0 1px 0 $color_input_invalid
 
+.ng-valid:focus
+  border-color: $color_main
+  box-shadow: 0 1px 0 $color_main
+
   & + .text-input__headline
-    color: $color_input_invalid
+    color: $color_main

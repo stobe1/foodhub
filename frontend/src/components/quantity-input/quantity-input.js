@@ -14,7 +14,7 @@ angular.module('Foodhub')
         };
 
         $scope.decreaseCount = function() {
-          if ($scope.foodCounter > 0) {
+          if ($scope.foodCounter > 1) {
             $scope.foodCounter -= 1;
             ngModel.$setViewValue($scope.foodCounter);
           }
@@ -26,4 +26,3 @@ angular.module('Foodhub')
       }
     };
   });
-
