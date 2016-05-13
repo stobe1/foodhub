@@ -19,7 +19,7 @@ passport.use(new Strategy({
         defaults: {
           firstName: profile.displayName.trim().split(' ')[0],
           lastName: profile.displayName.trim().substring(profile.displayName.trim().split(' ')[0].length, profile.displayName.length).trim(),
-          email: '',
+          email: null,
           phone: '',
           token: accessToken,
           paymentOption: 0,
