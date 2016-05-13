@@ -19,7 +19,7 @@
           ng-change="$ctrl.onShopChanged()"
           ng-disabled="!$ctrl.canChangeShop">
         </select>
-        <label class="session-info__input-label" for="session-info__select{{ $ctrl.selectUniqID }}">Выбор доставки{{$ctrl.canChangeShop}}:</label>
+        <label class="session-info__input-label" for="session-info__select{{ $ctrl.selectUniqID }}">Выбор доставки:</label>
       </div>
     </div>
     <div class="session-info__element">
@@ -27,7 +27,7 @@
       <span class="session-info__value" ng-bind="$ctrl.selectedShop.minOrderPrice | moneyFilter"></span>
     </div>
     <div class="session-info__element">
-      <span class="session-info__label">Время доставки:</span>
+      <span class="session-info__label">Время оформления заказа:</span>
       <span class="session-info__value" ng-bind="$ctrl.selectedShop.deliveryTime"></span>
     </div>
     <div class="session-info__element">

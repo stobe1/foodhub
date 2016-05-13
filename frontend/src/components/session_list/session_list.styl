@@ -2,6 +2,28 @@
   font-size: 14px
   color: $color_main_font
   
+  .session-list__title-block
+    border-bottom: $border_separator
+    font-size: 22px
+    padding-bottom: 10px
+    padding-top: 30px
+    font-weight: 400
+  
+  .session-list__active + .session-list__active
+      .session-list__title-block
+        display none
+      
+
+  .session-list__history + .session-list__history
+      .session-list__title-block
+        display none
+      
+
+  .session-list__sent + .session-list__sent
+      .session-list__title-block
+        display none
+      
+
 
   &__history
     opacity: 0.7

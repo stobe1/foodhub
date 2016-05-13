@@ -17,12 +17,8 @@ angular.module('Foodhub').component('sessionList', {
       return (status == 1);
     };
 
-
     this.isActive = function(status) {
       return (status == 0);
     };
-
-    
-
   }
 });
