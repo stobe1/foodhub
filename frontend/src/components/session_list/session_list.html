@@ -31,22 +31,46 @@
       </div>
     </div>
     <div class="session-list__col session-list__col_author" >
+
+
       <div class="session-list__new-line" >
-        <span class="session-list__title" ng-bind="session.authorName"></span>
-        <span class="session-list__label" ng-hide="session.deliveryTime"> оформит заказ в:</span>
-        <span class="session-list__label" ng-show="session.deliveryTime"> заказал на:</span>
+        <span 
+          class="session-list__title" 
+          ng-bind="session.authorName">
+        </span>
+
+        <span 
+          class="session-list__label"
+          ng-show="$ctrl.isActive(session.status)"> оформит заказ в:
+        </span>
+
+        <span 
+          class="session-list__label" 
+          ng-show="$ctrl.isSent(session.status)"> заказал на:
+          </span>
       </div>
-      <span class="session-list__title session-list__title_big" ng-bind="session.deliveryTime || session.orderTime"></span>
-      <div class="session-list__new-line">
+
+      <span 
+        class="session-list__title session-list__title_big" 
+        ng-bind="session.deliveryTime || session.orderTime">
+      </span>
+
+      <div class="session-list__new-line" ng-show="session.orderTimeLeft > 0">
         <span class="session-list__label">Осталось </span>
         <span class="session-list__title" ng-bind="session.orderTimeLeft"></span>
       </div>
+
     </div>
     <div class="session-list__col session-list__col_price">
       <div class="session-list__new-line">
         <span class="session-list__label">Общая сумма заказа:</span>
       </div>
-      <span class="session-list__title session-list__title_big" ng-bind="session.totalPrice | moneyFilter"></span>
+
+      <span 
+        class="session-list__title session-list__title_big" 
+        ng-bind="session.totalPrice | moneyFilter">
+      </span>
+
       <div class="session-list__new-line">
         <span class="session-list__label">Осталось </span>
         <span class="session-list__title" ng-bind="session.priceLeft"></span>
