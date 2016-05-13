@@ -14,8 +14,10 @@
     </div>
     <div class="session-page__col-small">
       <cart is-fixed="false" on-confirm="saveOrder" order="order"></cart>
-      <div class="errorWindow" id="emptyOrderError">
-        Список товаров пуст.
+      <div
+      class="error-message session-page__empty-order-message"
+      ng-show="emptyOrderMessageShow"
+      ng-bind="emptyOrderMessage">
       </div>
   </div>
 </div>
