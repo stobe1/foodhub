@@ -5,6 +5,7 @@ var usersController = require('../controllers/usersController');
 var shopsController = require('../controllers/shopsController');
 var sessionsController = require('../controllers/sessionsController');
 var ordersController = require('../controllers/ordersController');
+var postOrderController = require('../controllers/postOrderController');
 var passport = require('passport');
 var isAuthenticated = require('../middleware/isAuthenticated');
 var validators = require('../middleware/validators');
@@ -37,5 +38,8 @@ router.put('/sessions', isAuthenticated, validators.validBodyID, sessionsControl
 router.post('/orders', isAuthenticated, validators.validBodySessionID, ordersController.create);
 router.put('/orders', isAuthenticated, validators.validBodyID, ordersController.update);
 router.delete('/orders/:id', isAuthenticated, validators.validParamsID, ordersController.delete);
+
+//Post order//
+router.post('/postorder', isAuthenticated, validators.validBodyID, postOrderController.create);
 
 exports.router = router;
