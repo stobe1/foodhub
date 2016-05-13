@@ -1,8 +1,10 @@
 var _ = require('lodash');
+var moment = require('moment/min/moment-with-locales.js');
+moment.locale('ru');
 
 angular.module('Foodhub')
-  .controller('SessionPageUsersController', ['$scope', '$rootScope', '$location', '$routeParams', 'Sessions', '$filter', 'Orders',
-  function($scope, $rootScope, $location, $routeParams, Sessions, $filter, Orders) {
+  .controller('SessionPageUsersController', ['$scope', '$rootScope', '$location', '$routeParams', 'Sessions', 'Orders',
+  function($scope, $rootScope, $location, $routeParams, Sessions, Orders) {
     $scope.sessionInfoTitle = 'Просмотр сессии';
     if (!$routeParams.id || isNaN(Number($routeParams.id))) {
       $location.path('/');
@@ -32,7 +34,7 @@ angular.module('Foodhub')
       } else if ($scope.isSessionParticipant($scope.session)) {
         return 'Редактировать заказ';
       } else {
-        return 'Присоедениться';
+        return 'Присоединиться';
       }
     }
 
@@ -65,8 +67,8 @@ angular.module('Foodhub')
         return Sessions.getSession({ id: $routeParams.id });
       }).then(function(session) {
         $scope.session = session;
-        $scope.session.orderTime = $filter('timeFilter')(new Date($scope.session.orderTime));
-        $scope.session.deliveryTime = $scope.session.deliveryTime ? $filter('timeFilter')(new Date($scope.session.deliveryTime)) : null;
+        $scope.session.orderTime = moment(new Date($scope.session.orderTime)).format('LT');
+        $scope.session.deliveryTime = $scope.session.deliveryTime ? moment(new Date($scope.session.deliveryTime)).format('LT') : null;
         $rootScope.$broadcast('initSessionInfo');
       });
     };

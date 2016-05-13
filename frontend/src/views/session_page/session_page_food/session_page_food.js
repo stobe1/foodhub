@@ -1,8 +1,10 @@
 var _ = require('lodash');
+var moment = require('moment/min/moment-with-locales.js');
+moment.locale('ru');
 
 angular.module('Foodhub')
-  .controller('SessionPageFoodController', ['$scope', '$rootScope', '$location', 'Shops', 'Sessions', 'Orders', '$filter', '$routeParams', '$timeout',
-  function($scope, $rootScope, $location, Shops, Sessions, Orders, $filter, $routeParams, $timeout) {
+  .controller('SessionPageFoodController', ['$scope', '$rootScope', '$location', 'Shops', 'Sessions', 'Orders', '$routeParams', '$timeout',
+  function($scope, $rootScope, $location, Shops, Sessions, Orders, $routeParams, $timeout) {
     if ((!$routeParams.id || isNaN(Number($routeParams.id))) && !$routeParams.id === 'new') {
       $location.path('/');
     }
@@ -14,10 +16,9 @@ angular.module('Foodhub')
 
     $scope.getNewSession = function() {
       var date = new Date();
-      date.setTime(date.getTime() + 1000 * 60 * 60);
       return {
         shopId: $scope.shops[0].id,
-        orderTime: $filter('timeFilter')(date),
+        orderTime: moment(date).format('LT'),
         deliveryTime: null,
         address: '',
         price: 0,
@@ -45,8 +46,8 @@ angular.module('Foodhub')
       $scope.isNewSession = false;
       Sessions.getSession({ id: $routeParams.id }).then(function(session) {
         $scope.session = session;
-        $scope.session.orderTime = $filter('timeFilter')(new Date($scope.session.orderTime));
-        $scope.session.deliveryTime = $scope.session.deliveryTime ? $filter('timeFilter')(new Date($scope.session.deliveryTime)) : null;
+        $scope.session.orderTime = moment(new Date($scope.session.orderTime)).format('LT');
+        $scope.session.deliveryTime = $scope.session.deliveryTime ? moment(new Date($scope.session.deliveryTime)).format('LT') : null;
         var order = _.find($scope.session.orders, function(order) {return order.owner.id === $rootScope.currentUser.id});
         if (order) {
           $scope.isExistingOrder = true;
