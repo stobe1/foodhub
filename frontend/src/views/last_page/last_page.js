@@ -1,7 +1,8 @@
 var moment = require('moment/min/moment-with-locales.js');
+moment.locale('ru');
 
 angular.module('Foodhub')
-  .controller('LastPageController', ['$scope', '$filter', '$routeParams', '$rootScope', 'Sessions', 'Users', '$location', function($scope, $filter, $routeParams, $rootScope, Sessions, Users, $location) {
+  .controller('LastPageController', ['$scope', '$routeParams', '$rootScope', 'Sessions', 'Users', '$location', function($scope, $routeParams, $rootScope, Sessions, Users, $location) {
     $scope.sessionInfoTitle = 'Информация о заказе';
 
     $scope.init = function() {
@@ -11,8 +12,8 @@ angular.module('Foodhub')
       }).then(function(session) {
         $scope.session = session;
         $scope.foodInfo = foodFromSession(session);
-        $scope.session.orderTime = $filter('timeFilter')(new Date($scope.session.orderTime));
-        $scope.session.deliveryTime = $filter('timeFilter')(new Date($scope.session.deliveryTime));
+        $scope.session.orderTime = moment(new Date($scope.session.orderTime)).format('LT');
+        $scope.session.deliveryTime = moment(new Date($scope.session.deliveryTime)).format('LT');
         $rootScope.$broadcast('initSessionInfo');
         return Users.getUser({id: session.owner.id});
       }).then(function(user) {
