@@ -1,18 +1,19 @@
 var _ = require('lodash');
 
 angular.module('Foodhub')
-  .controller('SessionPageUsersController', ['$scope', '$rootScope', '$location', '$routeParams', 'Sessions', '$filter', 'Orders', 
+  .controller('SessionPageUsersController', ['$scope', '$rootScope', '$location', '$routeParams', 'Sessions', '$filter', 'Orders',
   function($scope, $rootScope, $location, $routeParams, Sessions, $filter, Orders) {
     $scope.sessionInfoTitle = 'Просмотр сессии';
     if (!$routeParams.id || isNaN(Number($routeParams.id))) {
       $location.path('/');
     }
-
     $scope.isSessionCreator = function(session) {
       if (!$rootScope.currentUser || !session) return false;
       return $rootScope.currentUser.id === session.owner.id;
     }
-
+    $scope.isOrdersEmpty = function(session) {
+      return !session || session.orders.length === 0;
+    }
     $scope.isSessionParticipant = function(session) {
       if (!$rootScope.currentUser || !session) return false;
       var index = _.map(session.orders, function(order) { return order.owner.id }).indexOf($rootScope.currentUser.id);
@@ -55,7 +56,7 @@ angular.module('Foodhub')
     $scope.deleteOrder = function(order) {
       Orders.destroyOrder({ id: order.id }).then(function(order) {
         $scope.session.orders = _.reject($scope.session.orders, { id: order.id });
-      });      
+      });
     }
 
     $scope.init = function() {

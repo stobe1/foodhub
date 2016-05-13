@@ -3,7 +3,6 @@ var _ = require('lodash');
 angular.module('Foodhub')
   .controller('SessionPageFoodController', ['$scope', '$rootScope', '$location', 'Shops', 'Sessions', 'Orders', '$filter', '$routeParams', '$timeout',
   function($scope, $rootScope, $location, Shops, Sessions, Orders, $filter, $routeParams, $timeout) {
-
     if ((!$routeParams.id || isNaN(Number($routeParams.id))) && !$routeParams.id === 'new') {
       $location.path('/');
     }
@@ -55,7 +54,7 @@ angular.module('Foodhub')
           $scope.order = order;
         } else {
           $scope.isNewOrder = true;
-          $scope.sessionInfoTitle = "Создание заказа";          
+          $scope.sessionInfoTitle = "Создание заказа";
           $scope.order = {
             sessionId: $scope.session.id,
             foodOrders: []
@@ -109,8 +108,17 @@ angular.module('Foodhub')
         });
       }
     }
+    $scope.emptyOrderMessage = 'Список товаров пуст.';
 
     $scope.saveOrder = function(order) {
+      if (order.foodOrders.length === 0){
+        $scope.emptyOrderMessageShow = true;
+        setTimeout(function(){
+          $scope.emptyOrderMessageShow = false;
+        }, 2000);
+        return;
+      }
+
       if ($scope.isNewSession) {
         var date = new Date();
         var timeParts = /(\d{1,2}):(\d{1,2})/.exec($scope.session.orderTime);
