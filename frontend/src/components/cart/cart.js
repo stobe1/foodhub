@@ -12,7 +12,9 @@ angular.module('Foodhub').component('cart', {
 
   controller: function cartController() {
     this.confirmText = "Подтвердить";
-    this.cancelText = "Отменить";
+    this.cancelText = "Очистить корзину";
+    this.backText = "Вернуться";
+
 
     this.getTotalPrice = function() {
       if (!this.order) return 0;

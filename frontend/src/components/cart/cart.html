@@ -5,7 +5,7 @@
   </h2>
   <div class="cart__food-list">
     <div class="cart__food">
-      <food-order 
+      <food-order
         ng-repeat="foodOrder in $ctrl.order.foodOrders track by $index"
         image="foodOrder.food.imageUrl"
         food-counter="foodOrder.quantity"
@@ -18,7 +18,7 @@
   </div>
   <div class="cart__action-buttons">
     <div class="cart__confirm-button">
-      <custom-button 
+      <custom-button
         is-stretch
         ng-click="$ctrl.clickConfirmBtn()"
         title="$ctrl.confirmText">
@@ -32,6 +32,9 @@
         ng-click="$ctrl.clickCancelBtn()"
         title="$ctrl.cancelText">
       </custom-button>
+
+      <div class="cart__cancel-button">
+        <a class="button button_stretch button_transparent" href="/#/" >Вернуться назад</a>
     </div>
   </div>
 </div>

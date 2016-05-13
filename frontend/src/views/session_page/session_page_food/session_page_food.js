@@ -55,7 +55,7 @@ angular.module('Foodhub')
           $scope.order = order;
         } else {
           $scope.isNewOrder = true;
-          $scope.sessionInfoTitle = "Создание заказа";          
+          $scope.sessionInfoTitle = "Создание заказа";
           $scope.order = {
             sessionId: $scope.session.id,
             foodOrders: []
@@ -111,6 +111,13 @@ angular.module('Foodhub')
     }
 
     $scope.saveOrder = function(order) {
+      if (order.foodOrders.length === 0){
+        document.getElementById('emptyOrderError').style.display = 'block';
+        setTimeout(function(){
+          document.getElementById('emptyOrderError').style.display = 'none'
+        }, 2000);
+        return;
+      }
       if ($scope.isNewSession) {
         var date = new Date();
         var timeParts = /(\d{1,2}):(\d{1,2})/.exec($scope.session.orderTime);
