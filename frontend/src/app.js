@@ -102,6 +102,7 @@ require('./services/shops');
 require('./services/users');
 require('./services/orders');
 require('./services/sessions');
+require('./services/postOrder');
 require('./services/auth');
 require('./filters/money_filter');
 require('./filters/timeFilter');

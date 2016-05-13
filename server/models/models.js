@@ -10,6 +10,9 @@ var User = db.import('./User');
 Shop.hasMany(FoodCategory, { foreignKey: 'shopId', as: 'categories', onDelete: 'cascade' });
 FoodCategory.belongsTo(Shop, { foreignKey: 'shopId', as: 'shop', onDelete: 'cascade' });
 
+Shop.hasMany(Session, { foreignKey: 'shopId', as: 'sessions', onDelete: 'cascade' });
+Session.belongsTo(Shop, { foreignKey: 'shopId', as: 'shop', onDelete: 'cascade' });
+
 FoodCategory.hasMany(Food, { foreignKey: 'categoryId', as: 'foods', onDelete: 'cascade' });
 Food.belongsTo(FoodCategory, { foreignKey: 'categoryId', as: 'category', onDelete: 'cascade' });
 
