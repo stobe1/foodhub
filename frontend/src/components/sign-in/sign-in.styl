@@ -3,9 +3,12 @@
   flex-direction: column
   justify-content: center
   align-items: center
-  position: relative
+  position: fixed
+  top: 0
+  left: 0
   width: 100%
-  height: 'calc(100vh - %s - %s)' % ($header_height $footer_height)
+  height: 100%
+  z-index: 5
   min-height: 480px
   background: url('../img/sign_in_bg.jpg') no-repeat 50% 0
   background-size: cover
