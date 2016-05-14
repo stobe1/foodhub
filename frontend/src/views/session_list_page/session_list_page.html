@@ -1,6 +1,5 @@
 <div class="main-content__column">
-  <div class="server-error-message" ng-show="errorCaught" ng-click="hideError()" >
-    {{errorMessage}}
+  <div class="server-error-message" ng-show="errorCaught" ng-click="hideError()" ng-bind="errorMessage">
   </div>
   <div class="session-list-page">
     <div class="session-list-page__header">
