@@ -34,7 +34,7 @@
           <div class="session-page__copy-btn">
               <custom-button
                 is-stretch
-                ng-show="!isSessionParticipant(session)"
+                ng-show="!isSessionParticipant(session) && session.status == 0"
                 ng-click="copyUserOrder(order)"
                 title="'Хочу также'">
               </custom-button>
