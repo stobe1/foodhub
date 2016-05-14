@@ -6,6 +6,8 @@ angular.module('Foodhub')
   .controller('SessionPageUsersController', ['$scope', '$rootScope', '$location', '$routeParams', 'Sessions', 'Orders',
   function($scope, $rootScope, $location, $routeParams, Sessions, Orders) {
     $scope.sessionInfoTitle = 'Просмотр сессии';
+    $rootScope.pageTitle = $rootScope.projectConfig.nameProject + ' - Просмотр сессии';
+
     if (!$routeParams.id || isNaN(Number($routeParams.id))) {
       $location.path('/');
     }

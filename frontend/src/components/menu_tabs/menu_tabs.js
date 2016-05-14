@@ -39,6 +39,7 @@ angular.module('Foodhub')
           if (panes.length === 0) {
             $scope.select(pane);
           }
+
           panes.push(pane);
         };
       }]

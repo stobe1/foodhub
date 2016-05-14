@@ -5,6 +5,7 @@ moment.locale('ru');
 
 angular.module('Foodhub')
   .controller('SessionListPageController', ['$scope', 'Sessions', '$rootScope', '$filter', function($scope, Sessions, $rootScope, $filter) {
+    $rootScope.pageTitle = $rootScope.projectConfig.nameProject + ' - Объединатор доставок пищи';
 
     $scope.timeFromNow = function(date) {
       var timeLeft = moment(date);

@@ -1,9 +1,11 @@
 var moment = require('moment/min/moment-with-locales.js');
+
 moment.locale('ru');
 
 angular.module('Foodhub')
   .controller('LastPageController', ['$scope', '$routeParams', '$rootScope', 'Sessions', 'Users', '$location', 'PostOrder', function($scope, $routeParams, $rootScope, Sessions, Users, $location, PostOrder) {
     $scope.sessionInfoTitle = 'Информация о заказе';
+    $rootScope.pageTitle = $rootScope.projectConfig.nameProject + ' - Оформление заказа';
 
     $scope.init = function() {
       $rootScope.getShops().then(function(shops) {

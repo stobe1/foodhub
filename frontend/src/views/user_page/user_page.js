@@ -1,6 +1,7 @@
 angular.module('Foodhub')
   .controller('UserPageController', ['$scope', '$filter', '$routeParams', '$rootScope', 'Users', function($scope, $filter, $routeParams, $rootScope, Users) {
     $scope.sessionInfoTitle = 'Оформление заказа';
+    $rootScope.pageTitle = $rootScope.projectConfig.nameProject + ' - Профиль';
 
     $scope.init = function() {
       $scope.tempUser = _.clone($rootScope.currentUser);

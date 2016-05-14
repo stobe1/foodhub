@@ -4,6 +4,7 @@ var angular = require('angular');
 require('angular-route');
 require('angular-resource');
 require('angular-cookies');
+var config = require('./config/config');
 
 function appConfig($routeProvider, $httpProvider) {
   $routeProvider
@@ -48,6 +49,7 @@ appConfig.$inject = ['$routeProvider', '$httpProvider'];
 
 function appRun ($rootScope, Shops, $timeout, $cookies, $location) {
   $rootScope.defaultAvatarUrl = 'http://cdn.fishki.net/upload/post/201506/08/1559628/9df18f050741a1da79d70751018f8811.jpg';
+  $rootScope.projectConfig = config;
   try {
     $rootScope.currentUser = JSON.parse($cookies.get('currentUser'));
   } catch(e) {

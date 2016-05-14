@@ -1,10 +1,13 @@
 var _ = require('lodash');
 var moment = require('moment/min/moment-with-locales.js');
+
 moment.locale('ru');
 
 angular.module('Foodhub')
   .controller('SessionPageFoodController', ['$scope', '$rootScope', '$location', 'Shops', 'Sessions', 'Orders', '$routeParams', '$timeout',
   function($scope, $rootScope, $location, Shops, Sessions, Orders, $routeParams, $timeout) {
+    $rootScope.pageTitle = $rootScope.projectConfig.nameProject + ' - Выбор товаров';
+
     if ((!$routeParams.id || isNaN(Number($routeParams.id))) && !$routeParams.id === 'new') {
       $location.path('/');
     }
