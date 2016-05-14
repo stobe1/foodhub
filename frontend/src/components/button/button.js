@@ -6,6 +6,8 @@ angular.module('Foodhub').component('customButton', {
     'href': '<',
     'isBlank': '@',
     'isStretch' : '@',
+    'isSmall' : '@',
+    'isNotHover' : '@',
     'isTransparent': '@',
     'onClick' : '&',
   },
@@ -20,6 +22,14 @@ angular.module('Foodhub').component('customButton', {
 
     this.isStretchBtn = function() {
       return ( typeof( this.isStretch)  !== 'undefined');
+    };
+
+    this.isNotHoverBtn = function() {
+      return ( typeof( this.isNotHover)  !== 'undefined');
+    };
+
+    this.isSmallBtn = function() {
+      return ( typeof( this.isSmall)  !== 'undefined');
     };
 
     this.getTargetData = function() {

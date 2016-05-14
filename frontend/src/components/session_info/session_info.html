@@ -38,6 +38,7 @@
   <div class="session-info__column">
     <div class="session-info__element">
       <text-input 
+        ng-show="!$ctrl.session.deliveryTime"
         model="$ctrl.sessionTime" 
         label="Время оформления заказа" 
         name="time" 
@@ -46,6 +47,40 @@
         readonly="!$ctrl.canChangeTime" 
         on-change="$ctrl.onSessionTimeChanged()">
       </text-input>
+
+      <text-input 
+        ng-show="$ctrl.session.deliveryTime"
+        model="$ctrl.sessionTime" 
+        label="Время доставки заказа" 
+        name="time" 
+        inverted="true" 
+        invalid="$ctrl.session.invalidTime" 
+        readonly="!$ctrl.canChangeTime" 
+        on-change="$ctrl.onSessionTimeChanged()">
+      </text-input>
+
+      <div>
+        <custom-button
+          is-stretch
+          is-small
+          ng-show="$ctrl.session.deliveryTime"
+          ng-click="$ctrl.updateSessionTime($ctrl.session)"
+          title="'Обновить время доставки'">
+        </custom-button>
+      </div>
+
+
+      <div>
+        <custom-button
+          ng-show="showMessageSaved"
+          is-stretch
+          is-transparent
+          is-not-hover
+          is-small
+          title="'Время сохранено'">
+        </custom-button>
+      </div>
+
     </div>
   </div>
 

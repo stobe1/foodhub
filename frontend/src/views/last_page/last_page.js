@@ -15,7 +15,7 @@ angular.module('Foodhub')
         $scope.session = session;
         $scope.foodInfo = foodFromSession(session);
         $scope.session.orderTime = moment(new Date($scope.session.orderTime)).format('LT');
-        $scope.session.deliveryTime = moment(new Date($scope.session.deliveryTime)).format('LT');
+        //$scope.session.deliveryTime = moment(new Date($scope.session.deliveryTime)).format('LT');
         $rootScope.$broadcast('initSessionInfo');
         return Users.getUser({id: session.owner.id});
       }).then(function(user) {

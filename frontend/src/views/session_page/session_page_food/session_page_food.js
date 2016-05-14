@@ -117,9 +117,12 @@ angular.module('Foodhub')
     $scope.saveOrder = function(order) {
       if (order.foodOrders.length === 0){
         $scope.emptyOrderMessageShow = true;
-        setTimeout(function(){
+        
+        $timeout(function() { 
           $scope.emptyOrderMessageShow = false;
-        }, 2000);
+        }.bind(this),1000);
+
+
         return;
       }
 
