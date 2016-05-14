@@ -53,7 +53,7 @@
         label="Время доставки заказа"
         name="time"
         inverted="true"
-        invalid="$ctrl.session.invalidTime"
+        pattern="timePattern"
         readonly="!$ctrl.canChangeTime"
         on-change="$ctrl.onSessionTimeChanged()">
       </text-input>
