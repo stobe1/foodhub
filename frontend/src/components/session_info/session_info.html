@@ -34,7 +34,6 @@
       <a class="session-info__link" ng-href="{{ $ctrl.selectedShop.siteUrl }}" target="_blank" ng-bind="$ctrl.selectedShop.siteUrl"></a>
     </div>
   </div>
-
   <div class="session-info__column">
     <div class="session-info__element">
       <text-input
@@ -43,7 +42,7 @@
         label="Время оформления заказа"
         name="time"
         inverted="true"
-        pattern="([01]?[0-9]|2[0-3]):[0-5][0-9]"
+        pattern="timePattern"
         readonly="!$ctrl.canChangeTime"
         on-change="$ctrl.onSessionTimeChanged()">
       </text-input>

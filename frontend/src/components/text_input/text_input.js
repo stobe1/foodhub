@@ -10,7 +10,7 @@ angular.module('Foodhub')
     readonly: '<?',
     onChange: '=?',
     type: '@?',
-    pattern: '@?'
+    pattern: '<?'
   },
   template: require('./text_input.html'),
   controller: function() {

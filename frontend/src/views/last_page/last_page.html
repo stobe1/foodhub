@@ -1,5 +1,5 @@
-<div class="server-error-message" ng-show="errorCaught" ng-click="hideError()" >
-  {{errorMessage}}
+<div class="server-error-message" ng-show="errorCaught" ng-click="hideError()" ng-bind="errorMessage">
+
 </div>
 <session-info title="sessionInfoTitle" session="session" shops="shops"></session-info>
 
@@ -7,14 +7,14 @@
   <div class="last-page">
     <div class="last-page__part">
       <h2 class="last-page__block-title">Контактные данные</h2>
-      
+
       <div class="last-page__part-content">
-        <foodhub-form 
-          phone-value="outPhone" 
-          first-name="outFirstName" 
-          last-name="outLastName" 
-          mail-value="outMail" 
-          paytype-value="outPaytypeValue" 
+        <foodhub-form
+          phone-value="outPhone"
+          first-name="outFirstName"
+          last-name="outLastName"
+          mail-value="outMail"
+          paytype-value="outPaytypeValue"
           address="outAddress">
         </foodhub-form>
       </div>
