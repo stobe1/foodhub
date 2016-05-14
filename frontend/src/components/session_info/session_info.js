@@ -15,7 +15,7 @@ angular.module('Foodhub').component('sessionInfo', {
 
   controller: function($scope, $attrs, Sessions, $timeout, $rootScope) {
     this.selectUniqID = Math.random().toString(36).substring(10);
-    $scope.timePattern = '(([01]?[0-9]|2[0-3]):[0-5][0-9])';
+    $scope.timePattern = /^(([01]?[0-9])|(2[0-3])):[0-5][0-9]$/;
 
     this.validateTime = function(time) {
       var regexp = /^(\d{1,2}):(\d{1,2})$/,

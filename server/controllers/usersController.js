@@ -36,6 +36,9 @@ exports.update = function(request, response, next) {
     user.updateAttributes(_.pick(request.body, updatedFields));
     return user.save();
   }).then(function(user) {
+    var attributes = ['id', 'firstName', 'lastName', 'email', 'phone', 'paymentOption', 'address', 'avatarUrl', 'registrationService', 'externalUserId'];
+    response.cookie('currentUser', JSON.stringify(_.pick(user, attributes)));
+
     response.status(200).json(user);
   }).catch(function(error) {
     return next(error);
