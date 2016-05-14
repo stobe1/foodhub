@@ -1,5 +1,6 @@
 var errors = require('../errors/errors');
 var models = require('../models/models');
+var checkout = require('../lib/checkout');
 var _ = require('lodash');
 
 var fullQueryOptions = {
@@ -32,7 +33,7 @@ var fullQueryOptions = {
       }
     }
   }]
-}
+};
 
 var userAttributes = ['firstName', 'lastName', 'email', 'phone', 'address'];
 
@@ -45,16 +46,16 @@ exports.create = function(request, response, next) {
       throw new errors.forbidden('You are not allowed to order on this session');
     }
     var user = _.pick(request.body.user, userAttributes);
-    var foodOrders = _.flatMap(session.orders, 'foodOrders')
-    var products = _.map(foodOrders, function(foodOrder) {return {id: foodOrder.food.externalFoodId, count: foodOrder.quantity, category: foodOrder.food.category.name}});
+    var foodOrders = _.flatMap(session.orders, 'foodOrders');
+    var products = _.map(foodOrders, function(foodOrder) {return {id: foodOrder.food.externalFoodId, count: foodOrder.quantity, category: foodOrder.food.category.name};});
     var data = {
       user: user,
       shop: session.shop.siteUrl,
       products: products
-    }
-    //poster.post(data);
+    };
+    checkout(data);
     response.status(200).json({ session: data });
   }).catch(function(error) {
     return next(error);
   });
-}
+};
