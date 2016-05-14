@@ -8,7 +8,7 @@
   },
   "script": {
     "start": "node app.js",
-    "postinstall": "./node_modules/.bin/gulp --gulpfile frontend/gulpfile.js && build && ./node_modules/.bin/sequelize db:migrate && ./node_modules/.bin/sequelize db:seed:all"
+    "postinstall": "./node_modules/.bin/gulp --gulpfile frontend/gulpfile.js build && ./node_modules/.bin/sequelize db:migrate && ./node_modules/.bin/sequelize db:seed:all"
   },
   "dependencies": {
     "body-parser": "^1.15.0",
