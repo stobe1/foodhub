@@ -29,7 +29,18 @@ angular.module('Foodhub')
         owner: $rootScope.currentUser
       }
     }
-
+    $scope.catchError = function(error){
+      console.log(error)
+      if(error.status && error.data.message){
+        $scope.errorMessage = "Error: " + error.status + ' ' + error.data.message;
+      } else {
+        $scope.errorMessage = "Error: " + error;
+      }
+      $scope.errorCaught = true;
+    }
+    $scope.hideError = function() {
+      $scope.errorCaught = false;
+    }
     $scope.initNewSession = function() {
       $scope.isNewSession = true;
       $scope.sessionInfoTitle = "Создание сессии";
@@ -42,7 +53,7 @@ angular.module('Foodhub')
       $rootScope.$broadcast('initSessionInfo');
       Shops.getShop({ id: $scope.session.shopId }).then(function(shop) {
         $scope.selectedShop = shop;
-      });
+      }).catch($scope.catchError);
     }
 
     $scope.initExistingSessions = function() {
@@ -69,7 +80,7 @@ angular.module('Foodhub')
         return Shops.getShop({ id: $scope.session.shopId });
       }).then(function(shop) {
         $scope.selectedShop = shop;
-      });
+      }).catch($scope.catchError);
     }
 
     $scope.init = function() {
@@ -80,7 +91,7 @@ angular.module('Foodhub')
         } else {
           $scope.initExistingSessions();
         }
-      });
+      }).catch($scope.catchError);
     };
 
     function findOrderIndexByFoodId(FoodId) {
@@ -146,7 +157,7 @@ angular.module('Foodhub')
           return Orders.createOrder(orderParams);
         }).then(function(order) {
           $location.path('/session/' + $scope.session.id);
-        });
+        }).catch($scope.catchError);
       } else if ($scope.isNewOrder) {
         var orderParams = {
           sessionId: $scope.session.id,
@@ -154,7 +165,7 @@ angular.module('Foodhub')
         }
         Orders.createOrder(orderParams).then(function(order) {
           $location.path('/session/' + $scope.session.id);
-        });
+        }).catch($scope.catchError);
       } else if ($scope.isExistingOrder) {
         if ($scope.isSessionCreator($scope.session)) {
           var sessionParams = {
@@ -182,6 +193,9 @@ angular.module('Foodhub')
             $location.path('/session/' + $scope.session.id);
           });
         }
+        Orders.updateOrder(orderParams).then(function(order) {
+          $location.path('/session/' + $scope.session.id);
+        }).catch($scope.catchError);
       }
     }
 
@@ -189,7 +203,7 @@ angular.module('Foodhub')
       Shops.getShop({ id: shopId }).then(function(shop) {
         $scope.selectedShop = shop;
         $scope.order.foodOrders = [];
-      });
+      }).catch($scope.catchError);
     });
 
     $scope.init();

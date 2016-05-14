@@ -1,4 +1,7 @@
 <div class="main-content__column">
+  <div class="server-error-message" ng-show="errorCaught" ng-click="hideError()" >
+    {{errorMessage}}
+  </div>
   <div class="session-list-page">
     <div class="session-list-page__header">
       <h1 class="session-list-page__header-title">Список предложений</h1>

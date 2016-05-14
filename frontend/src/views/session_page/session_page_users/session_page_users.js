@@ -11,12 +11,23 @@ angular.module('Foodhub')
     if (!$routeParams.id || isNaN(Number($routeParams.id))) {
       $location.path('/');
     }
+    $scope.catchError = function(error){
+      console.log(error)
+      if(error.status && error.data.message){
+        $scope.errorMessage = "Error: " + error.status + ' ' + error.data.message;
+      } else {
+        $scope.errorMessage = "Error: " + error;
+      }
+      $scope.errorCaught = true;
+    }
+    $scope.hideError = function() {
+      $scope.errorCaught = false;
+    }
     $scope.isSessionCreator = function(session) {
       if (!$rootScope.currentUser || !session) return false;
       return $rootScope.currentUser.id === session.owner.id;
     }
     $scope.isOrdersEmpty = function(session) {
-      console.log(!session);
       return !session || session.orders.length === 0;
     }
     $scope.isSessionParticipant = function(session) {
@@ -60,19 +71,19 @@ angular.module('Foodhub')
       }
       Orders.updateOrder(orderParams).then(function(order) {
         $scope.session.orders[_.map($scope.session.orders, 'id').indexOf(order.id)] = order;
-      });
+      }).catch($scope.catchError);
     }
 
     $scope.deleteSession = function(session) {
       Sessions.updateSession({ id: session.id, status: 2 }).then(function(session) {
         $location.path('/#/');
-      });
+      }).catch($scope.catchError);
     }
 
     $scope.deleteOrder = function(order) {
       Orders.destroyOrder({ id: order.id }).then(function(order) {
         $scope.session.orders = _.reject($scope.session.orders, { id: order.id });
-      });
+      }).catch($scope.catchError);
     }
 
     $scope.init = function() {
@@ -84,7 +95,7 @@ angular.module('Foodhub')
         $scope.session.orderTime = moment(new Date($scope.session.orderTime)).format('LT');
         $scope.session.deliveryTime = $scope.session.deliveryTime ? moment(new Date($scope.session.deliveryTime)).format('LT') : null;
         $rootScope.$broadcast('initSessionInfo');
-      });
+      }).catch($scope.catchError);
     };
 
     $scope.init();

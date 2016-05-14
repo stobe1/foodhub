@@ -1,10 +1,14 @@
-<session-info 
-  title="sessionInfoTitle" 
-  session="session" 
-  shops="shops" 
+<div class="server-error-message" ng-show="errorCaught" ng-click="hideError()" >
+  {{errorMessage}}
+</div>
+<session-info
+  title="sessionInfoTitle"
+  session="session"
+  shops="shops"
   can-change-time="session.status != 2 && isSessionCreator(session)"
   can-change-shop="isNewSession">
 </session-info>
+
 <div class="main-content__column">
   <div class="session-page">
     <div class="session-page__col-big">
