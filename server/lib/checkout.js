@@ -4,7 +4,6 @@ var request = require('request');
 
 module.exports = function checkoutPizzaTempo(data) {
   var jar = request.jar();
-
   request({
     method: 'GET',
     url: 'http://www.pizzatempo.by/menu',
@@ -103,7 +102,7 @@ function createOrder(user, jar) {
         table: 'cat_orders',
         phone: user.phone,
         email: user.email,
-        fio: user.name,
+        fio: user.firstName + ' ' + user.lastName,
         city: address[0],
         street: address[1],
         house: address[2],

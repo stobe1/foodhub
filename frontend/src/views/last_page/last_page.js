@@ -2,7 +2,7 @@ var moment = require('moment/min/moment-with-locales.js');
 moment.locale('ru');
 
 angular.module('Foodhub')
-  .controller('LastPageController', ['$scope', '$routeParams', '$rootScope', 'Sessions', 'Users', '$location', function($scope, $routeParams, $rootScope, Sessions, Users, $location) {
+  .controller('LastPageController', ['$scope', '$routeParams', '$rootScope', 'Sessions', 'Users', '$location', 'PostOrder', function($scope, $routeParams, $rootScope, Sessions, Users, $location, PostOrder) {
     $scope.sessionInfoTitle = 'Информация о заказе';
 
     $scope.init = function() {
@@ -28,15 +28,21 @@ angular.module('Foodhub')
 
     $scope.postOrder = function() {
       //OrderPoster.PostOrder.then(function() {
+      var posterParams = {
+        id: $scope.session.id,
+        user: $rootScope.currentUser
+      };
+      PostOrder.post(posterParams).then(function(data) {
         var sessionParams = {
           id: $scope.session.id,
           status: 1,
           deliveryTime: moment(new Date()).add(2, 'hours').toDate()
-        }
-      Sessions.updateSession(sessionParams).then(function(session) {
+        };
+        return Sessions.updateSession(sessionParams);
+      }).then(function(session) {
         $location.path('/session/' + session.id);
       });
-    }
+    };
 
     function foodFromSession(session) {
       var food = {};
