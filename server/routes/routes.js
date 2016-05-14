@@ -17,7 +17,7 @@ router.get('/login/facebook/return',
     failureRedirect: '/api/v1/users'
   }),
   authController.loginFacebookResult);
-router.get('/logout', isAuthenticated, authController.logout);
+router.post('/logout', isAuthenticated, authController.logout);
 
 //Users//
 router.get('/users', isAuthenticated, usersController.index);

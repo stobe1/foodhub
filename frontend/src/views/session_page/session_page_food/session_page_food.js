@@ -83,7 +83,7 @@ angular.module('Foodhub')
     function findOrderIndexByFoodId(FoodId) {
       let OrderIndex = -1;
       $scope.order.foodOrders.forEach(function (item, i) {
-        if(item.food.id == FoodId){
+        if (item.food.id == FoodId) {
           OrderIndex = i;
         }
       });
@@ -93,9 +93,9 @@ angular.module('Foodhub')
     $scope.addFoodToCart = function(food, quantity) {
       let indexOrder = findOrderIndexByFoodId(food.id);
 
-      if(indexOrder != -1){
+      if (indexOrder != -1) {
         $scope.order.foodOrders[indexOrder].quantity += quantity;
-      }else{
+      } else {
         $scope.order.foodOrders.push({
           quantity: quantity,
           price: food.price * quantity,
@@ -150,14 +150,32 @@ angular.module('Foodhub')
           $location.path('/session/' + $scope.session.id);
         });
       } else if ($scope.isExistingOrder) {
-        var orderParams = {
-          id: $scope.order.id,
-          isPaid: false,
-          foodOrders: _.map(order.foodOrders, function(foodOrder) { return { foodId: foodOrder.food.id, quantity: foodOrder.quantity } })
+        if ($scope.isSessionCreator($scope.session)) {
+          var sessionParams = {
+            id: $scope.session.id,
+            orderTime: moment({hours: $scope.session.orderTime.split(':')[0], minutes: $scope.session.orderTime.split(':')[1]}).toDate(),
+            deliveryTime: $scope.session.deliveryTime && moment({hours: $scope.session.deliveryTime.split(':')[0], minutes: $scope.session.deliveryTime.split(':')[1]}).toDate()
+          }
+          Sessions.updateSession(sessionParams).then(function(session) {
+            var orderParams = {
+              id: $scope.order.id,
+              isPaid: false,
+              foodOrders: _.map(order.foodOrders, function(foodOrder) { return { foodId: foodOrder.food.id, quantity: foodOrder.quantity } })
+            }
+            return Orders.updateOrder(orderParams);
+          }).then(function(order) {
+            $location.path('/session/' + $scope.session.id);
+          });
+        } else {
+          var orderParams = {
+            id: $scope.order.id,
+            isPaid: false,
+            foodOrders: _.map(order.foodOrders, function(foodOrder) { return { foodId: foodOrder.food.id, quantity: foodOrder.quantity } })
+          }
+          Orders.updateOrder(orderParams).then(function(order) {
+            $location.path('/session/' + $scope.session.id);
+          });
         }
-        Orders.updateOrder(orderParams).then(function(order) {
-          $location.path('/session/' + $scope.session.id);
-        });
       }
     }
 

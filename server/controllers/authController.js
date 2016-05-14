@@ -11,8 +11,8 @@ exports.loginFacebookResult = function(req, res) {
   res.redirect('/#/sessions');
 };
 
-exports.logout = function(req, res) {
+exports.logout = function(req, res, next) {
   req.session.destroy(function(err) {
     res.status(200);
-  });
+  })
 };
