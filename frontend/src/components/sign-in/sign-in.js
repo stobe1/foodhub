@@ -8,7 +8,8 @@ angular.module('Foodhub')
       replace: true,
       scope: {},
       link: function($scope) {
+        $scope.vkontakteUrl = config.apiUrl + '/login/vkontakte';
         $scope.facebookUrl = config.apiUrl + '/login/facebook';
       }
-    }
+    };
   });
