@@ -14,9 +14,15 @@ var validators = require('../middleware/validators');
 router.get('/login/facebook', authController.loginFacebook);
 router.get('/login/facebook/return',
   passport.authenticate('facebook', {
-    failureRedirect: '/api/v1/users'
+    failureRedirect: '/api/v1'
   }),
   authController.loginFacebookResult);
+router.get('/login/vkontakte', authController.loginVkontakte);
+router.get('/login/vkontakte/return',
+  passport.authenticate('vkontakte', {
+    failureRedirect: '/api/v1'
+  }),
+  authController.loginVkontakteResult);
 router.post('/logout', isAuthenticated, authController.logout);
 
 //Users//
