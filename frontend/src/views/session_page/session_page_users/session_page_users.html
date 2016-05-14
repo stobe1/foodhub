@@ -28,6 +28,14 @@
             on-edit="saveOrder" 
             on-delete="deleteOrder">
           </user-card>
+          <div class="session-page__copy-btn">
+              <custom-button
+                is-stretch
+                ng-show="!isSessionParticipant(session)"
+                ng-click="copyUserOrder(order)"
+                title="'Хочу также'">
+              </custom-button>
+          </div>
         </div>
       </div>
     </div>

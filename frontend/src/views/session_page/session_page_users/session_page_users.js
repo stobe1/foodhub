@@ -40,6 +40,17 @@ angular.module('Foodhub')
       }
     }
 
+
+    $scope.copyUserOrder = function (order) {
+      var orderParams = {
+          sessionId: $scope.session.id,
+          foodOrders: _.map(order.foodOrders, function(foodOrder) { return { foodId: foodOrder.food.id, quantity: foodOrder.quantity } })
+        }
+        Orders.createOrder(orderParams).then(function(order) {
+           $scope.init();
+        });
+    }
+
     $scope.saveOrder = function(order) {
       var orderParams = {
         id: order.id,
