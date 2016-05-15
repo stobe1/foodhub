@@ -68,7 +68,7 @@ exports.create = function(request, response, next) {
   var sessionOptions = _.pick(request.body, createdFields);
   sessionOptions.userId = request.user.id;
   models.Session.create(sessionOptions).then(function(session) {
-    return models.Session.findById(session.id, fullQueryOptions);    
+    return models.Session.findById(session.id, fullQueryOptions);
   }).then(function(session) {
     response.status(201).json(session);
   }).catch(function(error) {

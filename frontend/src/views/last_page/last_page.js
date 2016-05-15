@@ -1,9 +1,24 @@
 var moment = require('moment/min/moment-with-locales.js');
+
 moment.locale('ru');
 
 angular.module('Foodhub')
   .controller('LastPageController', ['$scope', '$routeParams', '$rootScope', 'Sessions', 'Users', '$location', 'PostOrder', function($scope, $routeParams, $rootScope, Sessions, Users, $location, PostOrder) {
     $scope.sessionInfoTitle = 'Информация о заказе';
+    $rootScope.pageTitle = $rootScope.projectConfig.nameProject + ' - Оформление заказа';
+
+    $scope.catchError = function(error){
+      console.log(error)
+      if(error.status && error.data.message){
+        $scope.errorMessage = "Error: " + error.status + ' ' + error.data.message;
+      } else {
+        $scope.errorMessage = "Error: " + error;
+      }
+      $scope.errorCaught = true;
+    }
+    $scope.hideError = function() {
+      $scope.errorCaught = false;
+    }
 
     $scope.init = function() {
       $rootScope.getShops().then(function(shops) {
@@ -13,7 +28,7 @@ angular.module('Foodhub')
         $scope.session = session;
         $scope.foodInfo = foodFromSession(session);
         $scope.session.orderTime = moment(new Date($scope.session.orderTime)).format('LT');
-        $scope.session.deliveryTime = moment(new Date($scope.session.deliveryTime)).format('LT');
+        //$scope.session.deliveryTime = moment(new Date($scope.session.deliveryTime)).format('LT');
         $rootScope.$broadcast('initSessionInfo');
         return Users.getUser({id: session.owner.id});
       }).then(function(user) {
@@ -23,7 +38,7 @@ angular.module('Foodhub')
         $scope.outMail = user.email;
         $scope.outPaytypeValue = user.paymentOption;
         $scope.outAddress = user.address;
-      });
+      }).catch($scope.catchError);
     };
 
     $scope.postOrder = function() {
@@ -41,7 +56,7 @@ angular.module('Foodhub')
         return Sessions.updateSession(sessionParams);
       }).then(function(session) {
         $location.path('/session/' + session.id);
-      });
+      }).catch($scope.catchError);
     };
 
     function foodFromSession(session) {

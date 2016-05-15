@@ -5,6 +5,7 @@ moment.locale('ru');
 
 angular.module('Foodhub')
   .controller('SessionListPageController', ['$scope', 'Sessions', '$rootScope', '$filter', function($scope, Sessions, $rootScope, $filter) {
+    $rootScope.pageTitle = $rootScope.projectConfig.nameProject + ' - Объединатор доставок пищи';
 
     $scope.timeFromNow = function(date) {
       var timeLeft = moment(date);
@@ -34,7 +35,10 @@ angular.module('Foodhub')
         };
       });
     };
-
+    $scope.hideError = function() {
+      $scope.errorCaught = false;
+      console.log($scope.errorCaught);
+    }
     $scope.init = function() {
       $rootScope.getShops().then(function(shops) {
         $scope.shops = shops;
@@ -42,6 +46,13 @@ angular.module('Foodhub')
       }).then(function(response) {
         $scope.sessions = response.sessions;
         $scope.mappedSessions = $scope.getSessions();
+      }).catch(function(error){
+        if(error.status && error.data.message){
+          $scope.errorMessage = "Error: " + error.status + ' ' + error.data.message;
+        } else {
+          $scope.errorMessage = "Error: " + error;
+        }
+        $scope.errorCaught = true;
       });
     };
 

@@ -11,11 +11,11 @@
   <div class="session-info__column">
     <div class="session-info__element">
       <div class="session-info__select-container">
-        <select 
-          class="session-info__select" 
-          id="session-info__select{{ $ctrl.selectUniqID }}" 
-          ng-model="$ctrl.selectedShop" 
-          ng-options="shop.name for shop in $ctrl.shops" 
+        <select
+          class="session-info__select"
+          id="session-info__select{{ $ctrl.selectUniqID }}"
+          ng-model="$ctrl.selectedShop"
+          ng-options="shop.name for shop in $ctrl.shops"
           ng-change="$ctrl.onShopChanged()"
           ng-disabled="!$ctrl.canChangeShop">
         </select>
@@ -34,28 +34,62 @@
       <a class="session-info__link" ng-href="{{ $ctrl.selectedShop.siteUrl }}" target="_blank" ng-bind="$ctrl.selectedShop.siteUrl"></a>
     </div>
   </div>
-
   <div class="session-info__column">
     <div class="session-info__element">
-      <text-input 
-        model="$ctrl.sessionTime" 
-        label="Время оформления заказа" 
-        name="time" 
-        inverted="true" 
-        invalid="$ctrl.session.invalidTime" 
-        readonly="!$ctrl.canChangeTime" 
+      <text-input
+        ng-show="!$ctrl.session.deliveryTime"
+        model="$ctrl.sessionTime"
+        label="Время оформления заказа"
+        name="time"
+        inverted="true"
+        pattern="timePattern"
+        readonly="!$ctrl.canChangeTime"
         on-change="$ctrl.onSessionTimeChanged()">
       </text-input>
+
+      <text-input
+        ng-show="$ctrl.session.deliveryTime"
+        model="$ctrl.sessionTime"
+        label="Время доставки заказа"
+        name="time"
+        inverted="true"
+        pattern="timePattern"
+        readonly="!$ctrl.canChangeTime"
+        on-change="$ctrl.onSessionTimeChanged()">
+      </text-input>
+
+      <div>
+        <custom-button
+          is-stretch
+          is-small
+          ng-show="$ctrl.session.deliveryTime"
+          ng-click="$ctrl.updateSessionTime($ctrl.session)"
+          title="'Обновить время доставки'">
+        </custom-button>
+      </div>
+
+
+      <div>
+        <custom-button
+          ng-show="showMessageSaved"
+          is-stretch
+          is-transparent
+          is-not-hover
+          is-small
+          title="'Время сохранено'">
+        </custom-button>
+      </div>
+
     </div>
   </div>
 
   <div class="session-info__column">
     <div class="session-info__element">
-      <text-input 
-        model="$ctrl.getTotalPrice()" 
-        label="Общая сумма заказа:" 
-        name="price" 
-        inverted="true" 
+      <text-input
+        model="$ctrl.getTotalPrice()"
+        label="Общая сумма заказа:"
+        name="price"
+        inverted="true"
         readonly="true">
       </text-input>
     </div>

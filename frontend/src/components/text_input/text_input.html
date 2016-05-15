@@ -1,16 +1,17 @@
-<div class="text-input" ng-class="{'text-input_invert': $ctrl.inverted, 'text-input_invalid': $ctrl.invalid}">
-  <input 
-    ng-model="$ctrl.model" 
-    type="{{$ctrl.type? $ctrl.type : 'text'}}" 
-    id="{{'text-input__' + $ctrl.name}}" 
-    class="text-input__input text-input__input_long" 
-    ng-disabled="$ctrl.readonly" 
-    ng-change="$ctrl.onModelChanged()" 
+<div class="text-input" ng-class="{'text-input_invert': $ctrl.inverted}">
+  <input
+    ng-model="$ctrl.model"
+    type="{{$ctrl.type? $ctrl.type : 'text'}}"
+    id="{{'text-input__' + $ctrl.name}}"
+    ng-pattern="$ctrl.pattern"
+    class="text-input__input text-input__input_long"
+    ng-disabled="$ctrl.readonly"
+    ng-change="$ctrl.onModelChanged()"
     placeholder="{{$ctrl.placeholder}}"
     required>
-  <label 
-    class="text-input__headline" 
-    for="{{'text-input__' + $ctrl.name}}" 
+  <label
+    class="text-input__headline"
+    for="{{'text-input__' + $ctrl.name}}"
     ng-bind="$ctrl.label">
   </label>
 </div>

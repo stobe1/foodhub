@@ -1,4 +1,7 @@
 var _ = require('lodash');
+var moment = require('moment/min/moment-with-locales.js');
+
+moment.locale('ru');
 
 angular.module('Foodhub').component('sessionInfo', {
   bindings: {
@@ -10,8 +13,9 @@ angular.module('Foodhub').component('sessionInfo', {
   },
   template: require('./session_info.html'),
 
-  controller: function($scope, $attrs, $timeout, $rootScope) {
+  controller: function($scope, $attrs, Sessions, $timeout, $rootScope) {
     this.selectUniqID = Math.random().toString(36).substring(10);
+    $scope.timePattern = /^(([01]?[0-9])|(2[0-3])):[0-5][0-9]$/;
 
     this.validateTime = function(time) {
       var regexp = /^(\d{1,2}):(\d{1,2})$/,
@@ -79,6 +83,21 @@ angular.module('Foodhub').component('sessionInfo', {
         this.session.invalidTime = true;
       }
     };
+
+    this.updateSessionTime = function (session) {
+      var sessionParams = {
+          id: this.session.id,
+          deliveryTime: this.session.deliveryTime && moment({hours: this.session.deliveryTime.split(':')[0], minutes: this.session.deliveryTime.split(':')[1]}).toDate()
+      }
+
+      Sessions.updateSession(sessionParams).then(function(session) {
+        $scope.showMessageSaved = true;
+
+        $timeout(function() { 
+          $scope.showMessageSaved = false;
+        }.bind(this),1000);
+      });
+    }
 
     $scope.$on('initSessionInfo', function() {
       $timeout(function() { this.init() }.bind(this));
