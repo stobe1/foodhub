@@ -89,11 +89,9 @@ angular.module('Foodhub').component('sessionInfo', {
           id: this.session.id,
           deliveryTime: this.session.deliveryTime && moment({hours: this.session.deliveryTime.split(':')[0], minutes: this.session.deliveryTime.split(':')[1]}).toDate()
       }
-
       Sessions.updateSession(sessionParams).then(function(session) {
         $scope.showMessageSaved = true;
-
-        $timeout(function() { 
+        $timeout(function() {
           $scope.showMessageSaved = false;
         }.bind(this),1000);
       });

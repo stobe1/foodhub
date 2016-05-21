@@ -128,15 +128,11 @@ angular.module('Foodhub')
     $scope.saveOrder = function(order) {
       if (order.foodOrders.length === 0){
         $scope.emptyOrderMessageShow = true;
-        
-        $timeout(function() { 
+        $timeout(function() {
           $scope.emptyOrderMessageShow = false;
         }.bind(this),1000);
-
-
         return;
       }
-
       if ($scope.isNewSession) {
         var date = new Date();
         var timeParts = /(\d{1,2}):(\d{1,2})/.exec($scope.session.orderTime);
@@ -182,7 +178,7 @@ angular.module('Foodhub')
             return Orders.updateOrder(orderParams);
           }).then(function(order) {
             $location.path('/session/' + $scope.session.id);
-          });
+          }).catch($scope.catchError);
         } else {
           var orderParams = {
             id: $scope.order.id,
@@ -191,11 +187,8 @@ angular.module('Foodhub')
           }
           Orders.updateOrder(orderParams).then(function(order) {
             $location.path('/session/' + $scope.session.id);
-          });
+          }).catch($scope.catchError);
         }
-        Orders.updateOrder(orderParams).then(function(order) {
-          $location.path('/session/' + $scope.session.id);
-        }).catch($scope.catchError);
       }
     }
 
