@@ -7,7 +7,7 @@
   "scripts": {
     "start": "node app.js",
     "install": "npm install -g sequelize && npm install -g sequelize-cli && npm install -g mysql",
-    "postinstall": "gulp --gulpfile gulpfile.js build && sequelize db:migrate:undo:all && sequelize db:migrate && sequelize db:seed:all"
+    "postinstall": "gulp --gulpfile gulpfile.js build"
   },
   "version": "0.1.0",
   "description": "ya-crew product",
