@@ -49,6 +49,6 @@ app.use('/api/v1', routes.router);
 app.use(express.static('build'));
 app.use(errors.handler);
 
-app.listen(config.serverPort, function() {
-  console.log('Server is on ' + config.serverPort + ' port.');
+app.listen(process.env.PORT || 5000, function() {
+  console.log('Server is on ' + process.env.PORT || 5000 + ' port.');
 });
