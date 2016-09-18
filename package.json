@@ -1,6 +1,15 @@
 {
   "name": "foodhub",
-  "version": "0.0.1",
+  "main": "app.js",
+  "engines": {
+  "node": "4.4.3"
+  },
+  "scripts": {
+    "start": "node app.js",
+    "install": "npm install -g sequelize && npm install -g sequelize-cli && npm install -g mysql",
+    "postinstall": "gulp --gulpfile gulpfile.js build && sequelize db:migrate:undo:all && sequelize db:migrate && sequelize db:seed:all"
+  },
+  "version": "0.1.0",
   "description": "ya-crew product",
   "author": "",
   "license": "ISC",
@@ -35,9 +44,23 @@
     "gulp-watch": "^4.3.5",
     "imagemin-pngquant": "^4.2.2",
     "lodash.assign": "^4.0.8",
+    "sequelize-auto": "^0.4.4",
     "stringify": "^5.1.0",
     "vinyl-buffer": "^1.0.0",
     "vinyl-source-stream": "^1.1.0",
-    "watchify": "^3.7.0"
+    "watchify": "^3.7.0",
+    "body-parser": "^1.15.0",
+    "cheerio": "^0.20.0",
+    "cookie-parser": "^1.4.1",
+    "express": "^4.13.4",
+    "express-session": "^1.13.0",
+    "lodash": "^4.11.2",
+    "morgan": "^1.7.0",
+    "mysql": "^2.10.2",
+    "passport": "^0.3.2",
+    "passport-facebook": "^2.1.0",
+    "passport-vkontakte": "^0.4.0",
+    "request": "^2.72.0",
+    "sequelize": "^3.21.0"
   }
 }
